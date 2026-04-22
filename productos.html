@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Productos — CREDIAN | Créditos de Nómina</title>
+  <meta name="description" content="Conoce nuestros planes de crédito de nómina: desde $10,000 hasta $500,000 MXN. Tasas competitivas y plazos flexibles.">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/global.css">
+  <style>
+    .products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--space-xl)}
+    .product-card{background:var(--color-white);border-radius:var(--radius-xl);padding:var(--space-2xl);box-shadow:var(--shadow-sm);border:2px solid transparent;transition:all var(--transition-base);position:relative;overflow:hidden}
+    .product-card:hover{box-shadow:var(--shadow-card-hover);transform:translateY(-8px)}
+    .product-card--featured{border-color:var(--color-blue)}
+    .product-card--featured::before{content:'Popular';position:absolute;top:16px;right:-32px;background:var(--gradient-brand);color:#fff;font-size:.7rem;font-weight:700;padding:4px 40px;transform:rotate(45deg);font-family:var(--font-display)}
+    .product-card__name{font-size:var(--text-lg);font-weight:var(--fw-bold);margin-bottom:var(--space-xs)}
+    .product-card__range{font-size:var(--text-3xl);font-weight:var(--fw-extrabold);color:var(--color-blue);margin-bottom:var(--space-xs)}
+    .product-card__rate{font-size:var(--text-sm);color:var(--color-green);font-weight:var(--fw-semibold);margin-bottom:var(--space-xl)}
+    .product-card__features{list-style:none;margin-bottom:var(--space-xl)}
+    .product-card__features li{display:flex;align-items:center;gap:.75rem;padding:.5rem 0;font-size:var(--text-sm);color:var(--color-gray-text)}
+    .product-card__features li svg{width:18px;height:18px;color:var(--color-green);flex-shrink:0}
+    .compare-table{width:100%;border-collapse:collapse;border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-md)}
+    .compare-table thead{background:var(--color-navbar)}
+    .compare-table th{color:#fff;font-family:var(--font-display);font-weight:var(--fw-semibold);font-size:var(--text-sm);padding:1rem 1.25rem;text-align:left}
+    .compare-table td{padding:1rem 1.25rem;font-size:var(--text-sm);border-bottom:1px solid var(--color-gray-mid)}
+    .compare-table tbody tr:nth-child(even){background:var(--color-gray-light)}
+    .compare-table tbody tr:hover{background:rgba(43,77,168,.04)}
+    .compare-table td:first-child{font-weight:var(--fw-medium);color:var(--color-dark)}
+    .check-svg{color:var(--color-green)}
+    .requirements{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--space-lg)}
+    .req-item{display:flex;align-items:flex-start;gap:var(--space-md);padding:var(--space-lg);background:var(--color-white);border-radius:var(--radius-md);box-shadow:var(--shadow-sm);transition:all var(--transition-base)}
+    .req-item:hover{box-shadow:var(--shadow-md);transform:translateX(4px)}
+    .req-item__check{width:28px;height:28px;border-radius:var(--radius-full);background:linear-gradient(135deg,rgba(43,77,168,.1),rgba(58,170,110,.1));display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--color-green)}
+    .req-item__check svg{width:16px;height:16px}
+    .faq-section .accordion-item{background:var(--color-white);border-radius:var(--radius-md);margin-bottom:var(--space-md);box-shadow:var(--shadow-sm);border:1px solid rgba(0,0,0,.04);overflow:hidden}
+    .faq-section .accordion-trigger{display:flex;align-items:center;justify-content:space-between;width:100%;padding:var(--space-lg) var(--space-xl);font-family:var(--font-display);font-size:var(--text-base);font-weight:var(--fw-semibold);color:var(--color-dark);cursor:pointer;transition:background var(--transition-fast);text-align:left}
+    .faq-section .accordion-trigger:hover{background:var(--color-gray-light)}
+    .faq-section .accordion-content{padding:0 var(--space-xl) 0;color:var(--color-gray-text);font-size:var(--text-sm);line-height:1.8}
+    .faq-section .accordion-item.active .accordion-content{padding-bottom:var(--space-lg)}
+    .accordion-icon svg{width:20px;height:20px;transition:transform var(--transition-base)}
+    .accordion-item.active .accordion-icon svg{transform:rotate(180deg)}
+    @media(max-width:768px){.compare-wrapper{overflow-x:auto;-webkit-overflow-scrolling:touch}.compare-table{min-width:600px}}
+  </style>
+</head>
+<body class="page-body">
+  <div class="custom-cursor" aria-hidden="true"></div>
+  <div class="page-transition-overlay" aria-hidden="true"></div>
+
+  <nav class="navbar" aria-label="Navegación principal">
+    <div class="navbar__inner">
+      <a href="index.html" class="navbar__logo" data-internal aria-label="CREDIAN Inicio"><svg width="34" height="34" viewBox="0 0 40 40" fill="none"><rect x="8" y="8" width="18" height="18" rx="3" transform="rotate(45 17 17)" fill="#2B4DA8" opacity="0.9"/><rect x="14" y="14" width="18" height="18" rx="3" transform="rotate(45 23 23)" fill="#3AAA6E" opacity="0.85"/></svg><span class="navbar__logo-text">CREDIAN</span></a>
+      <div class="navbar__links"><a href="index.html" class="navbar__link" data-internal>Inicio</a><a href="nosotros.html" class="navbar__link" data-internal>Nosotros</a><a href="productos.html" class="navbar__link active" data-internal>Productos</a><a href="dudas.html" class="navbar__link" data-internal>Dudas</a><a href="contacto.html" class="navbar__link" data-internal>Contacto</a></div>
+      <div class="navbar__actions"><a href="#cotizador" class="navbar__cotizador" target="_blank">Cotizador</a><a href="#solicitar" class="navbar__cta btn-shimmer" target="_blank">Solicita tu crédito de nómina</a></div>
+      <button class="navbar__hamburger" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="mobile-menu" aria-hidden="true"><a href="index.html" class="mobile-menu__link" data-internal>Inicio</a><a href="nosotros.html" class="mobile-menu__link" data-internal>Nosotros</a><a href="productos.html" class="mobile-menu__link" data-internal>Productos</a><a href="dudas.html" class="mobile-menu__link" data-internal>Dudas</a><a href="contacto.html" class="mobile-menu__link" data-internal>Contacto</a><div class="mobile-menu__divider"></div><a href="#cotizador" class="mobile-menu__link" target="_blank">Cotizador</a><a href="#solicitar" class="mobile-menu__link" target="_blank">Solicitar crédito</a></div>
+
+  <!-- HERO -->
+  <section class="hero hero--small">
+    <div class="hero__bg"></div>
+    <div class="rhombus-deco rhombus-deco--1 rhombus-deco--green" aria-hidden="true"></div>
+    <div class="rhombus-deco rhombus-deco--4" aria-hidden="true"></div>
+    <div class="hero__content">
+      <span class="hero__label hero-enter">Nuestros planes</span>
+      <h1 class="hero__title hero-enter">Productos de <span class="text-gradient" style="-webkit-text-fill-color:transparent;background:linear-gradient(90deg,#7eb8f7,#4CC882);-webkit-background-clip:text;background-clip:text">crédito</span></h1>
+      <p class="hero__subtitle hero-enter">Planes diseñados para adaptarse a tus necesidades. Elige el que mejor te convenga.</p>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header reveal">
+        <span class="section__label">Planes</span>
+        <h2 class="section__title">Elige tu <span class="text-gradient">crédito ideal</span></h2>
+      </div>
+      <div class="products-grid">
+        <div class="product-card reveal stagger-1">
+          <p class="product-card__name">Crédito Inicial</p>
+          <p class="product-card__range">$10,000 — $50,000</p>
+          <p class="product-card__rate">Desde 18.9% anual</p>
+          <ul class="product-card__features">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Plazos de 6 a 24 meses</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Sin aval requerido</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Aprobación en 24 hrs</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Descuento vía nómina</li>
+          </ul>
+          <a href="#solicitar" class="btn btn--secondary btn-shimmer" style="width:100%" target="_blank">Solicitar</a>
+        </div>
+        <div class="product-card product-card--featured reveal stagger-2">
+          <p class="product-card__name">Crédito Plus</p>
+          <p class="product-card__range">$50,000 — $200,000</p>
+          <p class="product-card__rate">Desde 16.5% anual</p>
+          <ul class="product-card__features">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Plazos de 12 a 48 meses</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Sin aval requerido</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Aprobación en 24 hrs</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Asesor personalizado</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Seguro de vida incluido</li>
+          </ul>
+          <a href="#solicitar" class="btn btn--primary btn--large btn-shimmer" style="width:100%" target="_blank">Solicitar</a>
+        </div>
+        <div class="product-card reveal stagger-3">
+          <p class="product-card__name">Crédito Premium</p>
+          <p class="product-card__range">$200,000 — $500,000</p>
+          <p class="product-card__rate">Desde 14.9% anual</p>
+          <ul class="product-card__features">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Plazos de 24 a 60 meses</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Sin aval requerido</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Aprobación prioritaria</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Asesor VIP dedicado</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Seguro de vida + desempleo</li>
+          </ul>
+          <a href="#solicitar" class="btn btn--secondary btn-shimmer" style="width:100%" target="_blank">Solicitar</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARISON TABLE -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="section__header reveal">
+        <span class="section__label">Comparativa</span>
+        <h2 class="section__title">Compara <span class="text-gradient">planes</span></h2>
+      </div>
+      <div class="compare-wrapper reveal">
+        <table class="compare-table">
+          <thead><tr><th>Característica</th><th>Inicial</th><th>Plus</th><th>Premium</th></tr></thead>
+          <tbody>
+            <tr><td>Monto máximo</td><td>$50,000</td><td>$200,000</td><td>$500,000</td></tr>
+            <tr><td>Tasa desde</td><td>18.9%</td><td>16.5%</td><td>14.9%</td></tr>
+            <tr><td>Plazo máximo</td><td>24 meses</td><td>48 meses</td><td>60 meses</td></tr>
+            <tr><td>Sin aval</td><td><svg class="check-svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></td><td><svg class="check-svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></td><td><svg class="check-svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></td></tr>
+            <tr><td>Asesor personalizado</td><td>—</td><td><svg class="check-svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></td><td><svg class="check-svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></td></tr>
+            <tr><td>Seguro de vida</td><td>—</td><td><svg class="check-svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></td><td><svg class="check-svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></td></tr>
+            <tr><td>Seguro de desempleo</td><td>—</td><td>—</td><td><svg class="check-svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></td></tr>
+            <tr><td>Aprobación prioritaria</td><td>—</td><td>—</td><td><svg class="check-svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- REQUIREMENTS -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header reveal">
+        <span class="section__label">Requisitos</span>
+        <h2 class="section__title">¿Qué <span class="text-gradient">necesitas</span>?</h2>
+        <p class="section__subtitle">Solo necesitas cumplir con estos requisitos básicos para solicitar tu crédito.</p>
+      </div>
+      <div class="requirements">
+        <div class="req-item reveal stagger-1"><div class="req-item__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div><div><h4 style="font-size:var(--text-base);margin-bottom:4px">Identificación oficial</h4><p style="font-size:var(--text-sm);color:var(--color-gray-text)">INE o pasaporte vigente</p></div></div>
+        <div class="req-item reveal stagger-2"><div class="req-item__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div><div><h4 style="font-size:var(--text-base);margin-bottom:4px">Comprobante de domicilio</h4><p style="font-size:var(--text-sm);color:var(--color-gray-text)">No mayor a 3 meses</p></div></div>
+        <div class="req-item reveal stagger-3"><div class="req-item__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div><div><h4 style="font-size:var(--text-base);margin-bottom:4px">Últimos 3 recibos de nómina</h4><p style="font-size:var(--text-sm);color:var(--color-gray-text)">En formato PDF o impreso</p></div></div>
+        <div class="req-item reveal stagger-4"><div class="req-item__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div><div><h4 style="font-size:var(--text-base);margin-bottom:4px">Estado de cuenta bancario</h4><p style="font-size:var(--text-sm);color:var(--color-gray-text)">Últimos 3 meses</p></div></div>
+        <div class="req-item reveal stagger-5"><div class="req-item__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div><div><h4 style="font-size:var(--text-base);margin-bottom:4px">Antigüedad laboral mínima</h4><p style="font-size:var(--text-sm);color:var(--color-gray-text)">Al menos 1 año en tu empleo actual</p></div></div>
+        <div class="req-item reveal stagger-6"><div class="req-item__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div><div><h4 style="font-size:var(--text-base);margin-bottom:4px">Ser mayor de 18 años</h4><p style="font-size:var(--text-sm);color:var(--color-gray-text)">Edad máxima 65 años al término del crédito</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section--gray faq-section">
+    <div class="container container--narrow">
+      <div class="section__header reveal">
+        <span class="section__label">FAQ</span>
+        <h2 class="section__title">Preguntas sobre <span class="text-gradient">productos</span></h2>
+      </div>
+      <div class="accordion-item reveal"><button class="accordion-trigger" aria-expanded="false"><span>¿Puedo solicitar más de un crédito a la vez?</span><span class="accordion-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" width="20" height="20"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="accordion-content"><p>No, solo puedes tener un crédito activo. Sin embargo, una vez que hayas pagado el 50% de tu crédito actual, puedes solicitar una renovación con mejores condiciones.</p></div></div>
+      <div class="accordion-item reveal"><button class="accordion-trigger" aria-expanded="false"><span>¿Qué pasa si cambio de trabajo?</span><span class="accordion-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" width="20" height="20"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="accordion-content"><p>Si cambias de empleo, contacta a tu asesor para reestructurar el método de pago. Puedes continuar pagando mediante domiciliación bancaria.</p></div></div>
+      <div class="accordion-item reveal"><button class="accordion-trigger" aria-expanded="false"><span>¿Hay penalización por pago anticipado?</span><span class="accordion-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" width="20" height="20"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="accordion-content"><p>No, en CREDIAN no cobramos penalización por pago anticipado. De hecho, al liquidar antes ahorras en intereses.</p></div></div>
+      <div class="accordion-item reveal"><button class="accordion-trigger" aria-expanded="false"><span>¿Puedo elegir la fecha de pago?</span><span class="accordion-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" width="20" height="20"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="accordion-content"><p>El descuento se realiza automáticamente de tu nómina en la fecha que tu empresa procesa el pago, así no tienes que preocuparte por fechas.</p></div></div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand"><div class="footer__logo"><svg width="34" height="34" viewBox="0 0 40 40" fill="none"><rect x="8" y="8" width="18" height="18" rx="3" transform="rotate(45 17 17)" fill="#2B4DA8" opacity="0.9"/><rect x="14" y="14" width="18" height="18" rx="3" transform="rotate(45 23 23)" fill="#3AAA6E" opacity="0.85"/></svg><span class="footer__logo-text">CREDIAN</span></div><p class="footer__brand-desc">Soluciones de crédito de nómina transparentes y accesibles para trabajadores mexicanos.</p><div class="footer__social"><a href="#" class="footer__social-link" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a><a href="#" class="footer__social-link" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z"/></svg></a></div></div>
+        <div><h4 class="footer__column-title">Páginas</h4><a href="index.html" class="footer__link" data-internal>Inicio</a><a href="nosotros.html" class="footer__link" data-internal>Nosotros</a><a href="productos.html" class="footer__link" data-internal>Productos</a><a href="dudas.html" class="footer__link" data-internal>Dudas</a><a href="contacto.html" class="footer__link" data-internal>Contacto</a></div>
+        <div><h4 class="footer__column-title">Servicios</h4><a href="#cotizador" class="footer__link" target="_blank">Cotizador</a><a href="#solicitar" class="footer__link" target="_blank">Solicitar crédito</a></div>
+        <div><h4 class="footer__column-title">Contacto</h4><a href="tel:+525512345678" class="footer__link">+52 (55) 1234 5678</a><a href="mailto:info@credian.mx" class="footer__link">info@credian.mx</a></div>
+      </div>
+      <div class="footer__bottom"><p class="footer__copy">&copy; <span id="current-year">2026</span> CREDIAN. Todos los derechos reservados.</p><div class="footer__legal"><a href="#">Aviso de privacidad</a><a href="#">Términos y condiciones</a></div></div>
+    </div>
+  </footer>
+  <script src="js/nav.js"></script><script src="js/main.js"></script><script src="js/animations.js"></script>
+</body>
+</html>

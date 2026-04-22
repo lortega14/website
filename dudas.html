@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dudas Frecuentes — CREDIAN | Créditos de Nómina</title>
+  <meta name="description" content="Resuelve tus dudas sobre créditos de nómina CREDIAN. Preguntas frecuentes sobre requisitos, tasas, plazos y más.">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/global.css">
+  <style>
+    .faq-search-wrapper{max-width:600px;margin:0 auto var(--space-3xl);position:relative}
+    .faq-search-wrapper svg{position:absolute;left:1.25rem;top:50%;transform:translateY(-50%);width:22px;height:22px;color:var(--color-gray-text)}
+    .faq-search{width:100%;padding:1.1rem 1.25rem 1.1rem 3.5rem;border:2px solid var(--color-gray-mid);border-radius:var(--radius-pill);font-size:var(--text-base);font-family:var(--font-body);background:var(--color-white);transition:border-color var(--transition-fast),box-shadow var(--transition-fast);box-shadow:var(--shadow-sm)}
+    .faq-search:focus{border-color:var(--color-blue);box-shadow:0 0 0 4px rgba(43,77,168,.1)}
+    .faq-categories{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin-bottom:var(--space-2xl)}
+    .faq-cat-btn{padding:.6rem 1.25rem;border-radius:var(--radius-pill);font-family:var(--font-display);font-size:var(--text-sm);font-weight:var(--fw-medium);background:var(--color-white);color:var(--color-gray-text);border:1px solid var(--color-gray-mid);cursor:pointer;transition:all var(--transition-fast)}
+    .faq-cat-btn:hover,.faq-cat-btn.active{background:var(--color-blue);color:#fff;border-color:var(--color-blue)}
+    .faq-list{max-width:800px;margin:0 auto}
+    .faq-item{background:var(--color-white);border-radius:var(--radius-md);margin-bottom:var(--space-md);box-shadow:var(--shadow-sm);border:1px solid rgba(0,0,0,.04);overflow:hidden;transition:box-shadow var(--transition-base)}
+    .faq-item:hover{box-shadow:var(--shadow-md)}
+    .faq-item .accordion-trigger{display:flex;align-items:center;justify-content:space-between;gap:1rem;width:100%;padding:var(--space-lg) var(--space-xl);font-family:var(--font-display);font-size:var(--text-base);font-weight:var(--fw-semibold);color:var(--color-dark);cursor:pointer;transition:background var(--transition-fast);text-align:left}
+    .faq-item .accordion-trigger:hover{background:var(--color-gray-light)}
+    .faq-item .accordion-content{padding:0 var(--space-xl);color:var(--color-gray-text);font-size:var(--text-sm);line-height:1.8;max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.4,0,.2,1),padding .3s ease}
+    .faq-item.active .accordion-content{padding-bottom:var(--space-lg);max-height:400px}
+    .accordion-icon svg{width:20px;height:20px;transition:transform var(--transition-base);flex-shrink:0}
+    .faq-item.active .accordion-icon svg{transform:rotate(180deg)}
+    .contact-cta{text-align:center;padding:var(--space-3xl) var(--space-xl);background:var(--gradient-brand);border-radius:var(--radius-xl);margin-top:var(--space-3xl);color:#fff}
+    .contact-cta h3{color:#fff;margin-bottom:var(--space-md)}
+    .contact-cta p{color:rgba(255,255,255,.85);margin-bottom:var(--space-xl);max-width:500px;margin-left:auto;margin-right:auto}
+  </style>
+</head>
+<body class="page-body">
+  <div class="custom-cursor" aria-hidden="true"></div>
+  <div class="page-transition-overlay" aria-hidden="true"></div>
+
+  <nav class="navbar" aria-label="Navegación principal">
+    <div class="navbar__inner">
+      <a href="index.html" class="navbar__logo" data-internal aria-label="CREDIAN Inicio"><svg width="34" height="34" viewBox="0 0 40 40" fill="none"><rect x="8" y="8" width="18" height="18" rx="3" transform="rotate(45 17 17)" fill="#2B4DA8" opacity="0.9"/><rect x="14" y="14" width="18" height="18" rx="3" transform="rotate(45 23 23)" fill="#3AAA6E" opacity="0.85"/></svg><span class="navbar__logo-text">CREDIAN</span></a>
+      <div class="navbar__links"><a href="index.html" class="navbar__link" data-internal>Inicio</a><a href="nosotros.html" class="navbar__link" data-internal>Nosotros</a><a href="productos.html" class="navbar__link" data-internal>Productos</a><a href="dudas.html" class="navbar__link active" data-internal>Dudas</a><a href="contacto.html" class="navbar__link" data-internal>Contacto</a></div>
+      <div class="navbar__actions"><a href="#cotizador" class="navbar__cotizador" target="_blank">Cotizador</a><a href="#solicitar" class="navbar__cta btn-shimmer" target="_blank">Solicita tu crédito de nómina</a></div>
+      <button class="navbar__hamburger" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="mobile-menu" aria-hidden="true"><a href="index.html" class="mobile-menu__link" data-internal>Inicio</a><a href="nosotros.html" class="mobile-menu__link" data-internal>Nosotros</a><a href="productos.html" class="mobile-menu__link" data-internal>Productos</a><a href="dudas.html" class="mobile-menu__link" data-internal>Dudas</a><a href="contacto.html" class="mobile-menu__link" data-internal>Contacto</a><div class="mobile-menu__divider"></div><a href="#cotizador" class="mobile-menu__link" target="_blank">Cotizador</a><a href="#solicitar" class="mobile-menu__link" target="_blank">Solicitar crédito</a></div>
+
+  <!-- HERO -->
+  <section class="hero hero--small">
+    <div class="hero__bg"></div>
+    <div class="rhombus-deco rhombus-deco--2 rhombus-deco--green" aria-hidden="true"></div>
+    <div class="rhombus-deco rhombus-deco--5" aria-hidden="true"></div>
+    <div class="hero__content">
+      <span class="hero__label hero-enter">Centro de ayuda</span>
+      <h1 class="hero__title hero-enter">Preguntas <span class="text-gradient" style="-webkit-text-fill-color:transparent;background:linear-gradient(90deg,#7eb8f7,#4CC882);-webkit-background-clip:text;background-clip:text">frecuentes</span></h1>
+      <p class="hero__subtitle hero-enter">Encuentra respuestas rápidas a tus dudas sobre nuestros créditos de nómina.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="container">
+      <!-- Search -->
+      <div class="faq-search-wrapper reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="faq-search" class="faq-search" placeholder="Buscar preguntas..." aria-label="Buscar preguntas frecuentes">
+      </div>
+
+      <!-- Categories -->
+      <div class="faq-categories reveal">
+        <button class="faq-cat-btn active" data-faq-category="all">Todas</button>
+        <button class="faq-cat-btn" data-faq-category="general">General</button>
+        <button class="faq-cat-btn" data-faq-category="requisitos">Requisitos</button>
+        <button class="faq-cat-btn" data-faq-category="pagos">Pagos</button>
+        <button class="faq-cat-btn" data-faq-category="proceso">Proceso</button>
+      </div>
+
+      <!-- FAQ List -->
+      <div class="faq-list">
+        <div class="faq-item accordion-item reveal" data-category="general">
+          <button class="accordion-trigger" aria-expanded="false"><span>¿Qué es un crédito de nómina?</span><span class="accordion-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+          <div class="accordion-content"><p>Un crédito de nómina es un préstamo personal que se descuenta directamente de tu salario quincenal o mensual. Al estar respaldado por tu nómina, ofrece tasas de interés más bajas que otros tipos de crédito personal, ya que el riesgo para la institución financiera es menor.</p></div>
+        </div>
+
+        <div class="faq-item accordion-item reveal" data-category="requisitos">
+          <button class="accordion-trigger" aria-expanded="false"><span>¿Necesito tener buen historial crediticio?</span><span class="accordion-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+          <div class="accordion-content"><p>Consultamos el buró de crédito como parte de nuestro análisis, pero no es el único factor determinante. Evaluamos tu capacidad de pago basándonos en tu ingreso neto, antigüedad laboral y estabilidad en el empleo. Incluso personas con historial crediticio limitado pueden ser aprobadas.</p></div>
+        </div>
+
+        <div class="faq-item accordion-item reveal" data-category="proceso">
+          <button class="accordion-trigger" aria-expanded="false"><span>¿Cuánto tiempo tarda la aprobación?</span><span class="accordion-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+          <div class="accordion-content"><p>El proceso de evaluación tarda un máximo de 24 horas hábiles desde que recibimos tu documentación completa. Una vez aprobado, la dispersión del dinero se realiza en 24 a 48 horas adicionales directamente a tu cuenta bancaria.</p></div>
+        </div>
+
+        <div class="faq-item accordion-item reveal" data-category="general">
+          <button class="accordion-trigger" aria-expanded="false"><span>¿Cuál es la tasa de interés?</span><span class="accordion-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+          <div class="accordion-content"><p>Nuestras tasas van desde el 14.9% hasta el 24.9% anual, dependiendo del plan elegido, monto solicitado, plazo y tu perfil crediticio. Utiliza nuestro cotizador en línea para obtener una estimación personalizada de tu tasa.</p></div>
+        </div>
+
+        <div class="faq-item accordion-item reveal" data-category="pagos">
+          <button class="accordion-trigger" aria-expanded="false"><span>¿Puedo liquidar mi crédito antes del plazo?</span><span class="accordion-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+          <div class="accordion-content"><p>Sí, puedes realizar pagos anticipados o liquidar tu crédito en cualquier momento sin penalización alguna. Al hacerlo, solo pagarás los intereses generados hasta la fecha de liquidación, lo que te genera un ahorro significativo.</p></div>
+        </div>
+
+        <div class="faq-item accordion-item reveal" data-category="requisitos">
+          <button class="accordion-trigger" aria-expanded="false"><span>¿Qué documentos necesito para solicitar?</span><span class="accordion-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+          <div class="accordion-content"><p>Necesitas: identificación oficial vigente (INE o pasaporte), comprobante de domicilio no mayor a 3 meses, últimos 3 recibos de nómina y estados de cuenta bancarios de los últimos 3 meses. Todo puede enviarse en formato digital.</p></div>
+        </div>
+
+        <div class="faq-item accordion-item reveal" data-category="pagos">
+          <button class="accordion-trigger" aria-expanded="false"><span>¿Cómo se descuenta de mi nómina?</span><span class="accordion-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+          <div class="accordion-content"><p>El pago se descuenta automáticamente de tu nómina a través de un convenio con tu empresa empleadora. El monto de la cuota nunca excederá el 30% de tu salario neto, garantizando que mantengas una capacidad financiera saludable.</p></div>
+        </div>
+
+        <div class="faq-item accordion-item reveal" data-category="proceso">
+          <button class="accordion-trigger" aria-expanded="false"><span>¿Puedo solicitar en línea o debo ir a una sucursal?</span><span class="accordion-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+          <div class="accordion-content"><p>Todo el proceso es 100% en línea. Desde la solicitud, envío de documentos, hasta la firma del contrato (firma digital). No necesitas visitar ninguna sucursal. Tu asesor te acompañará por teléfono, WhatsApp o videollamada.</p></div>
+        </div>
+
+        <div class="faq-item accordion-item reveal" data-category="general">
+          <button class="accordion-trigger" aria-expanded="false"><span>¿Qué pasa si pierdo mi empleo?</span><span class="accordion-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+          <div class="accordion-content"><p>En caso de pérdida involuntaria de empleo, si cuentas con el plan Premium, el seguro de desempleo cubre hasta 3 mensualidades. Para los demás planes, podemos reestructurar tu crédito y cambiar la forma de pago a domiciliación bancaria mientras consigues un nuevo empleo.</p></div>
+        </div>
+
+        <div class="faq-item accordion-item reveal" data-category="proceso">
+          <button class="accordion-trigger" aria-expanded="false"><span>¿Puedo renovar mi crédito?</span><span class="accordion-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+          <div class="accordion-content"><p>Sí, una vez que hayas pagado al menos el 50% de tu crédito actual, puedes solicitar una renovación. En muchos casos, los clientes recurrentes obtienen mejores tasas de interés y condiciones preferenciales por su buen historial de pago.</p></div>
+        </div>
+      </div>
+
+      <!-- Contact CTA -->
+      <div class="contact-cta reveal-scale">
+        <h3>¿No encontraste tu respuesta?</h3>
+        <p>Nuestro equipo está listo para ayudarte. Contáctanos y resolveremos todas tus dudas.</p>
+        <a href="contacto.html" class="btn btn--secondary btn--large btn-shimmer" data-internal>Contactar a un asesor</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand"><div class="footer__logo"><svg width="34" height="34" viewBox="0 0 40 40" fill="none"><rect x="8" y="8" width="18" height="18" rx="3" transform="rotate(45 17 17)" fill="#2B4DA8" opacity="0.9"/><rect x="14" y="14" width="18" height="18" rx="3" transform="rotate(45 23 23)" fill="#3AAA6E" opacity="0.85"/></svg><span class="footer__logo-text">CREDIAN</span></div><p class="footer__brand-desc">Soluciones de crédito de nómina transparentes y accesibles para trabajadores mexicanos.</p><div class="footer__social"><a href="#" class="footer__social-link" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a><a href="#" class="footer__social-link" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z"/></svg></a></div></div>
+        <div><h4 class="footer__column-title">Páginas</h4><a href="index.html" class="footer__link" data-internal>Inicio</a><a href="nosotros.html" class="footer__link" data-internal>Nosotros</a><a href="productos.html" class="footer__link" data-internal>Productos</a><a href="dudas.html" class="footer__link" data-internal>Dudas</a><a href="contacto.html" class="footer__link" data-internal>Contacto</a></div>
+        <div><h4 class="footer__column-title">Servicios</h4><a href="#cotizador" class="footer__link" target="_blank">Cotizador</a><a href="#solicitar" class="footer__link" target="_blank">Solicitar crédito</a></div>
+        <div><h4 class="footer__column-title">Contacto</h4><a href="tel:+525512345678" class="footer__link">+52 (55) 1234 5678</a><a href="mailto:info@credian.mx" class="footer__link">info@credian.mx</a></div>
+      </div>
+      <div class="footer__bottom"><p class="footer__copy">&copy; <span id="current-year">2026</span> CREDIAN. Todos los derechos reservados.</p><div class="footer__legal"><a href="#">Aviso de privacidad</a><a href="#">Términos y condiciones</a></div></div>
+    </div>
+  </footer>
+  <script src="js/nav.js"></script><script src="js/main.js"></script><script src="js/animations.js"></script>
+</body>
+</html>
