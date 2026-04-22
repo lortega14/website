@@ -110,10 +110,42 @@
       margin-bottom: var(--space-sm)
     }
 
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: var(--space-xl)
+    .team-carousel-wrapper {
+      overflow: hidden;
+      position: relative;
+      width: 100vw;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: var(--space-sm) 0;
+      /* mask-image to fade edges subtly */
+      -webkit-mask-image: linear-gradient(to right, transparent, black 2%, black 98%, transparent);
+      mask-image: linear-gradient(to right, transparent, black 2%, black 98%, transparent);
+    }
+
+    .team-carousel-track {
+      display: flex;
+      gap: var(--space-xl);
+      width: max-content;
+      animation: scrollTrack 45s linear infinite;
+    }
+
+    .team-carousel-track:hover {
+      animation-play-state: paused;
+    }
+
+    .team-carousel-group {
+      display: flex;
+      gap: var(--space-xl);
+      padding: 0 calc(var(--space-xl) / 2);
+    }
+
+    @keyframes scrollTrack {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
     }
 
     .team-card {
@@ -122,7 +154,9 @@
       overflow: hidden;
       box-shadow: var(--shadow-sm);
       transition: all var(--transition-base);
-      border: 1px solid rgba(0, 0, 0, .04)
+      border: 1px solid rgba(0, 0, 0, .04);
+      width: 260px;
+      flex-shrink: 0;
     }
 
     .team-card:hover {
@@ -421,37 +455,115 @@
         <h2 class="section__title">Equipo <span class="text-gradient">directivo</span></h2>
         <p class="section__subtitle">Profesionales con décadas de experiencia en el sector financiero mexicano.</p>
       </div>
-      <div class="team-grid">
-        <div class="team-card reveal stagger-1">
-          <div class="team-card__photo"><img src="https://picsum.photos/400/400?random=20" alt="Carlos Mendoza"
-              loading="lazy"></div>
-          <div class="team-card__info">
-            <h4 class="team-card__name">Carlos Mendoza</h4>
-            <p class="team-card__role">Director General</p>
-          </div>
-        </div>
-        <div class="team-card reveal stagger-2">
-          <div class="team-card__photo"><img src="https://picsum.photos/400/400?random=21" alt="María González"
-              loading="lazy"></div>
-          <div class="team-card__info">
-            <h4 class="team-card__name">María González</h4>
-            <p class="team-card__role">Directora de Operaciones</p>
-          </div>
-        </div>
-        <div class="team-card reveal stagger-3">
-          <div class="team-card__photo"><img src="https://picsum.photos/400/400?random=22" alt="Roberto Silva"
-              loading="lazy"></div>
-          <div class="team-card__info">
-            <h4 class="team-card__name">Roberto Silva</h4>
-            <p class="team-card__role">Director Financiero</p>
-          </div>
-        </div>
-        <div class="team-card reveal stagger-4">
-          <div class="team-card__photo"><img src="https://picsum.photos/400/400?random=23" alt="Ana Martínez"
-              loading="lazy"></div>
-          <div class="team-card__info">
-            <h4 class="team-card__name">Ana Martínez</h4>
-            <p class="team-card__role">Directora Comercial</p>
+      <div class="team-carousel-wrapper">
+        <div class="team-carousel-track" id="teamTrack">
+          <!-- The content will be duplicated by JS for infinite effect, but we put the original 15 here -->
+          <div class="team-carousel-group" id="teamGroupOriginal">
+            <div class="team-card">
+              <div class="team-card__photo"><img src="https://picsum.photos/400/400?random=20" alt="Carlos Mendoza" loading="lazy"></div>
+              <div class="team-card__info">
+                <h4 class="team-card__name">Carlos Mendoza</h4>
+                <p class="team-card__role">Director General</p>
+              </div>
+            </div>
+            <div class="team-card">
+              <div class="team-card__photo"><img src="https://picsum.photos/400/400?random=21" alt="María González" loading="lazy"></div>
+              <div class="team-card__info">
+                <h4 class="team-card__name">María González</h4>
+                <p class="team-card__role">Directora de Operaciones</p>
+              </div>
+            </div>
+            <div class="team-card">
+              <div class="team-card__photo"><img src="https://picsum.photos/400/400?random=22" alt="Roberto Silva" loading="lazy"></div>
+              <div class="team-card__info">
+                <h4 class="team-card__name">Roberto Silva</h4>
+                <p class="team-card__role">Director Financiero</p>
+              </div>
+            </div>
+            <div class="team-card">
+              <div class="team-card__photo"><img src="https://picsum.photos/400/400?random=23" alt="Ana Martínez" loading="lazy"></div>
+              <div class="team-card__info">
+                <h4 class="team-card__name">Ana Martínez</h4>
+                <p class="team-card__role">Directora Comercial</p>
+              </div>
+            </div>
+            <div class="team-card">
+              <div class="team-card__photo"><img src="https://picsum.photos/400/400?random=24" alt="Javier López" loading="lazy"></div>
+              <div class="team-card__info">
+                <h4 class="team-card__name">Javier López</h4>
+                <p class="team-card__role">Director de Tecnología</p>
+              </div>
+            </div>
+            <div class="team-card">
+              <div class="team-card__photo"><img src="https://picsum.photos/400/400?random=25" alt="Sofía Ramírez" loading="lazy"></div>
+              <div class="team-card__info">
+                <h4 class="team-card__name">Sofía Ramírez</h4>
+                <p class="team-card__role">Directora de Riesgos</p>
+              </div>
+            </div>
+            <div class="team-card">
+              <div class="team-card__photo"><img src="https://picsum.photos/400/400?random=26" alt="Miguel Torres" loading="lazy"></div>
+              <div class="team-card__info">
+                <h4 class="team-card__name">Miguel Torres</h4>
+                <p class="team-card__role">Director Legal</p>
+              </div>
+            </div>
+            <div class="team-card">
+              <div class="team-card__photo"><img src="https://picsum.photos/400/400?random=27" alt="Laura Ruiz" loading="lazy"></div>
+              <div class="team-card__info">
+                <h4 class="team-card__name">Laura Ruiz</h4>
+                <p class="team-card__role">Directora de RRHH</p>
+              </div>
+            </div>
+            <div class="team-card">
+              <div class="team-card__photo"><img src="https://picsum.photos/400/400?random=28" alt="David Gómez" loading="lazy"></div>
+              <div class="team-card__info">
+                <h4 class="team-card__name">David Gómez</h4>
+                <p class="team-card__role">Director de Marketing</p>
+              </div>
+            </div>
+            <div class="team-card">
+              <div class="team-card__photo"><img src="https://picsum.photos/400/400?random=29" alt="Elena Castro" loading="lazy"></div>
+              <div class="team-card__info">
+                <h4 class="team-card__name">Elena Castro</h4>
+                <p class="team-card__role">Directora de Innovación</p>
+              </div>
+            </div>
+            <div class="team-card">
+              <div class="team-card__photo"><img src="https://picsum.photos/400/400?random=30" alt="Andrés Vega" loading="lazy"></div>
+              <div class="team-card__info">
+                <h4 class="team-card__name">Andrés Vega</h4>
+                <p class="team-card__role">Director de Alianzas</p>
+              </div>
+            </div>
+            <div class="team-card">
+              <div class="team-card__photo"><img src="https://picsum.photos/400/400?random=31" alt="Fernanda Díaz" loading="lazy"></div>
+              <div class="team-card__info">
+                <h4 class="team-card__name">Fernanda Díaz</h4>
+                <p class="team-card__role">Directora de Servicio al Cliente</p>
+              </div>
+            </div>
+            <div class="team-card">
+              <div class="team-card__photo"><img src="https://picsum.photos/400/400?random=32" alt="Luis Ortiz" loading="lazy"></div>
+              <div class="team-card__info">
+                <h4 class="team-card__name">Luis Ortiz</h4>
+                <p class="team-card__role">Director de Cobranza</p>
+              </div>
+            </div>
+            <div class="team-card">
+              <div class="team-card__photo"><img src="https://picsum.photos/400/400?random=33" alt="Claudia Morales" loading="lazy"></div>
+              <div class="team-card__info">
+                <h4 class="team-card__name">Claudia Morales</h4>
+                <p class="team-card__role">Directora de Cumplimiento</p>
+              </div>
+            </div>
+            <div class="team-card">
+              <div class="team-card__photo"><img src="https://picsum.photos/400/400?random=34" alt="Ricardo Peña" loading="lazy"></div>
+              <div class="team-card__info">
+                <h4 class="team-card__name">Ricardo Peña</h4>
+                <p class="team-card__role">Director de Sistemas</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -563,6 +675,16 @@
     const tlFill = document.getElementById('tl-fill');
     if (tlFill && 'IntersectionObserver' in window) {
       new IntersectionObserver((e) => { e.forEach(en => { if (en.isIntersecting) en.target.classList.add('animate'); }); }, { threshold: 0.1 }).observe(tlFill);
+    }
+    
+    // Duplicate team carousel for infinite scroll
+    const teamTrack = document.getElementById('teamTrack');
+    const teamGroup = document.getElementById('teamGroupOriginal');
+    if (teamTrack && teamGroup) {
+      const clone = teamGroup.cloneNode(true);
+      clone.id = 'teamGroupClone';
+      clone.setAttribute('aria-hidden', 'true');
+      teamTrack.appendChild(clone);
     }
   </script>
 </body>
