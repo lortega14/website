@@ -1,40 +1,168 @@
 <!DOCTYPE html>
 <html lang="es-MX">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CREDIAN — Créditos de Nómina Rápidos y Confiables</title>
-  <meta name="description" content="CREDIAN: Tu crédito de nómina simple y rápido. Tasas competitivas, aprobación en 24 hrs y sin complicaciones. Solicita hoy.">
+  <title>CREDIAN | Inicio</title>
+  <link rel="icon" href="img/credian.ico" type="image/x-icon">
+  <meta name="description"
+    content="CREDIAN: Tu crédito de nómina simple y rápido. Tasas competitivas, aprobación en 24 hrs y sin complicaciones. Solicita hoy.">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/global.css">
   <style>
     /* ---- HOME-SPECIFIC STYLES ---- */
-    .hero--home{min-height:100vh;display:flex;align-items:center}
-    .hero--home .hero__bg{background:linear-gradient(160deg,#111b36 0%,#1a2e5a 20%,#2B4DA8 50%,#2a8a5c 85%,#1a6b42 100%);background-size:300% 300%;animation:meshGradient 18s ease infinite}
-    .benefits-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:var(--space-xl)}
-    .steps{position:relative;max-width:800px;margin:0 auto}
-    .steps__list{display:flex;flex-direction:column;gap:var(--space-3xl);position:relative}
-    .steps__connector{position:absolute;left:28px;top:56px;bottom:56px;width:2px;background:var(--color-gray-mid)}
-    .steps__connector-fill{position:absolute;left:0;top:0;width:100%;height:0;background:var(--gradient-brand);transition:height 2s cubic-bezier(.4,0,.2,1)}
-    .steps__connector-fill.animate{height:100%}
-    .step{display:flex;gap:var(--space-xl);align-items:flex-start;position:relative;z-index:1}
-    .step__number{width:56px;height:56px;border-radius:var(--radius-full);background:var(--color-white);border:2px solid var(--color-gray-mid);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:var(--fw-extrabold);font-size:var(--text-xl);color:var(--color-blue);flex-shrink:0;transition:all var(--transition-base);box-shadow:var(--shadow-sm)}
-    .step.revealed .step__number{background:var(--gradient-brand);color:var(--color-white);border-color:transparent;box-shadow:var(--shadow-glow-blue)}
-    .step__content h4{margin-bottom:var(--space-xs)}
-    .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:var(--space-2xl);text-align:center}
-    .stat__number{font-family:var(--font-display);font-size:var(--text-4xl);font-weight:var(--fw-extrabold);color:var(--color-white);line-height:1.1;margin-bottom:var(--space-xs)}
-    .stat__label{color:rgba(255,255,255,.7);font-size:var(--text-sm)}
-    .cta-banner{border-radius:var(--radius-xl);background:var(--gradient-brand);padding:var(--space-4xl) var(--space-2xl);text-align:center;position:relative;overflow:hidden}
-    .cta-banner h2{color:var(--color-white);margin-bottom:var(--space-md)}
-    .cta-banner p{color:rgba(255,255,255,.85);margin-bottom:var(--space-2xl);max-width:500px;margin-left:auto;margin-right:auto}
-    @media(max-width:768px){
-      .step{flex-direction:column;align-items:center;text-align:center}
-      .steps__connector{left:50%;transform:translateX(-50%)}
+    .hero--home {
+      min-height: 100vh;
+      display: flex;
+      align-items: center
+    }
+
+    .hero--home .hero__bg {
+      background: linear-gradient(160deg, #111b36 0%, #1a2e5a 20%, #2B4DA8 50%, #2a8a5c 85%, #1a6b42 100%);
+      background-size: 300% 300%;
+      animation: meshGradient 18s ease infinite
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: var(--space-xl)
+    }
+
+    .steps {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto
+    }
+
+    .steps__list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3xl);
+      position: relative
+    }
+
+    .steps__connector {
+      position: absolute;
+      left: 28px;
+      top: 56px;
+      bottom: 56px;
+      width: 2px;
+      background: var(--color-gray-mid)
+    }
+
+    .steps__connector-fill {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 0;
+      background: var(--gradient-brand);
+      transition: height 2s cubic-bezier(.4, 0, .2, 1)
+    }
+
+    .steps__connector-fill.animate {
+      height: 100%
+    }
+
+    .step {
+      display: flex;
+      gap: var(--space-xl);
+      align-items: flex-start;
+      position: relative;
+      z-index: 1
+    }
+
+    .step__number {
+      width: 56px;
+      height: 56px;
+      border-radius: var(--radius-full);
+      background: var(--color-white);
+      border: 2px solid var(--color-gray-mid);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-weight: var(--fw-extrabold);
+      font-size: var(--text-xl);
+      color: var(--color-blue);
+      flex-shrink: 0;
+      transition: all var(--transition-base);
+      box-shadow: var(--shadow-sm)
+    }
+
+    .step.revealed .step__number {
+      background: var(--gradient-brand);
+      color: var(--color-white);
+      border-color: transparent;
+      box-shadow: var(--shadow-glow-blue)
+    }
+
+    .step__content h4 {
+      margin-bottom: var(--space-xs)
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--space-2xl);
+      text-align: center
+    }
+
+    .stat__number {
+      font-family: var(--font-display);
+      font-size: var(--text-4xl);
+      font-weight: var(--fw-extrabold);
+      color: var(--color-white);
+      line-height: 1.1;
+      margin-bottom: var(--space-xs)
+    }
+
+    .stat__label {
+      color: rgba(255, 255, 255, .7);
+      font-size: var(--text-sm)
+    }
+
+    .cta-banner {
+      border-radius: var(--radius-xl);
+      background: var(--gradient-brand);
+      padding: var(--space-4xl) var(--space-2xl);
+      text-align: center;
+      position: relative;
+      overflow: hidden
+    }
+
+    .cta-banner h2 {
+      color: var(--color-white);
+      margin-bottom: var(--space-md)
+    }
+
+    .cta-banner p {
+      color: rgba(255, 255, 255, .85);
+      margin-bottom: var(--space-2xl);
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto
+    }
+
+    @media(max-width:768px) {
+      .step {
+        flex-direction: column;
+        align-items: center;
+        text-align: center
+      }
+
+      .steps__connector {
+        left: 50%;
+        transform: translateX(-50%)
+      }
     }
   </style>
 </head>
+
 <body class="page-body">
   <!-- Custom Cursor -->
   <div class="custom-cursor" aria-hidden="true"></div>
@@ -46,8 +174,9 @@
     <div class="navbar__inner">
       <a href="index.html" class="navbar__logo" data-internal aria-label="CREDIAN Inicio">
         <svg width="34" height="34" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="8" y="8" width="18" height="18" rx="3" transform="rotate(45 17 17)" fill="#2B4DA8" opacity="0.9"/>
-          <rect x="14" y="14" width="18" height="18" rx="3" transform="rotate(45 23 23)" fill="#3AAA6E" opacity="0.85"/>
+          <rect x="8" y="8" width="18" height="18" rx="3" transform="rotate(45 17 17)" fill="#2B4DA8" opacity="0.9" />
+          <rect x="14" y="14" width="18" height="18" rx="3" transform="rotate(45 23 23)" fill="#3AAA6E"
+            opacity="0.85" />
         </svg>
         <span class="navbar__logo-text">CREDIAN</span>
       </a>
@@ -60,7 +189,8 @@
       </div>
       <div class="navbar__actions">
         <a href="#cotizador" class="navbar__cotizador" target="_blank" rel="noopener">Cotizador</a>
-        <a href="#solicitar" class="navbar__cta btn-shimmer" target="_blank" rel="noopener">Solicita tu crédito de nómina</a>
+        <a href="#solicitar" class="navbar__cta btn-shimmer" target="_blank" rel="noopener">Solicita tu crédito de
+          nómina</a>
       </div>
       <button class="navbar__hamburger" aria-label="Abrir menú" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -93,16 +223,25 @@
     <div class="hero__content">
       <div class="hero-enter">
         <span class="hero__label">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+          </svg>
           Aprobación en 24 horas
         </span>
       </div>
-      <h1 class="hero__title hero-enter">Tu crédito de nómina,<br><span class="text-gradient" style="-webkit-text-fill-color:transparent;background:linear-gradient(90deg,#7eb8f7,#4CC882);-webkit-background-clip:text;background-clip:text">simple y rápido</span></h1>
-      <p class="hero__subtitle hero-enter">Obtén el financiamiento que necesitas con las mejores tasas del mercado. Sin aval, sin buró complicado, directo a tu cuenta.</p>
+      <h1 class="hero__title hero-enter">Tu crédito de nómina,<br><span class="text-gradient"
+          style="-webkit-text-fill-color:transparent;background:linear-gradient(90deg,#7eb8f7,#4CC882);-webkit-background-clip:text;background-clip:text">simple
+          y rápido</span></h1>
+      <p class="hero__subtitle hero-enter">Obtén el financiamiento que necesitas con las mejores tasas del mercado. Sin
+        aval, sin buró complicado, directo a tu cuenta.</p>
       <div class="hero__actions hero-enter">
         <a href="#solicitar" class="btn btn--primary btn--large btn-shimmer" target="_blank" rel="noopener">
           Solicitar mi crédito
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
         </a>
         <a href="productos.html" class="btn btn--outline btn--large" data-internal>Ver productos</a>
       </div>
@@ -115,36 +254,54 @@
       <div class="section__header reveal">
         <span class="section__label">Beneficios</span>
         <h2 class="section__title">¿Por qué elegir <span class="text-gradient">CREDIAN</span>?</h2>
-        <p class="section__subtitle">Diseñamos soluciones financieras pensadas para ti, con transparencia y agilidad.</p>
+        <p class="section__subtitle">Diseñamos soluciones financieras pensadas para ti, con transparencia y agilidad.
+        </p>
       </div>
       <div class="benefits-grid">
         <div class="card card-lift reveal stagger-1">
           <div class="card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M16 8l-4 4-4-4"/><path d="M12 12v6"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M16 8l-4 4-4-4" />
+              <path d="M12 12v6" />
+            </svg>
           </div>
           <h4 class="card__title">Tasas competitivas</h4>
-          <p class="card__text">Ofrecemos las tasas de interés más bajas del mercado en créditos de nómina, para que pagues menos y disfrutes más.</p>
+          <p class="card__text">Ofrecemos las tasas de interés más bajas del mercado en créditos de nómina, para que
+            pagues menos y disfrutes más.</p>
         </div>
         <div class="card card-lift reveal stagger-2">
           <div class="card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+            </svg>
           </div>
           <h4 class="card__title">Aprobación express</h4>
-          <p class="card__text">Tu crédito aprobado en máximo 24 horas hábiles. Sin papeleo excesivo ni trámites interminables.</p>
+          <p class="card__text">Tu crédito aprobado en máximo 24 horas hábiles. Sin papeleo excesivo ni trámites
+            interminables.</p>
         </div>
         <div class="card card-lift reveal stagger-3">
           <div class="card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>
           </div>
           <h4 class="card__title">100% seguro</h4>
-          <p class="card__text">Tu información está protegida con los más altos estándares de seguridad. Somos una institución regulada.</p>
+          <p class="card__text">Tu información está protegida con los más altos estándares de seguridad. Somos una
+            institución regulada.</p>
         </div>
         <div class="card card-lift reveal stagger-4">
           <div class="card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg>
           </div>
           <h4 class="card__title">Atención personalizada</h4>
-          <p class="card__text">Un asesor dedicado te acompaña durante todo el proceso, desde la solicitud hasta la dispersión.</p>
+          <p class="card__text">Un asesor dedicado te acompaña durante todo el proceso, desde la solicitud hasta la
+            dispersión.</p>
         </div>
       </div>
     </div>
@@ -156,11 +313,14 @@
       <div class="section__header reveal">
         <span class="section__label">Proceso</span>
         <h2 class="section__title">¿Cómo <span class="text-gradient">funciona</span>?</h2>
-        <p class="section__subtitle">Obtener tu crédito de nómina es más fácil de lo que crees. Solo 4 pasos simples.</p>
+        <p class="section__subtitle">Obtener tu crédito de nómina es más fácil de lo que crees. Solo 4 pasos simples.
+        </p>
       </div>
       <div class="steps">
         <div class="steps__list">
-          <div class="steps__connector"><div class="steps__connector-fill" id="steps-fill"></div></div>
+          <div class="steps__connector">
+            <div class="steps__connector-fill" id="steps-fill"></div>
+          </div>
           <div class="step reveal stagger-1">
             <div class="step__number">1</div>
             <div class="step__content">
@@ -228,7 +388,10 @@
         <p>Solicítalo hoy y recibe tu dinero en menos de 48 horas. Sin letra chiquita.</p>
         <a href="#solicitar" class="btn btn--secondary btn--large btn-shimmer" target="_blank" rel="noopener">
           Solicitar ahora
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
         </a>
       </div>
     </div>
@@ -240,14 +403,30 @@
       <div class="footer__grid">
         <div class="footer__brand">
           <div class="footer__logo">
-            <svg width="34" height="34" viewBox="0 0 40 40" fill="none"><rect x="8" y="8" width="18" height="18" rx="3" transform="rotate(45 17 17)" fill="#2B4DA8" opacity="0.9"/><rect x="14" y="14" width="18" height="18" rx="3" transform="rotate(45 23 23)" fill="#3AAA6E" opacity="0.85"/></svg>
+            <svg width="34" height="34" viewBox="0 0 40 40" fill="none">
+              <rect x="8" y="8" width="18" height="18" rx="3" transform="rotate(45 17 17)" fill="#2B4DA8"
+                opacity="0.9" />
+              <rect x="14" y="14" width="18" height="18" rx="3" transform="rotate(45 23 23)" fill="#3AAA6E"
+                opacity="0.85" />
+            </svg>
             <span class="footer__logo-text">CREDIAN</span>
           </div>
-          <p class="footer__brand-desc">Somos una empresa financiera mexicana especializada en créditos de nómina. Más de 15 años brindando soluciones financieras con transparencia y confianza.</p>
+          <p class="footer__brand-desc">Somos una empresa financiera mexicana especializada en créditos de nómina. Más
+            de 15 años brindando soluciones financieras con transparencia y confianza.</p>
           <div class="footer__social">
-            <a href="#" class="footer__social-link" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
-            <a href="#" class="footer__social-link" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></a>
-            <a href="#" class="footer__social-link" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z"/></svg></a>
+            <a href="#" class="footer__social-link" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+              </svg></a>
+            <a href="#" class="footer__social-link" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <rect x="2" y="2" width="20" height="20" rx="5" />
+                <circle cx="12" cy="12" r="5" />
+                <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none" />
+              </svg></a>
+            <a href="#" class="footer__social-link" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z" />
+              </svg></a>
           </div>
         </div>
         <div>
@@ -298,4 +477,5 @@
     }
   </script>
 </body>
+
 </html>

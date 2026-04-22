@@ -1,59 +1,286 @@
 <!DOCTYPE html>
 <html lang="es-MX">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nosotros — CREDIAN | Créditos de Nómina</title>
-  <meta name="description" content="Conoce la historia, misión y equipo de CREDIAN. Más de 15 años ayudando a miles de mexicanos con créditos de nómina confiables.">
+  <title>CREDIAN | Nosotros</title>
+  <link rel="icon" href="img/credian.ico" type="image/x-icon">
+  <meta name="description"
+    content="Conoce la historia, misión y equipo de CREDIAN. Más de 15 años ayudando a miles de mexicanos con créditos de nómina confiables.">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/global.css">
   <style>
-    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-3xl);align-items:center}
-    .about-grid__img{border-radius:var(--radius-xl);overflow:hidden;position:relative;aspect-ratio:4/3;background:var(--gradient-brand)}
-    .about-grid__img img{width:100%;height:100%;object-fit:cover}
-    .about-grid__img::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(43,77,168,.15),rgba(58,170,110,.1));pointer-events:none}
-    .values-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--space-xl)}
-    .value-card{background:var(--color-white);border-radius:var(--radius-lg);padding:var(--space-2xl);text-align:center;border:1px solid rgba(0,0,0,.04);box-shadow:var(--shadow-sm);transition:all var(--transition-base);position:relative;overflow:hidden}
-    .value-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gradient-brand);transform:scaleX(0);transition:transform var(--transition-base);transform-origin:left}
-    .value-card:hover::before{transform:scaleX(1)}
-    .value-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-card-hover)}
-    .value-card__icon{width:64px;height:64px;border-radius:var(--radius-full);background:linear-gradient(135deg,rgba(43,77,168,.08),rgba(58,170,110,.08));display:flex;align-items:center;justify-content:center;margin:0 auto var(--space-lg);color:var(--color-blue);transition:all var(--transition-base)}
-    .value-card:hover .value-card__icon{background:var(--gradient-brand);color:#fff;transform:scale(1.1)}
-    .value-card__icon svg{width:28px;height:28px}
-    .value-card h4{margin-bottom:var(--space-sm)}
-    .team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--space-xl)}
-    .team-card{background:var(--color-white);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-sm);transition:all var(--transition-base);border:1px solid rgba(0,0,0,.04)}
-    .team-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-card-hover)}
-    .team-card__photo{aspect-ratio:1;background:var(--color-gray-light);position:relative;overflow:hidden}
-    .team-card__photo img{width:100%;height:100%;object-fit:cover;transition:transform var(--transition-slow)}
-    .team-card:hover .team-card__photo img{transform:scale(1.05)}
-    .team-card__info{padding:var(--space-lg)}
-    .team-card__name{font-size:var(--text-lg);margin-bottom:4px}
-    .team-card__role{color:var(--color-blue);font-size:var(--text-sm);font-weight:var(--fw-medium)}
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3xl);
+      align-items: center
+    }
+
+    .about-grid__img {
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 4/3;
+      background: var(--gradient-brand)
+    }
+
+    .about-grid__img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover
+    }
+
+    .about-grid__img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(43, 77, 168, .15), rgba(58, 170, 110, .1));
+      pointer-events: none
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: var(--space-xl)
+    }
+
+    .value-card {
+      background: var(--color-white);
+      border-radius: var(--radius-lg);
+      padding: var(--space-2xl);
+      text-align: center;
+      border: 1px solid rgba(0, 0, 0, .04);
+      box-shadow: var(--shadow-sm);
+      transition: all var(--transition-base);
+      position: relative;
+      overflow: hidden
+    }
+
+    .value-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--gradient-brand);
+      transform: scaleX(0);
+      transition: transform var(--transition-base);
+      transform-origin: left
+    }
+
+    .value-card:hover::before {
+      transform: scaleX(1)
+    }
+
+    .value-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-card-hover)
+    }
+
+    .value-card__icon {
+      width: 64px;
+      height: 64px;
+      border-radius: var(--radius-full);
+      background: linear-gradient(135deg, rgba(43, 77, 168, .08), rgba(58, 170, 110, .08));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto var(--space-lg);
+      color: var(--color-blue);
+      transition: all var(--transition-base)
+    }
+
+    .value-card:hover .value-card__icon {
+      background: var(--gradient-brand);
+      color: #fff;
+      transform: scale(1.1)
+    }
+
+    .value-card__icon svg {
+      width: 28px;
+      height: 28px
+    }
+
+    .value-card h4 {
+      margin-bottom: var(--space-sm)
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: var(--space-xl)
+    }
+
+    .team-card {
+      background: var(--color-white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: all var(--transition-base);
+      border: 1px solid rgba(0, 0, 0, .04)
+    }
+
+    .team-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-card-hover)
+    }
+
+    .team-card__photo {
+      aspect-ratio: 1;
+      background: var(--color-gray-light);
+      position: relative;
+      overflow: hidden
+    }
+
+    .team-card__photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-slow)
+    }
+
+    .team-card:hover .team-card__photo img {
+      transform: scale(1.05)
+    }
+
+    .team-card__info {
+      padding: var(--space-lg)
+    }
+
+    .team-card__name {
+      font-size: var(--text-lg);
+      margin-bottom: 4px
+    }
+
+    .team-card__role {
+      color: var(--color-blue);
+      font-size: var(--text-sm);
+      font-weight: var(--fw-medium)
+    }
+
     /* Timeline */
-    .timeline{position:relative;max-width:800px;margin:0 auto;padding:var(--space-2xl) 0}
-    .timeline__line{position:absolute;left:50%;top:0;bottom:0;width:2px;background:var(--color-gray-mid);transform:translateX(-50%)}
-    .timeline__line-fill{position:absolute;left:0;top:0;width:100%;height:0;background:var(--gradient-brand);transition:height 2s ease}
-    .timeline__line-fill.animate{height:100%}
-    .timeline__item{position:relative;width:45%;margin-bottom:var(--space-2xl)}
-    .timeline__item:nth-child(odd){margin-left:0;text-align:right;padding-right:var(--space-2xl)}
-    .timeline__item:nth-child(even){margin-left:auto;text-align:left;padding-left:var(--space-2xl)}
-    .timeline__dot{position:absolute;top:8px;width:16px;height:16px;border-radius:50%;background:var(--color-white);border:3px solid var(--color-blue);z-index:2;transition:all var(--transition-base)}
-    .timeline__item:nth-child(odd) .timeline__dot{right:-8px}
-    .timeline__item:nth-child(even) .timeline__dot{left:-8px}
-    .timeline__item.revealed .timeline__dot{background:var(--color-green);border-color:var(--color-green);box-shadow:0 0 12px rgba(58,170,110,.4)}
-    .timeline__year{font-family:var(--font-display);font-weight:var(--fw-extrabold);font-size:var(--text-xl);color:var(--color-blue);margin-bottom:4px}
-    .timeline__text{font-size:var(--text-sm);color:var(--color-gray-text)}
-    @media(max-width:768px){
-      .about-grid{grid-template-columns:1fr;gap:var(--space-2xl)}
-      .timeline__line{left:20px}
-      .timeline__item,.timeline__item:nth-child(odd),.timeline__item:nth-child(even){width:100%;margin-left:0;text-align:left;padding-left:50px;padding-right:0}
-      .timeline__item:nth-child(odd) .timeline__dot,.timeline__item:nth-child(even) .timeline__dot{left:12px;right:auto}
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: var(--space-2xl) 0
+    }
+
+    .timeline__line {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--color-gray-mid);
+      transform: translateX(-50%)
+    }
+
+    .timeline__line-fill {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 0;
+      background: var(--gradient-brand);
+      transition: height 2s ease
+    }
+
+    .timeline__line-fill.animate {
+      height: 100%
+    }
+
+    .timeline__item {
+      position: relative;
+      width: 45%;
+      margin-bottom: var(--space-2xl)
+    }
+
+    .timeline__item:nth-child(odd) {
+      margin-left: 0;
+      text-align: right;
+      padding-right: var(--space-2xl)
+    }
+
+    .timeline__item:nth-child(even) {
+      margin-left: auto;
+      text-align: left;
+      padding-left: var(--space-2xl)
+    }
+
+    .timeline__dot {
+      position: absolute;
+      top: 8px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--color-white);
+      border: 3px solid var(--color-blue);
+      z-index: 2;
+      transition: all var(--transition-base)
+    }
+
+    .timeline__item:nth-child(odd) .timeline__dot {
+      right: -8px
+    }
+
+    .timeline__item:nth-child(even) .timeline__dot {
+      left: -8px
+    }
+
+    .timeline__item.revealed .timeline__dot {
+      background: var(--color-green);
+      border-color: var(--color-green);
+      box-shadow: 0 0 12px rgba(58, 170, 110, .4)
+    }
+
+    .timeline__year {
+      font-family: var(--font-display);
+      font-weight: var(--fw-extrabold);
+      font-size: var(--text-xl);
+      color: var(--color-blue);
+      margin-bottom: 4px
+    }
+
+    .timeline__text {
+      font-size: var(--text-sm);
+      color: var(--color-gray-text)
+    }
+
+    @media(max-width:768px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-2xl)
+      }
+
+      .timeline__line {
+        left: 20px
+      }
+
+      .timeline__item,
+      .timeline__item:nth-child(odd),
+      .timeline__item:nth-child(even) {
+        width: 100%;
+        margin-left: 0;
+        text-align: left;
+        padding-left: 50px;
+        padding-right: 0
+      }
+
+      .timeline__item:nth-child(odd) .timeline__dot,
+      .timeline__item:nth-child(even) .timeline__dot {
+        left: 12px;
+        right: auto
+      }
     }
   </style>
 </head>
+
 <body class="page-body">
   <div class="custom-cursor" aria-hidden="true"></div>
   <div class="page-transition-overlay" aria-hidden="true"></div>
@@ -62,7 +289,11 @@
   <nav class="navbar" aria-label="Navegación principal">
     <div class="navbar__inner">
       <a href="index.html" class="navbar__logo" data-internal aria-label="CREDIAN Inicio">
-        <svg width="34" height="34" viewBox="0 0 40 40" fill="none"><rect x="8" y="8" width="18" height="18" rx="3" transform="rotate(45 17 17)" fill="#2B4DA8" opacity="0.9"/><rect x="14" y="14" width="18" height="18" rx="3" transform="rotate(45 23 23)" fill="#3AAA6E" opacity="0.85"/></svg>
+        <svg width="34" height="34" viewBox="0 0 40 40" fill="none">
+          <rect x="8" y="8" width="18" height="18" rx="3" transform="rotate(45 17 17)" fill="#2B4DA8" opacity="0.9" />
+          <rect x="14" y="14" width="18" height="18" rx="3" transform="rotate(45 23 23)" fill="#3AAA6E"
+            opacity="0.85" />
+        </svg>
         <span class="navbar__logo-text">CREDIAN</span>
       </a>
       <div class="navbar__links">
@@ -74,7 +305,8 @@
       </div>
       <div class="navbar__actions">
         <a href="#cotizador" class="navbar__cotizador" target="_blank" rel="noopener">Cotizador</a>
-        <a href="#solicitar" class="navbar__cta btn-shimmer" target="_blank" rel="noopener">Solicita tu crédito de nómina</a>
+        <a href="#solicitar" class="navbar__cta btn-shimmer" target="_blank" rel="noopener">Solicita tu crédito de
+          nómina</a>
       </div>
       <button class="navbar__hamburger" aria-label="Abrir menú"><span></span><span></span><span></span></button>
     </div>
@@ -97,8 +329,11 @@
     <div class="rhombus-deco rhombus-deco--3 rhombus-deco--green" aria-hidden="true"></div>
     <div class="hero__content">
       <span class="hero__label hero-enter">Conócenos</span>
-      <h1 class="hero__title hero-enter">Somos <span class="text-gradient" style="-webkit-text-fill-color:transparent;background:linear-gradient(90deg,#7eb8f7,#4CC882);-webkit-background-clip:text;background-clip:text">CREDIAN</span></h1>
-      <p class="hero__subtitle hero-enter">Más de 15 años transformando vidas a través de soluciones financieras accesibles y transparentes.</p>
+      <h1 class="hero__title hero-enter">Somos <span class="text-gradient"
+          style="-webkit-text-fill-color:transparent;background:linear-gradient(90deg,#7eb8f7,#4CC882);-webkit-background-clip:text;background-clip:text">CREDIAN</span>
+      </h1>
+      <p class="hero__subtitle hero-enter">Más de 15 años transformando vidas a través de soluciones financieras
+        accesibles y transparentes.</p>
     </div>
   </section>
 
@@ -111,10 +346,17 @@
         </div>
         <div class="reveal-right">
           <span class="section__label">Nuestra historia</span>
-          <h2 class="section__title" style="text-align:left">Una misión de <span class="text-gradient">confianza</span></h2>
-          <p style="margin-bottom:var(--space-lg)">CREDIAN nació en 2011 con una visión clara: democratizar el acceso al crédito para los trabajadores mexicanos. Fundada por un equipo de profesionales financieros con más de 20 años de experiencia en el sector, nuestra empresa ha crecido hasta convertirse en uno de los referentes en créditos de nómina en México.</p>
-          <p style="margin-bottom:var(--space-lg)">Creemos que cada persona merece acceso a financiamiento justo y transparente. Por eso, hemos desarrollado procesos ágiles que eliminan la burocracia y ponen al cliente en el centro de todo lo que hacemos.</p>
-          <p><strong>Nuestra misión:</strong> Brindar soluciones de crédito de nómina accesibles, transparentes y rápidas que mejoren la calidad de vida de los trabajadores mexicanos y sus familias.</p>
+          <h2 class="section__title" style="text-align:left">Una misión de <span class="text-gradient">confianza</span>
+          </h2>
+          <p style="margin-bottom:var(--space-lg)">CREDIAN nació en 2011 con una visión clara: democratizar el acceso al
+            crédito para los trabajadores mexicanos. Fundada por un equipo de profesionales financieros con más de 20
+            años de experiencia en el sector, nuestra empresa ha crecido hasta convertirse en uno de los referentes en
+            créditos de nómina en México.</p>
+          <p style="margin-bottom:var(--space-lg)">Creemos que cada persona merece acceso a financiamiento justo y
+            transparente. Por eso, hemos desarrollado procesos ágiles que eliminan la burocracia y ponen al cliente en
+            el centro de todo lo que hacemos.</p>
+          <p><strong>Nuestra misión:</strong> Brindar soluciones de crédito de nómina accesibles, transparentes y
+            rápidas que mejoren la calidad de vida de los trabajadores mexicanos y sus familias.</p>
         </div>
       </div>
     </div>
@@ -130,24 +372,42 @@
       </div>
       <div class="values-grid">
         <div class="value-card reveal stagger-1">
-          <div class="value-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <div class="value-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg></div>
           <h4>Confianza</h4>
           <p class="card__text">Construimos relaciones duraderas basadas en la honestidad y la transparencia total.</p>
         </div>
         <div class="value-card reveal stagger-2">
-          <div class="value-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <div class="value-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg></div>
           <h4>Compromiso</h4>
-          <p class="card__text">Nos dedicamos al 100% a cada cliente, ofreciendo soluciones adaptadas a sus necesidades.</p>
+          <p class="card__text">Nos dedicamos al 100% a cada cliente, ofreciendo soluciones adaptadas a sus necesidades.
+          </p>
         </div>
         <div class="value-card reveal stagger-3">
-          <div class="value-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+          <div class="value-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round">
+              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+            </svg></div>
           <h4>Innovación</h4>
           <p class="card__text">Usamos tecnología de punta para hacer los procesos más rápidos y sencillos.</p>
         </div>
         <div class="value-card reveal stagger-4">
-          <div class="value-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+          <div class="value-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round">
+              <circle cx="12" cy="12" r="10" />
+              <path
+                d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+            </svg></div>
           <h4>Inclusión</h4>
-          <p class="card__text">Creemos en el acceso justo al crédito para todos los trabajadores, sin discriminación.</p>
+          <p class="card__text">Creemos en el acceso justo al crédito para todos los trabajadores, sin discriminación.
+          </p>
         </div>
       </div>
     </div>
@@ -163,20 +423,36 @@
       </div>
       <div class="team-grid">
         <div class="team-card reveal stagger-1">
-          <div class="team-card__photo"><img src="https://picsum.photos/400/400?random=20" alt="Carlos Mendoza" loading="lazy"></div>
-          <div class="team-card__info"><h4 class="team-card__name">Carlos Mendoza</h4><p class="team-card__role">Director General</p></div>
+          <div class="team-card__photo"><img src="https://picsum.photos/400/400?random=20" alt="Carlos Mendoza"
+              loading="lazy"></div>
+          <div class="team-card__info">
+            <h4 class="team-card__name">Carlos Mendoza</h4>
+            <p class="team-card__role">Director General</p>
+          </div>
         </div>
         <div class="team-card reveal stagger-2">
-          <div class="team-card__photo"><img src="https://picsum.photos/400/400?random=21" alt="María González" loading="lazy"></div>
-          <div class="team-card__info"><h4 class="team-card__name">María González</h4><p class="team-card__role">Directora de Operaciones</p></div>
+          <div class="team-card__photo"><img src="https://picsum.photos/400/400?random=21" alt="María González"
+              loading="lazy"></div>
+          <div class="team-card__info">
+            <h4 class="team-card__name">María González</h4>
+            <p class="team-card__role">Directora de Operaciones</p>
+          </div>
         </div>
         <div class="team-card reveal stagger-3">
-          <div class="team-card__photo"><img src="https://picsum.photos/400/400?random=22" alt="Roberto Silva" loading="lazy"></div>
-          <div class="team-card__info"><h4 class="team-card__name">Roberto Silva</h4><p class="team-card__role">Director Financiero</p></div>
+          <div class="team-card__photo"><img src="https://picsum.photos/400/400?random=22" alt="Roberto Silva"
+              loading="lazy"></div>
+          <div class="team-card__info">
+            <h4 class="team-card__name">Roberto Silva</h4>
+            <p class="team-card__role">Director Financiero</p>
+          </div>
         </div>
         <div class="team-card reveal stagger-4">
-          <div class="team-card__photo"><img src="https://picsum.photos/400/400?random=23" alt="Ana Martínez" loading="lazy"></div>
-          <div class="team-card__info"><h4 class="team-card__name">Ana Martínez</h4><p class="team-card__role">Directora Comercial</p></div>
+          <div class="team-card__photo"><img src="https://picsum.photos/400/400?random=23" alt="Ana Martínez"
+              loading="lazy"></div>
+          <div class="team-card__info">
+            <h4 class="team-card__name">Ana Martínez</h4>
+            <p class="team-card__role">Directora Comercial</p>
+          </div>
         </div>
       </div>
     </div>
@@ -190,7 +466,9 @@
         <h2 class="section__title">Nuestra <span class="text-gradient">historia</span></h2>
       </div>
       <div class="timeline">
-        <div class="timeline__line"><div class="timeline__line-fill" id="tl-fill"></div></div>
+        <div class="timeline__line">
+          <div class="timeline__line-fill" id="tl-fill"></div>
+        </div>
         <div class="timeline__item timeline-item">
           <div class="timeline__dot"></div>
           <div class="timeline__year">2011</div>
@@ -230,19 +508,51 @@
     <div class="container">
       <div class="footer__grid">
         <div class="footer__brand">
-          <div class="footer__logo"><svg width="34" height="34" viewBox="0 0 40 40" fill="none"><rect x="8" y="8" width="18" height="18" rx="3" transform="rotate(45 17 17)" fill="#2B4DA8" opacity="0.9"/><rect x="14" y="14" width="18" height="18" rx="3" transform="rotate(45 23 23)" fill="#3AAA6E" opacity="0.85"/></svg><span class="footer__logo-text">CREDIAN</span></div>
-          <p class="footer__brand-desc">Somos una empresa financiera mexicana especializada en créditos de nómina. Más de 15 años brindando soluciones financieras con transparencia y confianza.</p>
+          <div class="footer__logo"><svg width="34" height="34" viewBox="0 0 40 40" fill="none">
+              <rect x="8" y="8" width="18" height="18" rx="3" transform="rotate(45 17 17)" fill="#2B4DA8"
+                opacity="0.9" />
+              <rect x="14" y="14" width="18" height="18" rx="3" transform="rotate(45 23 23)" fill="#3AAA6E"
+                opacity="0.85" />
+            </svg><span class="footer__logo-text">CREDIAN</span></div>
+          <p class="footer__brand-desc">Somos una empresa financiera mexicana especializada en créditos de nómina. Más
+            de 15 años brindando soluciones financieras con transparencia y confianza.</p>
           <div class="footer__social">
-            <a href="#" class="footer__social-link" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
-            <a href="#" class="footer__social-link" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg></a>
-            <a href="#" class="footer__social-link" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z"/></svg></a>
+            <a href="#" class="footer__social-link" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+              </svg></a>
+            <a href="#" class="footer__social-link" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <rect x="2" y="2" width="20" height="20" rx="5" />
+                <circle cx="12" cy="12" r="5" />
+              </svg></a>
+            <a href="#" class="footer__social-link" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z" />
+              </svg></a>
           </div>
         </div>
-        <div><h4 class="footer__column-title">Páginas</h4><a href="index.html" class="footer__link" data-internal>Inicio</a><a href="nosotros.html" class="footer__link" data-internal>Nosotros</a><a href="productos.html" class="footer__link" data-internal>Productos</a><a href="dudas.html" class="footer__link" data-internal>Dudas</a><a href="contacto.html" class="footer__link" data-internal>Contacto</a></div>
-        <div><h4 class="footer__column-title">Servicios</h4><a href="#cotizador" class="footer__link" target="_blank">Cotizador</a><a href="#solicitar" class="footer__link" target="_blank">Solicitar crédito</a><a href="productos.html" class="footer__link" data-internal>Crédito de nómina</a></div>
-        <div><h4 class="footer__column-title">Contacto</h4><a href="tel:+525512345678" class="footer__link">+52 (55) 1234 5678</a><a href="mailto:info@credian.mx" class="footer__link">info@credian.mx</a><p class="footer__link" style="cursor:default">Av. Reforma 250, CDMX</p></div>
+        <div>
+          <h4 class="footer__column-title">Páginas</h4><a href="index.html" class="footer__link"
+            data-internal>Inicio</a><a href="nosotros.html" class="footer__link" data-internal>Nosotros</a><a
+            href="productos.html" class="footer__link" data-internal>Productos</a><a href="dudas.html"
+            class="footer__link" data-internal>Dudas</a><a href="contacto.html" class="footer__link"
+            data-internal>Contacto</a>
+        </div>
+        <div>
+          <h4 class="footer__column-title">Servicios</h4><a href="#cotizador" class="footer__link"
+            target="_blank">Cotizador</a><a href="#solicitar" class="footer__link" target="_blank">Solicitar
+            crédito</a><a href="productos.html" class="footer__link" data-internal>Crédito de nómina</a>
+        </div>
+        <div>
+          <h4 class="footer__column-title">Contacto</h4><a href="tel:+525512345678" class="footer__link">+52 (55) 1234
+            5678</a><a href="mailto:info@credian.mx" class="footer__link">info@credian.mx</a>
+          <p class="footer__link" style="cursor:default">Av. Reforma 250, CDMX</p>
+        </div>
       </div>
-      <div class="footer__bottom"><p class="footer__copy">&copy; <span id="current-year">2026</span> CREDIAN. Todos los derechos reservados.</p><div class="footer__legal"><a href="#">Aviso de privacidad</a><a href="#">Términos y condiciones</a></div></div>
+      <div class="footer__bottom">
+        <p class="footer__copy">&copy; <span id="current-year">2026</span> CREDIAN. Todos los derechos reservados.</p>
+        <div class="footer__legal"><a href="#">Aviso de privacidad</a><a href="#">Términos y condiciones</a></div>
+      </div>
     </div>
   </footer>
 
@@ -256,4 +566,5 @@
     }
   </script>
 </body>
+
 </html>
