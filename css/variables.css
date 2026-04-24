@@ -14,18 +14,18 @@
 
   /* ---- Neutral Colors ---- */
   --color-dark: #3D3D3D;
-  --color-navbar: #3A3F4B;
+  --color-navbar: #1A1D24;
   --color-white: #FFFFFF;
   --color-gray-light: #F5F6FA;
   --color-gray-mid: #E0E2EA;
   --color-gray-text: #6B7280;
-  --color-overlay: rgba(58, 63, 75, 0.95);
+  --color-overlay: rgba(26, 29, 36, 0.95);
 
   /* ---- Gradients ---- */
   --gradient-brand: linear-gradient(135deg, var(--color-blue) 0%, var(--color-green) 100%);
   --gradient-brand-reverse: linear-gradient(135deg, var(--color-green) 0%, var(--color-blue) 100%);
   --gradient-hero: linear-gradient(160deg, #1a2e5a 0%, #2B4DA8 35%, #3AAA6E 100%);
-  --gradient-dark: linear-gradient(135deg, #2a2f3a 0%, #3A3F4B 100%);
+  --gradient-dark: linear-gradient(135deg, #111317 0%, #1A1D24 100%);
   --gradient-card: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(245,246,250,0.5) 100%);
   --gradient-shimmer: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%);
 

@@ -125,4 +125,50 @@
     yearEl.textContent = new Date().getFullYear();
   }
 
+  // ---- Brand Font Replacer ----
+  function wrapBrandName() {
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
+    const nodesToReplace = [];
+    
+    let node;
+    while ((node = walker.nextNode())) {
+      if (node.parentElement && 
+         (node.parentElement.classList.contains('font-brand') || 
+          node.parentElement.tagName === 'SCRIPT' || 
+          node.parentElement.tagName === 'STYLE' ||
+          node.parentElement.tagName === 'TITLE')) {
+        continue;
+      }
+      
+      if (node.nodeValue.includes('CREDIAN')) {
+        nodesToReplace.push(node);
+      }
+    }
+    
+    nodesToReplace.forEach(textNode => {
+      const parts = textNode.nodeValue.split('CREDIAN');
+      if (parts.length > 1) {
+        const spanFragment = document.createDocumentFragment();
+        parts.forEach((part, i) => {
+          if (part.length > 0) {
+            spanFragment.appendChild(document.createTextNode(part));
+          }
+          if (i < parts.length - 1) {
+            const brandSpan = document.createElement('span');
+            brandSpan.className = 'font-brand';
+            brandSpan.textContent = 'CREDIAN';
+            spanFragment.appendChild(brandSpan);
+          }
+        });
+        textNode.parentNode.replaceChild(spanFragment, textNode);
+      }
+    });
+  }
+  
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', wrapBrandName);
+  } else {
+    wrapBrandName();
+  }
+
 })();
