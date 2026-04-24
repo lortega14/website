@@ -615,6 +615,24 @@ p {
   color: var(--color-white);
 }
 
+.footer__disclaimer {
+  color: rgba(255,255,255,0.4);
+  font-size: 0.65rem;
+  line-height: 1.5;
+  text-align: justify;
+  margin-top: var(--space-xl);
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding-top: var(--space-lg);
+}
+
+.footer__disclaimer p {
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 0.5rem;
+}
+.footer__disclaimer p:last-child {
+  margin-bottom: 0;
+}
+
 @media (max-width: 768px) {
   .footer__grid {
     grid-template-columns: 1fr 1fr;
