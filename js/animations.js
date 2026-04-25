@@ -3,7 +3,7 @@
    Intersection Observer, counters, accordions
    ============================================ */
 
-(function() {
+(function () {
   'use strict';
 
   // ---- Intersection Observer for Scroll Reveal ----
@@ -46,9 +46,9 @@
       // Ease out cubic
       const eased = 1 - Math.pow(1 - progress, 3);
       const current = Math.floor(start + (target - start) * eased);
-      
+
       el.textContent = prefix + current.toLocaleString('es-MX') + suffix;
-      
+
       if (progress < 1) {
         requestAnimationFrame(update);
       } else {
@@ -146,7 +146,7 @@
   if (faqSearch) {
     faqSearch.addEventListener('input', (e) => {
       const query = e.target.value.toLowerCase().trim();
-      
+
       faqItems.forEach(item => {
         const text = item.textContent.toLowerCase();
         item.style.display = text.includes(query) ? '' : 'none';
@@ -158,7 +158,7 @@
     faqCategories.forEach(btn => {
       btn.addEventListener('click', () => {
         const category = btn.getAttribute('data-faq-category');
-        
+
         // Toggle active state
         faqCategories.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
@@ -174,12 +174,17 @@
     });
   }
 
-  // ---- Form Validation ----
+  // ---- Contact Form — Backend URL ----
+  // Cambia esta URL al dominio de Vercel después del despliegue
+  // LOCAL: http://localhost:3000/api/contact
+  // PRODUCCIÓN: Cambia esta URL al dominio que te dé Vercel después del despliegue
+  const CONTACT_API_URL = 'https://credian-backend-rqvo.vercel.app/api/contact';
+
   const contactForm = document.getElementById('contact-form');
-  
+
   if (contactForm) {
     const inputs = contactForm.querySelectorAll('.form-input, .form-textarea, .form-select');
-    
+
     inputs.forEach(input => {
       input.addEventListener('blur', () => validateField(input));
       input.addEventListener('input', () => {
@@ -189,7 +194,7 @@
       });
     });
 
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       let valid = true;
 
@@ -198,25 +203,95 @@
       });
 
       if (valid) {
-        // Show success state
         const btn = contactForm.querySelector('.btn');
         const originalText = btn.innerHTML;
+
+        // --- Loading state ---
         btn.innerHTML = `
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="20 6 9 17 4 12"></polyline>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="animation:spin 1s linear infinite">
+            <circle cx="12" cy="12" r="10" stroke-dasharray="31.4 31.4" />
           </svg>
-          ¡Mensaje enviado!
+          Enviando...
         `;
-        btn.style.background = 'var(--color-green)';
         btn.style.pointerEvents = 'none';
-        
-        setTimeout(() => {
-          btn.innerHTML = originalText;
-          btn.style.background = '';
-          btn.style.pointerEvents = '';
-          contactForm.reset();
-          inputs.forEach(i => i.classList.remove('error', 'success'));
-        }, 3000);
+        btn.style.opacity = '0.85';
+
+        try {
+          const res = await fetch(CONTACT_API_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              nombre: document.getElementById('nombre').value,
+              email: document.getElementById('email').value,
+              telefono: document.getElementById('telefono').value,
+              asunto: document.getElementById('asunto').value,
+              mensaje: document.getElementById('mensaje').value,
+            }),
+          });
+
+          const data = await res.json();
+
+          if (res.ok && data.success) {
+            // --- Success state ---
+            btn.innerHTML = `
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              ¡Mensaje enviado!
+            `;
+            btn.style.background = 'var(--color-green)';
+            btn.style.opacity = '1';
+
+            setTimeout(() => {
+              btn.innerHTML = originalText;
+              btn.style.background = '';
+              btn.style.pointerEvents = '';
+              btn.style.opacity = '';
+              contactForm.reset();
+              inputs.forEach(i => i.classList.remove('error', 'success'));
+            }, 4000);
+          } else {
+            // --- Server validation error ---
+            const errorMsg = data.errors ? data.errors.join('. ') : 'Error al enviar el mensaje.';
+            btn.innerHTML = `
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="15" y1="9" x2="9" y2="15"/>
+                <line x1="9" y1="9" x2="15" y2="15"/>
+              </svg>
+              ${errorMsg}
+            `;
+            btn.style.background = '#e74c3c';
+            btn.style.opacity = '1';
+
+            setTimeout(() => {
+              btn.innerHTML = originalText;
+              btn.style.background = '';
+              btn.style.pointerEvents = '';
+              btn.style.opacity = '';
+            }, 4000);
+          }
+        } catch (err) {
+          // --- Network error ---
+          console.error('Contact form error:', err);
+          btn.innerHTML = `
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="12" y1="8" x2="12" y2="12"/>
+              <line x1="12" y1="16" x2="12.01" y2="16"/>
+            </svg>
+            Error de conexión. Intenta de nuevo.
+          `;
+          btn.style.background = '#e74c3c';
+          btn.style.opacity = '1';
+
+          setTimeout(() => {
+            btn.innerHTML = originalText;
+            btn.style.background = '';
+            btn.style.pointerEvents = '';
+            btn.style.opacity = '';
+          }, 4000);
+        }
       }
     });
   }
