@@ -13,12 +13,6 @@
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/global.css?v=1.1">
   <style>
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: var(--space-xl)
-    }
-
     .product-card {
       background: var(--color-white);
       border-radius: var(--radius-xl);
@@ -27,7 +21,9 @@
       border: 2px solid transparent;
       transition: all var(--transition-base);
       position: relative;
-      overflow: hidden
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
     }
 
     .product-card:hover {
@@ -35,63 +31,94 @@
       transform: translateY(-8px)
     }
 
-    .product-card--featured {
-      border-color: var(--color-blue)
+    .products-category {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: var(--space-2xl);
+      margin-bottom: var(--space-4xl);
     }
 
-    .product-card--featured::before {
-      content: 'Popular';
+    .products-category--reverse {
+      grid-template-columns: 2fr 1fr;
+    }
+
+    .products-category__image {
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      min-height: 300px;
+    }
+
+    .products-category__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-slow);
       position: absolute;
-      top: 16px;
-      right: -32px;
-      background: var(--gradient-brand);
-      color: #fff;
-      font-size: .7rem;
-      font-weight: 700;
-      padding: 4px 40px;
-      transform: rotate(45deg);
-      font-family: var(--font-display)
+      top: 0;
+      left: 0;
+    }
+
+    .products-category__image:hover img {
+      transform: scale(1.05);
+    }
+
+    .products-category__cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--space-xl);
+    }
+
+    @media (max-width: 992px) {
+
+      .products-category,
+      .products-category--reverse {
+        grid-template-columns: 1fr;
+      }
+
+      .products-category__image {
+        min-height: 250px;
+        order: -1;
+      }
     }
 
     .product-card__name {
-      font-size: var(--text-lg);
+      font-size: var(--text-xl);
       font-weight: var(--fw-bold);
-      margin-bottom: var(--space-xs)
-    }
-
-    .product-card__range {
-      font-size: var(--text-3xl);
-      font-weight: var(--fw-extrabold);
+      margin-bottom: var(--space-sm);
       color: var(--color-blue);
-      margin-bottom: var(--space-xs)
     }
 
-    .product-card__rate {
+    .product-card__desc {
       font-size: var(--text-sm);
-      color: var(--color-green);
-      font-weight: var(--fw-semibold);
-      margin-bottom: var(--space-xl)
+      color: var(--color-gray-text);
+      line-height: 1.6;
+      margin-bottom: var(--space-xl);
     }
 
     .product-card__features {
       list-style: none;
-      margin-bottom: var(--space-xl)
+      margin-bottom: var(--space-xl);
+      flex-grow: 1;
     }
 
     .product-card__features li {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: .75rem;
       padding: .5rem 0;
       font-size: var(--text-sm);
-      color: var(--color-gray-text)
+      color: var(--color-gray-text);
+      line-height: 1.4;
     }
 
     .product-card__features li svg {
       width: 18px;
       height: 18px;
       color: var(--color-green);
-      flex-shrink: 0
+      flex-shrink: 0;
+      margin-top: 2px;
     }
 
     .compare-table {
@@ -286,179 +313,105 @@
   <section class="section">
     <div class="container">
       <div class="section__header reveal">
-        <span class="section__label">Planes</span>
-        <h2 class="section__title">Elige tu <span class="text-gradient">crédito ideal</span></h2>
+        <span class="section__label">Nuestros Productos</span>
+        <h2 class="section__title">Conoce lo que <span class="text-gradient">ofrecemos</span></h2>
       </div>
-      <div class="products-grid">
-        <div class="product-card reveal stagger-1">
-          <p class="product-card__name">Crédito Inicial</p>
-          <p class="product-card__range">$10,000 — $50,000</p>
-          <p class="product-card__rate">Desde 18.9% anual</p>
-          <ul class="product-card__features">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
-                <polyline points="20 6 9 17 4 12" />
-              </svg>Plazos de 6 a 24 meses</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
-                <polyline points="20 6 9 17 4 12" />
-              </svg>Sin aval requerido</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
-                <polyline points="20 6 9 17 4 12" />
-              </svg>Aprobación en 24 hrs</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
-                <polyline points="20 6 9 17 4 12" />
-              </svg>Descuento vía nómina</li>
-          </ul>
-          <a href="#solicitar" class="btn btn--secondary btn-shimmer" style="width:100%" target="_blank">Solicitar</a>
+      <!-- Categoría: Créditos -->
+      <div class="products-category reveal">
+        <div class="products-category__image">
+          <img src="img/premium_photo-1679496828825-5d479da38e07.avif" alt="Profesionales de Crédito">
         </div>
-        <div class="product-card product-card--featured reveal stagger-2">
-          <p class="product-card__name">Crédito Plus</p>
-          <p class="product-card__range">$50,000 — $200,000</p>
-          <p class="product-card__rate">Desde 16.5% anual</p>
-          <ul class="product-card__features">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
-                <polyline points="20 6 9 17 4 12" />
-              </svg>Plazos de 12 a 48 meses</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
-                <polyline points="20 6 9 17 4 12" />
-              </svg>Sin aval requerido</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
-                <polyline points="20 6 9 17 4 12" />
-              </svg>Aprobación en 24 hrs</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
-                <polyline points="20 6 9 17 4 12" />
-              </svg>Asesor personalizado</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
-                <polyline points="20 6 9 17 4 12" />
-              </svg>Seguro de vida incluido</li>
-          </ul>
-          <a href="#solicitar" class="btn btn--primary btn--large btn-shimmer" style="width:100%"
-            target="_blank">Solicitar</a>
+        <div class="products-category__cards">
+          <div class="product-card stagger-1">
+            <h3 class="product-card__name">Crédito de Nómina</h3>
+            <p class="product-card__desc">El esquema tradicional; sin revolvencia, con plazos y periodos de pago
+              personalizados para darte la flexibilidad que necesitas para cubrir tus imprevistos a una tasa fija.</p>
+            <ul class="product-card__features">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>Atractivos plazos</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>Trámites sencillos</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>Disponibilidad</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>Tasa fija anual</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>Comisión por apertura</li>
+            </ul>
+          </div>
+          <div class="product-card stagger-2">
+            <h3 class="product-card__name">Crédito PYME</h3>
+            <p class="product-card__desc">Un producto enfocado para las pequeñas y medianas empresas que son el pilar
+              más importante en la economía de nuestro país. Con tasa fija y plazo y periodos de pago que mejor te
+              acomoden; es el impulso que necesitas para llevar tu negocio al siguiente nivel.</p>
+            <ul class="product-card__features">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>Crecimiento</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>Atención Personalizada</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>Competitividad</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>Tasa fija anual</li>
+            </ul>
+          </div>
         </div>
-        <div class="product-card reveal stagger-3">
-          <p class="product-card__name">Crédito Premium</p>
-          <p class="product-card__range">$200,000 — $500,000</p>
-          <p class="product-card__rate">Desde 14.9% anual</p>
-          <ul class="product-card__features">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
-                <polyline points="20 6 9 17 4 12" />
-              </svg>Plazos de 24 a 60 meses</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
-                <polyline points="20 6 9 17 4 12" />
-              </svg>Sin aval requerido</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
-                <polyline points="20 6 9 17 4 12" />
-              </svg>Aprobación prioritaria</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
-                <polyline points="20 6 9 17 4 12" />
-              </svg>Asesor VIP dedicado</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
-                <polyline points="20 6 9 17 4 12" />
-              </svg>Seguro de vida + desempleo</li>
-          </ul>
-          <a href="#solicitar" class="btn btn--secondary btn-shimmer" style="width:100%" target="_blank">Solicitar</a>
+      </div>
+
+      <!-- Categoría: Arrendamientos -->
+      <div class="products-category products-category--reverse reveal">
+        <div class="products-category__cards">
+          <div class="product-card stagger-3">
+            <h3 class="product-card__name">Arrendamiento Puro (Leasing)</h3>
+            <p class="product-card__desc">Es un producto con grandes beneficios fiscales en el cual se renta un bien a
+              determinado plazo y con pagos mensuales fijos. Únicamente pagas por el tiempo que utilizas el bien y al
+              finalizar el plazo cuentas con tres opciones:</p>
+            <ul class="product-card__features">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>Comprarlo a valor residual</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>Financiar la compra del valor residual</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>Regresar el bien</li>
+            </ul>
+          </div>
+          <div class="product-card stagger-4">
+            <h3 class="product-card__name">Arrendamiento Financiero</h3>
+            <p class="product-card__desc">A diferencia del leasing; este esquema no cuenta con valor residual ya que
+              tiene como finalidad la adquisición del bien.</p>
+            <ul class="product-card__features">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>Inversiones</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>Apalancamiento</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>Tasa fija anual</li>
+            </ul>
+          </div>
+        </div>
+        <div class="products-category__image">
+          <img src="img/servicio3.png" alt="Bienes de Arrendamiento">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- COMPARISON TABLE -->
-  <section class="section section--gray">
-    <div class="container">
-      <div class="section__header reveal">
-        <span class="section__label">Comparativa</span>
-        <h2 class="section__title">Compara <span class="text-gradient">planes</span></h2>
-      </div>
-      <div class="compare-wrapper reveal">
-        <table class="compare-table">
-          <thead>
-            <tr>
-              <th>Característica</th>
-              <th>Inicial</th>
-              <th>Plus</th>
-              <th>Premium</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Monto máximo</td>
-              <td>$50,000</td>
-              <td>$200,000</td>
-              <td>$500,000</td>
-            </tr>
-            <tr>
-              <td>Tasa desde</td>
-              <td>18.9%</td>
-              <td>16.5%</td>
-              <td>14.9%</td>
-            </tr>
-            <tr>
-              <td>Plazo máximo</td>
-              <td>24 meses</td>
-              <td>48 meses</td>
-              <td>60 meses</td>
-            </tr>
-            <tr>
-              <td>Sin aval</td>
-              <td><svg class="check-svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="3">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg></td>
-              <td><svg class="check-svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="3">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg></td>
-              <td><svg class="check-svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="3">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg></td>
-            </tr>
-            <tr>
-              <td>Asesor personalizado</td>
-              <td>—</td>
-              <td><svg class="check-svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="3">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg></td>
-              <td><svg class="check-svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="3">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg></td>
-            </tr>
-            <tr>
-              <td>Seguro de vida</td>
-              <td>—</td>
-              <td><svg class="check-svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="3">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg></td>
-              <td><svg class="check-svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="3">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg></td>
-            </tr>
-            <tr>
-              <td>Seguro de desempleo</td>
-              <td>—</td>
-              <td>—</td>
-              <td><svg class="check-svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="3">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg></td>
-            </tr>
-            <tr>
-              <td>Aprobación prioritaria</td>
-              <td>—</td>
-              <td>—</td>
-              <td><svg class="check-svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="3">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
+
 
   <!-- REQUIREMENTS -->
   <section class="section">
