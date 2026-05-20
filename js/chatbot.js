@@ -223,7 +223,7 @@
         removeTyping();
         addMessage('Te redirijo a nuestra página de contacto para que un asesor te atienda personalmente. 😊', 'bot');
         setTimeout(function () {
-          window.location.href = 'contacto.html';
+          window.location.href = '../contacto/';
         }, 1200);
       }, 500);
     }

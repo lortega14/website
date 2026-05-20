@@ -80,14 +80,18 @@
 
   // ---- Mark Active Navigation Link ----
   function setActiveNav() {
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    const path = window.location.pathname;
+    // Extract the directory name: "/nosotros/" → "nosotros", "/" → ""
+    const segments = path.replace(/\/+$/, '').split('/');
+    const currentSection = segments.pop() || '';
     const navLinks = document.querySelectorAll('.navbar__link');
     
     navLinks.forEach(link => {
       const href = link.getAttribute('href');
-      if (href === currentPage || 
-          (currentPage === '' && href === 'index.html') ||
-          (currentPage === 'index.html' && href === 'index.html')) {
+      // Extract section from href: "nosotros/", "../nosotros/", "./" → compare
+      const hrefSection = href.replace(/^\.\.\//, '').replace(/^\.\//, '').replace(/\/+$/, '').replace(/index\.html$/, '') || '';
+      if (hrefSection === currentSection || 
+          (currentSection === '' && (href === './' || href === '../' || href === '/' || href === 'index.html'))) {
         link.classList.add('active');
       }
     });
@@ -95,9 +99,9 @@
     // Also for mobile
     mobileLinks.forEach(link => {
       const href = link.getAttribute('href');
-      if (href === currentPage || 
-          (currentPage === '' && href === 'index.html') ||
-          (currentPage === 'index.html' && href === 'index.html')) {
+      const hrefSection = href.replace(/^\.\.\//, '').replace(/^\.\//, '').replace(/\/+$/, '').replace(/index\.html$/, '') || '';
+      if (hrefSection === currentSection || 
+          (currentSection === '' && (href === './' || href === '../' || href === '/' || href === 'index.html'))) {
         link.style.color = '#3AAA6E';
       }
     });
