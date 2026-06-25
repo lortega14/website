@@ -178,7 +178,7 @@
   // Cambia esta URL al dominio de Vercel después del despliegue
   // LOCAL: http://localhost:3000/api/contact
   // PRODUCCIÓN: Cambia esta URL al dominio que te dé Vercel después del despliegue
-  const CONTACT_API_URL = 'https://credian-backend-rqvo.vercel.app/api/contact';
+  const CONTACT_API_URL = 'https://credian-backend.vercel.app/api/contact';
 
   const contactForm = document.getElementById('contact-form');
 
