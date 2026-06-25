@@ -30,7 +30,7 @@
   --gradient-shimmer: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%);
 
   /* ---- Typography ---- */
-  --font-display: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
+  --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --font-body: 'DM Sans', 'Segoe UI', sans-serif;
 
   /* Fluid type scale using clamp() */

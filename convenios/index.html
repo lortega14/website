@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CREDIAN | Convenios Empresariales</title>
+  <link rel="icon" href="../img/credian.ico" type="image/x-icon">
+  <meta name="description"
+    content="Únete a las más de 80 empresas que ya ofrecen créditos de nómina CREDIAN como beneficio para sus colaboradores. Sin costo para tu empresa.">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/global.css?v=1.1">
+  <style>
+    /* ---- CONVENIOS-SPECIFIC STYLES ---- */
+    .convenios-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3xl);
+      align-items: start
+    }
+
+    .convenios-form-card {
+      background: var(--color-white);
+      border-radius: var(--radius-xl);
+      padding: var(--space-2xl) var(--space-2xl);
+      box-shadow: var(--shadow-lg);
+      border: 1px solid rgba(0, 0, 0, .04)
+    }
+
+    .convenios-form-card h3 {
+      margin-bottom: var(--space-xs)
+    }
+
+    .convenios-form-card>p {
+      color: var(--color-gray-text);
+      font-size: var(--text-sm);
+      margin-bottom: var(--space-2xl)
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-md)
+    }
+
+    .form-input.success {
+      border-color: var(--color-green)
+    }
+
+    /* ---- Benefits sidebar ---- */
+    .convenios-benefits {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg)
+    }
+
+    .convenio-benefit {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-lg);
+      padding: var(--space-xl);
+      background: var(--color-white);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(0, 0, 0, .04);
+      transition: all var(--transition-base)
+    }
+
+    .convenio-benefit:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateX(6px)
+    }
+
+    .convenio-benefit__icon {
+      width: 52px;
+      height: 52px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, rgba(43, 77, 168, .08), rgba(58, 170, 110, .08));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--color-blue);
+      transition: all var(--transition-base)
+    }
+
+    .convenio-benefit:hover .convenio-benefit__icon {
+      background: var(--gradient-brand);
+      color: #fff
+    }
+
+    .convenio-benefit__icon svg {
+      width: 24px;
+      height: 24px
+    }
+
+    .convenio-benefit h4 {
+      font-size: var(--text-base);
+      margin-bottom: 4px
+    }
+
+    .convenio-benefit p {
+      font-size: var(--text-sm);
+      color: var(--color-gray-text)
+    }
+
+    /* ---- Stats row ---- */
+    .convenios-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--space-2xl);
+      text-align: center
+    }
+
+    .convenios-stat {
+      padding: var(--space-2xl) var(--space-lg);
+      background: var(--color-white);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(0, 0, 0, .04);
+      transition: all var(--transition-base)
+    }
+
+    .convenios-stat:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-4px)
+    }
+
+    .convenios-stat__number {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
+      font-size: clamp(2rem, 1.5rem + 2vw, 3rem);
+      font-weight: var(--fw-extrabold);
+      line-height: 1.1;
+      margin-bottom: var(--space-xs);
+      display: inline-block;
+      white-space: nowrap;
+      background: var(--gradient-brand);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .convenios-stat__label {
+      color: var(--color-gray-text);
+      font-size: var(--text-sm)
+    }
+
+    /* ---- How it works steps ---- */
+    .convenio-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: var(--space-xl);
+      counter-reset: convenio-step
+    }
+
+    .convenio-step {
+      position: relative;
+      background: var(--color-white);
+      border-radius: var(--radius-xl);
+      padding: var(--space-2xl) var(--space-xl);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(0, 0, 0, .04);
+      transition: all var(--transition-base);
+      text-align: center;
+      counter-increment: convenio-step
+    }
+
+    .convenio-step:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-4px)
+    }
+
+    .convenio-step__number {
+      width: 56px;
+      height: 56px;
+      border-radius: var(--radius-full);
+      background: var(--gradient-brand);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto var(--space-lg);
+      font-family: var(--font-display);
+      font-weight: var(--fw-extrabold);
+      font-size: var(--text-xl);
+      color: var(--color-white);
+      box-shadow: var(--shadow-glow-blue)
+    }
+
+    .convenio-step h4 {
+      margin-bottom: var(--space-xs)
+    }
+
+    .convenio-step p {
+      font-size: var(--text-sm);
+      color: var(--color-gray-text)
+    }
+
+    /* ---- CTA Banner ---- */
+    .cta-banner {
+      border-radius: var(--radius-xl);
+      background: var(--gradient-brand);
+      padding: var(--space-4xl) var(--space-2xl);
+      text-align: center;
+      position: relative;
+      overflow: hidden
+    }
+
+    .cta-banner h2 {
+      color: var(--color-white);
+      margin-bottom: var(--space-md)
+    }
+
+    .cta-banner p {
+      color: rgba(255, 255, 255, .85);
+      margin-bottom: var(--space-2xl);
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto
+    }
+
+    @media(max-width:768px) {
+      .convenios-layout {
+        grid-template-columns: 1fr
+      }
+
+      .form-row {
+        grid-template-columns: 1fr
+      }
+    }
+  </style>
+</head>
+
+<body class="page-body">
+  <div class="custom-cursor" aria-hidden="true"></div>
+  <div class="page-transition-overlay" aria-hidden="true"></div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" aria-label="Navegación principal">
+    <div class="navbar__inner">
+      <a href="../" class="navbar__logo" data-internal aria-label="CREDIAN Inicio">
+        <img src="../img/logo_credian.png" alt="CREDIAN Logo" class="navbar__img">
+        <span class="navbar__logo-text">CREDIAN</span>
+      </a>
+      <div class="navbar__links"><a href="../" class="navbar__link" data-internal>Inicio</a><a
+          href="../nosotros/" class="navbar__link" data-internal>Nosotros</a><a href="../productos/"
+          class="navbar__link" data-internal>Productos</a><a href="../dudas/" class="navbar__link"
+          data-internal>Dudas</a><a href="../contacto/" class="navbar__link" data-internal>Contacto</a><a href="../convenios/" class="navbar__link active" data-internal>Convenios</a></div>
+      <div class="navbar__actions"><a href="https://cotizador.credian.mx" class="navbar__cotizador"
+          target="_blank">Cotizador</a><a href="https://cib.logicsystems.com.mx/RECREA/LoginCredian.aspx?EMP=RECREA"
+          class="navbar__cta btn-shimmer" target="_blank">Solicita tu crédito de nómina</a></div>
+      <button class="navbar__hamburger" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="mobile-menu" aria-hidden="true"><a href="../" class="mobile-menu__link" data-internal>Inicio</a><a
+      href="../nosotros/" class="mobile-menu__link" data-internal>Nosotros</a><a href="../productos/"
+      class="mobile-menu__link" data-internal>Productos</a><a href="../dudas/" class="mobile-menu__link"
+      data-internal>Dudas</a><a href="../contacto/" class="mobile-menu__link" data-internal>Contacto</a><a href="../convenios/" class="mobile-menu__link" data-internal>Convenios</a>
+    <div class="mobile-menu__divider"></div><a href="https://cotizador.credian.mx" class="mobile-menu__link"
+      target="_blank">Cotizador</a><a href="https://cib.logicsystems.com.mx/RECREA/LoginCredian.aspx?EMP=RECREA"
+      class="mobile-menu__link" target="_blank">Solicitar crédito</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero hero--small">
+    <div class="hero__bg"></div>
+    <div class="rhombus-deco rhombus-deco--1" aria-hidden="true"></div>
+    <div class="rhombus-deco rhombus-deco--3 rhombus-deco--green" aria-hidden="true"></div>
+    <div class="hero__content">
+      <span class="hero__label hero-enter">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+          <circle cx="9" cy="7" r="4" />
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+          <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+        </svg>
+        Convenios empresariales
+      </span>
+      <h1 class="hero__title hero-enter">Haz <span class="text-gradient"
+          style="-webkit-text-fill-color:transparent;background:linear-gradient(90deg,#7eb8f7,#4CC882);-webkit-background-clip:text;background-clip:text">crecer</span>
+        el bienestar <br>de tu equipo</h1>
+      <p class="hero__subtitle hero-enter">Ofrece créditos de nómina como beneficio para tus colaboradores. Sin costo
+        para tu empresa, con el respaldo de más de 10 años de experiencia.</p>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="section">
+    <div class="container">
+      <div class="convenios-stats reveal">
+        <div class="convenios-stat">
+          <div class="convenios-stat__number"><span data-counter="80" data-suffix="+">0</span></div>
+          <div class="convenios-stat__label">Empresas con convenio activo</div>
+        </div>
+        <div class="convenios-stat">
+          <div class="convenios-stat__number"><span data-counter="50000" data-suffix="+">0</span></div>
+          <div class="convenios-stat__label">Colaboradores beneficiados</div>
+        </div>
+        <div class="convenios-stat">
+          <div class="convenios-stat__number"><span data-counter="0" data-prefix="$" data-suffix="">0</span></div>
+          <div class="convenios-stat__label">Costo para tu empresa</div>
+        </div>
+        <div class="convenios-stat">
+          <div class="convenios-stat__number"><span data-counter="48" data-suffix=" hrs">0</span></div>
+          <div class="convenios-stat__label">Activación del convenio</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="section__header reveal">
+        <span class="section__label">Proceso</span>
+        <h2 class="section__title">¿Cómo funciona el <span class="text-gradient">convenio</span>?</h2>
+        <p class="section__subtitle">Activar un convenio con CREDIAN es rápido y sin complicaciones. Solo 4 pasos
+          simples.</p>
+      </div>
+      <div class="convenio-steps">
+        <div class="convenio-step reveal stagger-1">
+          <div class="convenio-step__number">1</div>
+          <h4>Registra tu empresa</h4>
+          <p>Completa el formulario con los datos de tu empresa. Sin compromiso.</p>
+        </div>
+        <div class="convenio-step reveal stagger-2">
+          <div class="convenio-step__number">2</div>
+          <h4>Validación</h4>
+          <p>Nuestro equipo revisa la información y te contacta para formalizar el convenio.</p>
+        </div>
+        <div class="convenio-step reveal stagger-3">
+          <div class="convenio-step__number">3</div>
+          <h4>Firma del convenio</h4>
+          <p>Firmamos un acuerdo sin costo que habilita el beneficio para tus colaboradores.</p>
+        </div>
+        <div class="convenio-step reveal stagger-4">
+          <div class="convenio-step__number">4</div>
+          <h4>¡Listo!</h4>
+          <p>Tus empleados ya pueden acceder a créditos de nómina con las mejores condiciones.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORM + BENEFITS -->
+  <section class="section" id="formulario">
+    <div class="container">
+      <div class="section__header reveal">
+        <span class="section__label">Registro</span>
+        <h2 class="section__title">Registra tu <span class="text-gradient">empresa</span></h2>
+        <p class="section__subtitle">Completa el formulario y un ejecutivo se pondrá en contacto contigo para
+          formalizar el convenio.</p>
+      </div>
+      <div class="convenios-layout">
+        <!-- Form -->
+        <div class="convenios-form-card reveal-left">
+          <h3>Solicitud de convenio</h3>
+          <p>Todos los campos marcados con * son obligatorios.</p>
+          <form id="convenios-form" novalidate>
+            <div class="form-group">
+              <label class="form-label" for="razon-social">Razón social *</label>
+              <input type="text" id="razon-social" class="form-input" placeholder="Razón social de la empresa"
+                required>
+              <span class="form-error">Este campo es obligatorio</span>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="nombre-comercial">Nombre comercial *</label>
+              <input type="text" id="nombre-comercial" class="form-input" placeholder="Nombre comercial de la empresa"
+                required>
+              <span class="form-error">Este campo es obligatorio</span>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="num-empleados">No. de empleados *</label>
+                <select id="num-empleados" class="form-input form-select" required>
+                  <option value="">Selecciona un rango</option>
+                  <option value="5-10">5 – 10 empleados</option>
+                  <option value="10-50">10 – 50 empleados</option>
+                  <option value="50-100">50 – 100 empleados</option>
+                  <option value="100-250">100 – 250 empleados</option>
+                  <option value="250-500">250 – 500 empleados</option>
+                  <option value="500+">Más de 500 empleados</option>
+                </select>
+                <span class="form-error">Selecciona una opción</span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="telefono-convenio">Teléfono *</label>
+                <input type="tel" id="telefono-convenio" class="form-input" placeholder="(+52) 1234 5678" required>
+                <span class="form-error">Ingresa un teléfono válido</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="email-convenio">Correo electrónico *</label>
+              <input type="email" id="email-convenio" class="form-input" placeholder="contacto@tuempresa.com" required>
+              <span class="form-error">Ingresa un email válido</span>
+            </div>
+            <button type="submit" class="btn btn--primary btn--large btn-shimmer" style="width:100%">
+              Enviar solicitud
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round">
+                <line x1="22" y1="2" x2="11" y2="13" />
+                <polygon points="22 2 15 22 11 13 2 9 22 2" />
+              </svg>
+            </button>
+          </form>
+        </div>
+
+        <!-- Benefits -->
+        <div class="convenios-benefits reveal-right">
+          <div class="convenio-benefit">
+            <div class="convenio-benefit__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M16 8l-4 4-4-4" />
+                <path d="M12 12v6" />
+              </svg></div>
+            <div>
+              <h4>Sin costo para tu empresa</h4>
+              <p>El convenio no genera ningún cargo. Es un beneficio que ofreces sin impactar tu presupuesto.</p>
+            </div>
+          </div>
+          <div class="convenio-benefit">
+            <div class="convenio-benefit__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              </svg></div>
+            <div>
+              <h4>Mejora la retención de talento</h4>
+              <p>Empresas con beneficios financieros tienen hasta un 35% menos de rotación de personal.</p>
+            </div>
+          </div>
+          <div class="convenio-benefit">
+            <div class="convenio-benefit__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round">
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+              </svg></div>
+            <div>
+              <h4>Activación rápida</h4>
+              <p>En menos de 48 horas tu convenio estará activo y tus colaboradores podrán acceder a créditos.</p>
+            </div>
+          </div>
+          <div class="convenio-benefit">
+            <div class="convenio-benefit__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg></div>
+            <div>
+              <h4>Tasas preferenciales</h4>
+              <p>Tus empleados obtienen tasas de interés más bajas que el promedio del mercado gracias al convenio.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="section">
+    <div class="container">
+      <div class="cta-banner reveal-scale">
+        <div class="rhombus-deco rhombus-deco--1" style="border-color:rgba(255,255,255,.15)" aria-hidden="true"></div>
+        <div class="rhombus-deco rhombus-deco--4" style="border-color:rgba(255,255,255,.1)" aria-hidden="true"></div>
+        <h2>Únete a las más de 80 empresas que ya confían en nosotros</h2>
+        <p>Impulsa el bienestar financiero de tus colaboradores con un beneficio que no le cuesta nada a tu empresa.</p>
+        <a href="#formulario" class="btn btn--secondary btn--large btn-shimmer">
+          Registrar mi empresa
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">
+            <img src="../img/logo_credian.png" alt="CREDIAN Logo" class="footer__img">
+            <span class="footer__logo-text">CREDIAN</span>
+          </div>
+          <p class="footer__brand-desc">Somos una empresa financiera mexicana especializada en créditos de nómina. Más
+            de 10 años brindando soluciones financieras con transparencia y confianza.</p>
+          <div class="footer__social">
+            <a href="https://www.facebook.com/credian.mx/" class="footer__social-link" aria-label="Facebook"><svg
+                viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+              </svg></a>
+            <a href="https://www.instagram.com/credianmx/" class="footer__social-link" aria-label="Instagram"><svg
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="2" width="20" height="20" rx="5" />
+                <circle cx="12" cy="12" r="5" />
+              </svg></a>
+            <a href="https://www.linkedin.com/company/credian/posts/?feedView=all" class="footer__social-link"
+              aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z" />
+              </svg></a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__column-title">Páginas</h4><a href="../" class="footer__link"
+            data-internal>Inicio</a><a href="../nosotros/" class="footer__link" data-internal>Nosotros</a><a
+            href="../productos/" class="footer__link" data-internal>Productos</a><a href="../dudas/"
+            class="footer__link" data-internal>Dudas</a><a href="../contacto/" class="footer__link"
+            data-internal>Contacto</a><a href="../convenios/" class="footer__link"
+            data-internal>Convenios</a>
+        </div>
+        <div>
+          <h4 class="footer__column-title">Servicios</h4><a href="https://cotizador.credian.mx" class="footer__link"
+            target="_blank">Cotizador</a><a href="https://cib.logicsystems.com.mx/RECREA/LoginCredian.aspx?EMP=RECREA"
+            class="footer__link" target="_blank">Solicitar
+            crédito</a><a href="../productos/" class="footer__link" data-internal>Crédito de nómina</a>
+        </div>
+        <div>
+          <h4 class="footer__column-title">Contacto</h4>
+          <a href="tel:+52 444 962 5037" class="footer__link">+52 444 962 5037</a>
+          <a href="mailto:contacto@credian.mx" class="footer__link">contacto@credian.mx</a>
+          <a class="footer__link" href="https://maps.app.goo.gl/pszoTMPpHbt7NWdv6">
+            Cordillera Himalaya No. 830, Col. Lomas Cuarta Sección
+          </a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copy">&copy; <span id="current-year">2026</span> CREDIAN. Todos los derechos reservados.</p>
+        <div class="footer__legal"><a href="../docs/aviso_de_privacidad.pdf" target="_blank" rel="noopener">Aviso de
+            privacidad</a><a href="../docs/terminos_y_condiciones.pdf" target="_blank" rel="noopener">Términos y
+            condiciones</a></div>
+      </div>
+      <div class="footer__disclaimer">
+        <p>Financiera RECREA S.A. de C.V. SOFOM E.N.R., recibe las consultas, reclamaciones o aclaraciones, a través de
+          su Representante: Mariel Sandoval González, en su Unidad Especializada de Atención a Usuarios, ubicada en:
+          Calle Cordillera Himalaya No. 830, Col. Lomas Cuarta Sección, San Luis Potosí, S.L.P., C.P. 78216, y por
+          correo electrónico: une@credian.mx o al Teléfono: 444 962 5037, así como en cualquiera de sus sucursales u
+          oficinas. Horario de atención de Lunes a Viernes de 9:00 am a 15:00 pm y de 16:00 pm a 18:00 pm. En el caso de
+          no obtener una respuesta satisfactoria podrá acudir a CONDUSEF por medio de su página electrónica
+          www.condusef.gob.mx o en sus teléfonos 55 5340 0999 y 800 999 8080.</p>
+        <p>"Incumplir tus obligaciones puede generar Comisiones e Intereses Moratorios". "Contratar créditos que excedan
+          tu capacidad de pago afecta tu historial crediticio". "El avalista, obligado solidario o coacreditado
+          responderá como obligado principal por el total del pago frente a la Entidad Financiera".</p>
+        <p>Financiera RECREA, S.A. de C.V., SOFOM., E.N.R., para su constitución y operación con carácter de sociedad
+          financiera de objeto múltiple, entidad no regulada, no requiere autorización de la Secretaría de Hacienda y
+          Crédito Público y únicamente está sujeta a la supervisión de la Comisión Nacional Bancaria y de Valores para
+          efectos del artículo 56 de la Ley General de Organizaciones y Actividades Auxiliares de Crédito.</p>
+        <p>La información proporcionada en esta página es únicamente de Financiera RECREA, S.A. de C.V., SOFOM., E.N.R.,
+          para conocer la información de todo el sector, podrá acceder al sitio: <a href="http://www.buro.gob.mx"
+            target="_blank" rel="noopener"
+            style="color: inherit; text-decoration: underline;">http://www.buro.gob.mx</a></p>
+      </div>
+    </div>
+  </footer>
+  <script src="../js/nav.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/animations.js"></script>
+  <script>
+    /* ---- Convenios Form Handler ---- */
+    (function () {
+      'use strict';
+
+      const CONVENIOS_API_URL = 'https://credian-backend-rqvo.vercel.app/api/convenios';
+      const conveniosForm = document.getElementById('convenios-form');
+
+      if (!conveniosForm) return;
+
+      const inputs = conveniosForm.querySelectorAll('.form-input, .form-select');
+
+      inputs.forEach(input => {
+        input.addEventListener('blur', () => validateField(input));
+        input.addEventListener('input', () => {
+          if (input.classList.contains('error')) {
+            validateField(input);
+          }
+        });
+      });
+
+      conveniosForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        let valid = true;
+
+        inputs.forEach(input => {
+          if (!validateField(input)) valid = false;
+        });
+
+        if (valid) {
+          const btn = conveniosForm.querySelector('.btn');
+          const originalText = btn.innerHTML;
+
+          // --- Loading state ---
+          btn.innerHTML = `
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="animation:spin 1s linear infinite">
+              <circle cx="12" cy="12" r="10" stroke-dasharray="31.4 31.4" />
+            </svg>
+            Enviando...
+          `;
+          btn.style.pointerEvents = 'none';
+          btn.style.opacity = '0.85';
+
+          try {
+            const res = await fetch(CONVENIOS_API_URL, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                razonSocial: document.getElementById('razon-social').value,
+                nombreComercial: document.getElementById('nombre-comercial').value,
+                numEmpleados: document.getElementById('num-empleados').value,
+                telefono: document.getElementById('telefono-convenio').value,
+                email: document.getElementById('email-convenio').value,
+              }),
+            });
+
+            const data = await res.json();
+
+            if (res.ok && data.success) {
+              btn.innerHTML = `
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                ¡Solicitud enviada!
+              `;
+              btn.style.background = 'var(--color-green)';
+              btn.style.opacity = '1';
+
+              setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.style.background = '';
+                btn.style.pointerEvents = '';
+                btn.style.opacity = '';
+                conveniosForm.reset();
+                inputs.forEach(i => i.classList.remove('error', 'success'));
+              }, 4000);
+            } else {
+              const errorMsg = data.errors ? data.errors.join('. ') : 'Error al enviar la solicitud.';
+              btn.innerHTML = `
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                  <circle cx="12" cy="12" r="10"/>
+                  <line x1="15" y1="9" x2="9" y2="15"/>
+                  <line x1="9" y1="9" x2="15" y2="15"/>
+                </svg>
+                ${errorMsg}
+              `;
+              btn.style.background = '#e74c3c';
+              btn.style.opacity = '1';
+
+              setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.style.background = '';
+                btn.style.pointerEvents = '';
+                btn.style.opacity = '';
+              }, 4000);
+            }
+          } catch (err) {
+            console.error('Convenios form error:', err);
+            btn.innerHTML = `
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="12" y1="8" x2="12" y2="12"/>
+                <line x1="12" y1="16" x2="12.01" y2="16"/>
+              </svg>
+              Error de conexión. Intenta de nuevo.
+            `;
+            btn.style.background = '#e74c3c';
+            btn.style.opacity = '1';
+
+            setTimeout(() => {
+              btn.innerHTML = originalText;
+              btn.style.background = '';
+              btn.style.pointerEvents = '';
+              btn.style.opacity = '';
+            }, 4000);
+          }
+        }
+      });
+
+      function validateField(input) {
+        const value = input.value.trim();
+        const type = input.type;
+        const errorEl = input.parentElement.querySelector('.form-error');
+        let valid = true;
+
+        if (input.hasAttribute('required') && !value) {
+          valid = false;
+          if (errorEl) errorEl.textContent = 'Este campo es obligatorio';
+        } else if (type === 'email' && value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+          valid = false;
+          if (errorEl) errorEl.textContent = 'Ingresa un email válido';
+        } else if (type === 'tel' && value && !/^[\d\s\-\+\(\)]{8,15}$/.test(value)) {
+          valid = false;
+          if (errorEl) errorEl.textContent = 'Ingresa un teléfono válido';
+        }
+
+        if (valid) {
+          input.classList.remove('error');
+          input.classList.add('success');
+          if (errorEl) errorEl.style.display = 'none';
+        } else {
+          input.classList.add('error');
+          input.classList.remove('success');
+          if (errorEl) errorEl.style.display = 'block';
+        }
+
+        return valid;
+      }
+    })();
+  </script>
+</body>
+
+</html>
