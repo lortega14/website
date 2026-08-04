@@ -49,70 +49,98 @@ DATOS OFICIALES DE CREDIAN:
       id: 1, category: 'general',
       question: '¿Qué es un crédito de nómina?',
       shortLabel: 'Crédito de nómina',
-      keywords: ['credito', 'nomina', 'que es', 'prestamo', 'personal'],
+      keywords: ['credito de nomina', 'prestamo de nomina', 'nomina', 'prestamo personal'],
       answer: 'Un crédito de nómina es un préstamo personal que se descuenta directamente de tu salario quincenal o mensual. Al estar respaldado por tu nómina, ofrece tasas de interés más bajas que otros tipos de crédito personal, ya que el riesgo para la institución financiera es menor.'
     },
     {
-      id: 2, category: 'requisitos',
-      question: '¿Necesito tener buen historial crediticio?',
-      shortLabel: 'Historial crediticio',
-      keywords: ['historial', 'crediticio', 'buro', 'credito', 'buró', 'score'],
-      answer: 'Consultamos el buró de crédito como parte de nuestro análisis, pero no es el único factor determinante. Evaluamos tu capacidad de pago basándonos en tu ingreso neto, antigüedad laboral y estabilidad en el empleo. Incluso personas con historial crediticio limitado pueden ser aprobadas.'
+      id: 2, category: 'general',
+      question: '¿Qué es el Arrendamiento Puro (Leasing)?',
+      shortLabel: 'Arrendamiento Puro',
+      keywords: ['arrendamiento', 'arrendamiento puro', 'leasing', 'renta de equipo', 'renta vehiculos', 'rentar bien', 'valor residual'],
+      answer: 'El Arrendamiento Puro (Leasing) es un esquema financiero con atractivos beneficios fiscales en el cual se renta un bien a determinado plazo y con pagos mensuales fijos. Únicamente pagas por el tiempo que utilizas el bien y al finalizar el plazo tienes 3 opciones: 1) Comprarlo a valor residual, 2) Financiar la compra del valor residual, o 3) Regresar el bien.'
     },
     {
-      id: 3, category: 'proceso',
-      question: '¿Cuánto tiempo tarda la aprobación?',
-      shortLabel: 'Tiempo de aprobación',
-      keywords: ['tiempo', 'tarda', 'aprobacion', 'rapido', 'cuanto', 'demora', 'dias', 'horas'],
-      answer: 'El proceso de evaluación y dispersión se realiza en un plazo de 48 horas desde que recibimos tu documentación completa. Una vez aprobado tu crédito, el dinero se deposita directamente a tu cuenta bancaria.'
+      id: 3, category: 'general',
+      question: '¿Qué es el Arrendamiento Financiero?',
+      shortLabel: 'Arrendamiento Financiero',
+      keywords: ['arrendamiento financiero', 'compra de bien', 'financiamiento bien'],
+      answer: 'A diferencia del arrendamiento puro (leasing), el Arrendamiento Financiero no cuenta con valor residual ya que su finalidad desde el inicio es la adquisición definitiva del bien. Te permite financiamiento a tasa fija e inversiones con apalancamiento.'
     },
     {
       id: 4, category: 'general',
-      question: '¿Cuál es la tasa de interés?',
-      shortLabel: 'Tasa de interés',
-      keywords: ['tasa', 'interes', 'porcentaje', 'cat', 'costo', 'anual'],
-      answer: 'Nuestras tasas van desde el 14.9% hasta el 24.9% anual, dependiendo del plan elegido, monto solicitado, plazo y tu perfil crediticio. Un asesor puede darte una propuesta personalizada sin compromiso.'
+      question: '¿Qué es el Crédito PYME?',
+      shortLabel: 'Crédito PYME',
+      keywords: ['pyme', 'credito pyme', 'empresa', 'negocio', 'pequeñas empresas'],
+      answer: 'El Crédito PYME de CREDIAN está enfocado en brindar financiamiento a pequeñas y medianas empresas. Cuenta con tasa fija anual, plazos y periodos de pago a la medida de tu negocio y atención personalizada para impulsar tu crecimiento.'
     },
     {
-      id: 5, category: 'pagos',
-      question: '¿Puedo liquidar mi crédito antes del plazo?',
-      shortLabel: 'Liquidación anticipada',
-      keywords: ['liquidar', 'anticipado', 'antes', 'plazo', 'adelantar', 'pagar', 'terminar'],
-      answer: 'Sí, puedes realizar pagos anticipados o liquidar tu crédito en cualquier momento sin penalización alguna. Al hacerlo, solo pagarás los intereses generados hasta la fecha de liquidación, lo que te genera un ahorro significativo.'
+      id: 5, category: 'general',
+      question: '¿Qué es un Convenio Empresarial?',
+      shortLabel: 'Convenios Empresariales',
+      keywords: ['convenio', 'convenios', 'empresarial', 'convenio empresa', 'beneficio empleados', 'recursos humanos', 'rh'],
+      answer: 'Un Convenio Empresarial es un acuerdo **sin costo para tu empresa** que te permite ofrecer créditos de nómina como beneficio laboral para tus colaboradores. Se activa en menos de 48 horas, ofrece tasas preferenciales y no genera ningún gasto ni responsabilidad de deuda para la empresa.'
     },
     {
       id: 6, category: 'requisitos',
+      question: '¿Necesito tener buen historial crediticio?',
+      shortLabel: 'Historial crediticio',
+      keywords: ['historial crediticio', 'buro de credito', 'buro', 'buró', 'score crediticio'],
+      answer: 'Consultamos el buró de crédito como parte de nuestro análisis, pero no es el único factor determinante. Evaluamos tu capacidad de pago basándonos en tu ingreso neto, antigüedad laboral y estabilidad en el empleo. Incluso personas con historial crediticio limitado pueden ser aprobadas.'
+    },
+    {
+      id: 7, category: 'proceso',
+      question: '¿Cuánto tiempo tarda la aprobación y dispersión?',
+      shortLabel: 'Tiempo de respuesta',
+      keywords: ['tiempo de respuesta', 'cuanto tarda', 'aprobacion', 'dispersion', 'tiempo de aprobacion'],
+      answer: 'El proceso de evaluación y dispersión se realiza en un plazo de 48 horas desde que recibimos tu documentación completa. Una vez aprobado tu crédito, el dinero se deposita directamente a tu cuenta bancaria.'
+    },
+    {
+      id: 8, category: 'general',
+      question: '¿Cuál es la tasa de interés?',
+      shortLabel: 'Tasa de interés',
+      keywords: ['tasa de interes', 'tasas de interes', 'porcentaje de interes', 'cat', 'costo anual'],
+      answer: 'Nuestras tasas van desde el 14.9% hasta el 24.9% anual, dependiendo del plan elegido, monto solicitado, plazo y tu perfil crediticio. Un asesor puede darte una propuesta personalizada sin compromiso.'
+    },
+    {
+      id: 9, category: 'pagos',
+      question: '¿Puedo liquidar mi crédito antes del plazo?',
+      shortLabel: 'Liquidación anticipada',
+      keywords: ['liquidar antes', 'pago anticipado', 'liquidar credito', 'adelantar pagos', 'sin penalizacion'],
+      answer: 'Sí, puedes realizar pagos anticipados o liquidar tu crédito en cualquier momento sin penalización alguna. Al hacerlo, solo pagarás los intereses generados hasta la fecha de liquidación, lo que te genera un ahorro significativo.'
+    },
+    {
+      id: 10, category: 'requisitos',
       question: '¿Qué documentos necesito para solicitar?',
       shortLabel: 'Documentos necesarios',
-      keywords: ['documentos', 'requisitos', 'necesito', 'papeles', 'ine', 'identificacion', 'comprobante'],
+      keywords: ['documentos', 'requisitos', 'papeles', 'ine', 'pasaporte', 'comprobante domicilio', 'recibos de nomina'],
       answer: 'Necesitas: identificación oficial vigente (INE o pasaporte), comprobante de domicilio no mayor a 3 meses, últimos 3 recibos de nómina y estados de cuenta bancarios de los últimos 3 meses. Todo puede enviarse en formato digital.'
     },
     {
-      id: 7, category: 'pagos',
+      id: 11, category: 'pagos',
       question: '¿Cómo se descuenta de mi nómina?',
       shortLabel: 'Descuento de nómina',
-      keywords: ['descuento', 'descuenta', 'nomina', 'pago', 'automatico', 'quincena', 'salario'],
+      keywords: ['descuento de nomina', 'descuento quincenal', 'como se descuenta', 'porcentaje de sueldo'],
       answer: 'El pago se descuenta automáticamente de tu nómina a través de un convenio con tu empresa empleadora. El monto de la cuota nunca excederá el 30% de tu salario neto, garantizando que mantengas una capacidad financiera saludable.'
     },
     {
-      id: 8, category: 'proceso',
+      id: 12, category: 'proceso',
       question: '¿Puedo solicitar en línea o debo ir a una sucursal?',
       shortLabel: 'Solicitud en línea',
-      keywords: ['linea', 'online', 'sucursal', 'internet', 'presencial', 'oficina', 'solicitar'],
+      keywords: ['tramite en linea', 'solicitud online', 'sucursal', 'presencial', 'visitar oficina'],
       answer: 'Todo el proceso es 100% en línea. Desde la solicitud, envío de documentos, hasta la firma del contrato. No necesitas visitar ninguna sucursal. Tu asesor te acompañará por teléfono, WhatsApp o videollamada.'
     },
     {
-      id: 9, category: 'general',
+      id: 13, category: 'general',
       question: '¿Qué pasa si pierdo mi empleo?',
       shortLabel: 'Pérdida de empleo',
-      keywords: ['pierdo', 'empleo', 'trabajo', 'despido', 'desempleo', 'perder'],
+      keywords: ['pierdo mi empleo', 'despido', 'desempleo', 'perder trabajo'],
       answer: 'En caso de pérdida involuntaria de empleo, nos ponemos en contacto contigo para ofrecerte opciones de reestructuración de tu crédito y adaptar la forma de pago mientras consigues un nuevo empleo.'
     },
     {
-      id: 10, category: 'proceso',
+      id: 14, category: 'proceso',
       question: '¿Puedo renovar mi crédito?',
       shortLabel: 'Renovación de crédito',
-      keywords: ['renovar', 'renovacion', 'nuevo', 'otro', 'recredito', 'volver'],
+      keywords: ['renovar credito', 'renovacion', 'recredito', 'segundo credito'],
       answer: 'Sí, una vez que hayas pagado al menos el 50% de tu crédito actual, puedes solicitar una renovación. En muchos casos, los clientes recurrentes obtienen mejores tasas de interés y condiciones preferenciales por su buen historial de pago.'
     }
   ];
@@ -410,7 +438,7 @@ DATOS OFICIALES DE CREDIAN:
           best = faq;
         }
       });
-      return bestScore >= 2 ? best : null;
+      return bestScore >= 3 ? best : null;
     }
 
     // ---- Consulta a Gemini AI con memoria de conversación ----
