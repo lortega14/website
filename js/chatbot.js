@@ -32,14 +32,14 @@ DATOS OFICIALES DE CREDIAN:
 - Empresa: Financiera RECREA S.A. de C.V. SOFOM E.N.R. (CREDIAN)
 - Especialidad: Créditos de nómina para trabajadores del sector industrial, corporativo y PyMEs en México.
 - Experiencia: Más de 10 años en el mercado financiero.
-- Ventajas principales: Sin aval, evaluación rápida (respuesta en máximo 24h hábiles), dispersión directa a cuenta en 24 a 48h hábiles, sin trámites interminables.
+- Ventajas principales: Sin aval, evaluación y respuesta en 48 horas, sin trámites interminables.
 - Tasas de interés: Desde 14.9% hasta 24.9% anual (dependiendo del perfil, monto y plazo).
 - Pagos anticipados: Se pueden realizar pagos anticipados o liquidar el crédito antes de tiempo sin ninguna penalización ni recargo.
 - Descuento de nómina: Se descuenta automáticamente vía nómina por convenio con la empresa empleadora. Nunca excede el 30% del salario neto.
 - Requisitos principales: Identificación oficial vigente (INE o pasaporte), comprobante de domicilio (<3 meses), últimos 3 recibos de nómina y estados de cuenta bancarios (últimos 3 meses). Proceso 100% digital.
 - Historial crediticio / Buró: Se consulta Buró de crédito, pero no es determinante único. Se evalúa capacidad de pago y estabilidad laboral.
 - Renovación: Posible tras pagar al menos el 50% del crédito actual.
-- Seguro de desempleo: Disponible en plan Premium (cubre hasta 3 mensualidades por despido involuntario).
+- Pérdida de empleo: En caso de despido involuntario, ofrecemos alternativas de reestructuración para adaptar la forma de pago.
 - Contacto: Teléfono +52 444 962 5037, Correo: contacto@credian.mx / une@credian.mx, Dirección: Cordillera Himalaya No. 830, Col. Lomas 4ta Sección, San Luis Potosí, S.L.P.
   `;
 
@@ -64,7 +64,7 @@ DATOS OFICIALES DE CREDIAN:
       question: '¿Cuánto tiempo tarda la aprobación?',
       shortLabel: 'Tiempo de aprobación',
       keywords: ['tiempo', 'tarda', 'aprobacion', 'rapido', 'cuanto', 'demora', 'dias', 'horas'],
-      answer: 'El proceso de evaluación tarda un máximo de 24 horas hábiles desde que recibimos tu documentación completa. Una vez aprobado, la dispersión del dinero se realiza en 24 a 48 horas adicionales directamente a tu cuenta bancaria.'
+      answer: 'El proceso de evaluación y dispersión se realiza en un plazo de 48 horas desde que recibimos tu documentación completa. Una vez aprobado tu crédito, el dinero se deposita directamente a tu cuenta bancaria.'
     },
     {
       id: 4, category: 'general',
@@ -106,7 +106,7 @@ DATOS OFICIALES DE CREDIAN:
       question: '¿Qué pasa si pierdo mi empleo?',
       shortLabel: 'Pérdida de empleo',
       keywords: ['pierdo', 'empleo', 'trabajo', 'despido', 'desempleo', 'perder'],
-      answer: 'En caso de pérdida involuntaria de empleo, si cuentas con el plan Premium, el seguro de desempleo cubre hasta 3 mensualidades. Para los demás planes, podemos reestructurar tu crédito y cambiar la forma de pago a domiciliación bancaria mientras consigues un nuevo empleo.'
+      answer: 'En caso de pérdida involuntaria de empleo, nos ponemos en contacto contigo para ofrecerte opciones de reestructuración de tu crédito y adaptar la forma de pago mientras consigues un nuevo empleo.'
     },
     {
       id: 10, category: 'proceso',
