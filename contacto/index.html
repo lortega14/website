@@ -254,6 +254,10 @@
           <h3>Envíanos un mensaje</h3>
           <p>Completa el formulario y un asesor se pondrá en contacto contigo.</p>
           <form id="contact-form" novalidate>
+            <!-- Anti-Bot Honeypot Field -->
+            <div style="position: absolute; left: -9999px; top: -9999px; opacity: 0; pointer-events: none;" aria-hidden="true">
+              <input type="text" id="website_hp" name="website_hp" tabindex="-1" autocomplete="off">
+            </div>
             <div class="form-row">
               <div class="form-group">
                 <label class="form-label" for="nombre">Nombre completo *</label>

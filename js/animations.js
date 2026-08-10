@@ -180,6 +180,27 @@
   // PRODUCCIÓN: Cambia esta URL al dominio que te dé Vercel después del despliegue
   const CONTACT_API_URL = 'https://credian-backend.vercel.app/api/contact';
 
+  const formPageLoadTime = Date.now();
+
+  const isBotSubmission = (honeypotId, nombre, email, mensaje) => {
+    // 1. Honeypot check (hidden input filled by bot)
+    const hpVal = document.getElementById(honeypotId)?.value;
+    if (hpVal && hpVal.trim().length > 0) return true;
+
+    // 2. Time trap check (< 2.5 seconds after page load)
+    if (Date.now() - formPageLoadTime < 2500) return true;
+
+    // 3. Email dot trick check (e.g. ju.x.ur.o.ku.k.u7.66@gmail.com)
+    const emailUserPart = (email || '').split('@')[0] || '';
+    if ((emailUserPart.match(/\./g) || []).length > 3) return true;
+
+    // 4. Random base64 / gibberish detection (single long word >= 14 chars without spaces)
+    const isGibberish = str => str && str.length >= 14 && !str.includes(' ') && /[a-z]/.test(str) && /[A-Z]/.test(str);
+    if (isGibberish(nombre) || isGibberish(mensaje)) return true;
+
+    return false;
+  };
+
   const contactForm = document.getElementById('contact-form');
 
   if (contactForm) {
@@ -205,6 +226,31 @@
       if (valid) {
         const btn = contactForm.querySelector('.btn');
         const originalText = btn.innerHTML;
+
+        const nombreVal = document.getElementById('nombre').value;
+        const emailVal = document.getElementById('email').value;
+        const mensajeVal = document.getElementById('mensaje').value;
+
+        // --- Silent Anti-Bot Interception ---
+        if (isBotSubmission('website_hp', nombreVal, emailVal, mensajeVal)) {
+          btn.innerHTML = `
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            ¡Mensaje enviado!
+          `;
+          btn.style.background = 'var(--color-green)';
+          btn.style.opacity = '1';
+          setTimeout(() => {
+            btn.innerHTML = originalText;
+            btn.style.background = '';
+            btn.style.pointerEvents = '';
+            btn.style.opacity = '';
+            contactForm.reset();
+            inputs.forEach(i => i.classList.remove('error', 'success'));
+          }, 3000);
+          return;
+        }
 
         // --- Loading state ---
         btn.innerHTML = `

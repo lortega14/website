@@ -359,6 +359,10 @@
           <h3>Solicitud de convenio</h3>
           <p>Todos los campos marcados con * son obligatorios.</p>
           <form id="convenios-form" novalidate>
+            <!-- Anti-Bot Honeypot Field -->
+            <div style="position: absolute; left: -9999px; top: -9999px; opacity: 0; pointer-events: none;" aria-hidden="true">
+              <input type="text" id="convenios_hp" name="convenios_hp" tabindex="-1" autocomplete="off">
+            </div>
             <div class="form-group">
               <label class="form-label" for="razon-social">Razón social *</label>
               <input type="text" id="razon-social" class="form-input" placeholder="Razón social de la empresa"
@@ -583,6 +587,8 @@
         });
       });
 
+      const conveniosPageLoadTime = Date.now();
+
       conveniosForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         let valid = true;
@@ -594,6 +600,35 @@
         if (valid) {
           const btn = conveniosForm.querySelector('.btn');
           const originalText = btn.innerHTML;
+
+          const razonSocialVal = document.getElementById('razon-social').value;
+          const emailVal = document.getElementById('email-convenio').value;
+          const hpVal = document.getElementById('convenios_hp')?.value;
+
+          // --- Anti-Bot Checks ---
+          const isGibberish = str => str && str.length >= 14 && !str.includes(' ') && /[a-z]/.test(str) && /[A-Z]/.test(str);
+          const emailUserPart = (emailVal || '').split('@')[0] || '';
+          const isSpamEmail = (emailUserPart.match(/\./g) || []).length > 3;
+
+          if ((hpVal && hpVal.trim().length > 0) || (Date.now() - conveniosPageLoadTime < 2500) || isSpamEmail || isGibberish(razonSocialVal)) {
+            btn.innerHTML = `
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              ¡Solicitud enviada!
+            `;
+            btn.style.background = 'var(--color-green)';
+            btn.style.opacity = '1';
+            setTimeout(() => {
+              btn.innerHTML = originalText;
+              btn.style.background = '';
+              btn.style.pointerEvents = '';
+              btn.style.opacity = '';
+              conveniosForm.reset();
+              inputs.forEach(i => i.classList.remove('error', 'success'));
+            }, 3000);
+            return;
+          }
 
           // --- Loading state ---
           btn.innerHTML = `
