@@ -160,6 +160,7 @@
       margin-left: auto;
       margin-right: auto
     }
+
     /* ---- CHATBOT WIDGET ---- */
     .chatbot-toggle {
       position: fixed;
@@ -175,109 +176,311 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 6px 24px rgba(43,77,168,.35);
+      box-shadow: 0 6px 24px rgba(43, 77, 168, .35);
       transition: transform var(--transition-base), box-shadow var(--transition-base);
     }
-    .chatbot-toggle:hover { transform: scale(1.1); box-shadow: 0 8px 32px rgba(43,77,168,.45); }
-    .chatbot-toggle svg { width: 28px; height: 28px; color: #fff; transition: transform var(--transition-base); }
-    .chatbot-toggle.active svg.icon-chat { display: none; }
-    .chatbot-toggle:not(.active) svg.icon-close { display: none; }
+
+    .chatbot-toggle:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 32px rgba(43, 77, 168, .45);
+    }
+
+    .chatbot-toggle svg {
+      width: 28px;
+      height: 28px;
+      color: #fff;
+      transition: transform var(--transition-base);
+    }
+
+    .chatbot-toggle.active svg.icon-chat {
+      display: none;
+    }
+
+    .chatbot-toggle:not(.active) svg.icon-close {
+      display: none;
+    }
+
     .chatbot-toggle .chatbot-badge {
-      position: absolute; top: -4px; right: -4px; width: 20px; height: 20px;
-      background: #e74c3c; border-radius: 50%; font-size: 11px; font-weight: 700;
-      color: #fff; display: flex; align-items: center; justify-content: center;
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      width: 20px;
+      height: 20px;
+      background: #e74c3c;
+      border-radius: 50%;
+      font-size: 11px;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       animation: badgePulse 2s ease infinite;
     }
-    .chatbot-toggle.active .chatbot-badge { display: none; }
-    @keyframes badgePulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.15); } }
+
+    .chatbot-toggle.active .chatbot-badge {
+      display: none;
+    }
+
+    @keyframes badgePulse {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.15);
+      }
+    }
 
     .chatbot-window {
-      position: fixed; bottom: 6rem; right: 1.5rem; z-index: 2500;
-      width: 380px; max-width: calc(100vw - 2rem); height: 520px; max-height: calc(100vh - 8rem);
-      border-radius: var(--radius-xl); background: var(--color-white);
-      box-shadow: 0 20px 60px rgba(0,0,0,.18), 0 0 0 1px rgba(0,0,0,.04);
-      display: flex; flex-direction: column; overflow: hidden;
-      transform: scale(0.5) translateY(20px); opacity: 0; pointer-events: none;
-      transition: transform .35s cubic-bezier(.175,.885,.32,1.275), opacity .25s ease;
+      position: fixed;
+      bottom: 6rem;
+      right: 1.5rem;
+      z-index: 2500;
+      width: 380px;
+      max-width: calc(100vw - 2rem);
+      height: 520px;
+      max-height: calc(100vh - 8rem);
+      border-radius: var(--radius-xl);
+      background: var(--color-white);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, .18), 0 0 0 1px rgba(0, 0, 0, .04);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transform: scale(0.5) translateY(20px);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform .35s cubic-bezier(.175, .885, .32, 1.275), opacity .25s ease;
       transform-origin: bottom right;
     }
-    .chatbot-window.open { transform: scale(1) translateY(0); opacity: 1; pointer-events: all; }
+
+    .chatbot-window.open {
+      transform: scale(1) translateY(0);
+      opacity: 1;
+      pointer-events: all;
+    }
 
     .chatbot-header {
-      background: var(--gradient-brand); padding: 1.25rem 1.5rem;
-      display: flex; align-items: center; gap: .75rem; flex-shrink: 0;
+      background: var(--gradient-brand);
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      flex-shrink: 0;
     }
+
     .chatbot-avatar {
-      width: 40px; height: 40px; border-radius: var(--radius-full);
-      background: rgba(255,255,255,.2); display: flex; align-items: center;
-      justify-content: center; flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, .2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
     }
-    .chatbot-avatar svg { width: 22px; height: 22px; color: #fff; }
-    .chatbot-header-info h4 { color: #fff; font-size: var(--text-sm); font-weight: var(--fw-semibold); margin: 0; }
-    .chatbot-header-info p { color: rgba(255,255,255,.75); font-size: 12px; margin: 0; }
+
+    .chatbot-avatar svg {
+      width: 22px;
+      height: 22px;
+      color: #fff;
+    }
+
+    .chatbot-header-info h4 {
+      color: #fff;
+      font-size: var(--text-sm);
+      font-weight: var(--fw-semibold);
+      margin: 0;
+    }
+
+    .chatbot-header-info p {
+      color: rgba(255, 255, 255, .75);
+      font-size: 12px;
+      margin: 0;
+    }
 
     .chatbot-messages {
-      flex: 1; overflow-y: auto; padding: 1.25rem; display: flex;
-      flex-direction: column; gap: .75rem; scroll-behavior: smooth;
+      flex: 1;
+      overflow-y: auto;
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+      scroll-behavior: smooth;
     }
-    .chatbot-messages::-webkit-scrollbar { width: 4px; }
-    .chatbot-messages::-webkit-scrollbar-thumb { background: var(--color-gray-mid); border-radius: 4px; }
+
+    .chatbot-messages::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .chatbot-messages::-webkit-scrollbar-thumb {
+      background: var(--color-gray-mid);
+      border-radius: 4px;
+    }
 
     .chat-msg {
-      max-width: 85%; padding: .85rem 1.1rem; font-size: 13.5px; line-height: 1.6;
-      animation: msgSlideIn .3s ease; word-wrap: break-word;
+      max-width: 85%;
+      padding: .85rem 1.1rem;
+      font-size: 13.5px;
+      line-height: 1.6;
+      animation: msgSlideIn .3s ease;
+      word-wrap: break-word;
     }
-    @keyframes msgSlideIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+    @keyframes msgSlideIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     .chat-msg--bot {
-      align-self: flex-start; background: var(--color-gray-light);
-      border-radius: 4px 16px 16px 16px; color: var(--color-dark);
+      align-self: flex-start;
+      background: var(--color-gray-light);
+      border-radius: 4px 16px 16px 16px;
+      color: var(--color-dark);
     }
+
     .chat-msg--user {
-      align-self: flex-end; background: var(--color-blue);
-      border-radius: 16px 4px 16px 16px; color: #fff;
+      align-self: flex-end;
+      background: var(--color-blue);
+      border-radius: 16px 4px 16px 16px;
+      color: #fff;
     }
 
-    .chat-chips { display: flex; flex-wrap: wrap; gap: .4rem; animation: msgSlideIn .3s ease; }
+    .chat-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+      animation: msgSlideIn .3s ease;
+    }
+
     .chat-chip {
-      padding: .45rem .85rem; font-size: 12.5px; border-radius: var(--radius-pill);
-      border: 1px solid var(--color-blue); color: var(--color-blue);
-      background: rgba(43,77,168,.04); cursor: pointer; font-family: var(--font-body);
-      transition: all var(--transition-fast); line-height: 1.3;
+      padding: .45rem .85rem;
+      font-size: 12.5px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--color-blue);
+      color: var(--color-blue);
+      background: rgba(43, 77, 168, .04);
+      cursor: pointer;
+      font-family: var(--font-body);
+      transition: all var(--transition-fast);
+      line-height: 1.3;
     }
-    .chat-chip:hover { background: var(--color-blue); color: #fff; }
 
-    .chat-typing { display: flex; gap: 4px; align-self: flex-start; padding: .85rem 1.1rem;
-      background: var(--color-gray-light); border-radius: 4px 16px 16px 16px; }
+    .chat-chip:hover {
+      background: var(--color-blue);
+      color: #fff;
+    }
+
+    .chat-typing {
+      display: flex;
+      gap: 4px;
+      align-self: flex-start;
+      padding: .85rem 1.1rem;
+      background: var(--color-gray-light);
+      border-radius: 4px 16px 16px 16px;
+    }
+
     .chat-typing span {
-      width: 7px; height: 7px; border-radius: 50%; background: var(--color-gray-text);
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--color-gray-text);
       animation: typingDot 1.4s ease infinite;
     }
-    .chat-typing span:nth-child(2) { animation-delay: .2s; }
-    .chat-typing span:nth-child(3) { animation-delay: .4s; }
-    @keyframes typingDot { 0%,60%,100% { transform: translateY(0); opacity: .4; } 30% { transform: translateY(-6px); opacity: 1; } }
+
+    .chat-typing span:nth-child(2) {
+      animation-delay: .2s;
+    }
+
+    .chat-typing span:nth-child(3) {
+      animation-delay: .4s;
+    }
+
+    @keyframes typingDot {
+
+      0%,
+      60%,
+      100% {
+        transform: translateY(0);
+        opacity: .4;
+      }
+
+      30% {
+        transform: translateY(-6px);
+        opacity: 1;
+      }
+    }
 
     .chatbot-input-area {
-      padding: .75rem 1rem; border-top: 1px solid var(--color-gray-mid);
-      display: flex; gap: .5rem; flex-shrink: 0; background: #fff;
+      padding: .75rem 1rem;
+      border-top: 1px solid var(--color-gray-mid);
+      display: flex;
+      gap: .5rem;
+      flex-shrink: 0;
+      background: #fff;
     }
+
     .chatbot-input {
-      flex: 1; padding: .7rem 1rem; border: 1px solid var(--color-gray-mid);
-      border-radius: var(--radius-pill); font-size: 13.5px; font-family: var(--font-body);
-      outline: none; transition: border-color var(--transition-fast);
+      flex: 1;
+      padding: .7rem 1rem;
+      border: 1px solid var(--color-gray-mid);
+      border-radius: var(--radius-pill);
+      font-size: 13.5px;
+      font-family: var(--font-body);
+      outline: none;
+      transition: border-color var(--transition-fast);
     }
-    .chatbot-input:focus { border-color: var(--color-blue); }
+
+    .chatbot-input:focus {
+      border-color: var(--color-blue);
+    }
+
     .chatbot-send {
-      width: 38px; height: 38px; border-radius: var(--radius-full); border: none;
-      background: var(--gradient-brand); color: #fff; cursor: pointer;
-      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius-full);
+      border: none;
+      background: var(--gradient-brand);
+      color: #fff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
       transition: transform var(--transition-fast);
     }
-    .chatbot-send:hover { transform: scale(1.1); }
-    .chatbot-send svg { width: 18px; height: 18px; }
+
+    .chatbot-send:hover {
+      transform: scale(1.1);
+    }
+
+    .chatbot-send svg {
+      width: 18px;
+      height: 18px;
+    }
 
     @media(max-width:480px) {
-      .chatbot-window { width: calc(100vw - 1rem); right: .5rem; bottom: 5rem; height: 60vh; }
-      .chatbot-toggle { bottom: 1rem; right: 1rem; width: 54px; height: 54px; }
+      .chatbot-window {
+        width: calc(100vw - 1rem);
+        right: .5rem;
+        bottom: 5rem;
+        height: 60vh;
+      }
+
+      .chatbot-toggle {
+        bottom: 1rem;
+        right: 1rem;
+        width: 54px;
+        height: 54px;
+      }
     }
   </style>
 </head>
@@ -292,12 +495,14 @@
         <img src="../img/logo_credian.png" alt="CREDIAN Logo" class="navbar__img">
         <span class="navbar__logo-text">CREDIAN</span>
       </a>
-      <div class="navbar__links"><a href="../" class="navbar__link" data-internal>Inicio</a><a
-          href="../nosotros/" class="navbar__link" data-internal>Nosotros</a><a href="../productos/"
-          class="navbar__link" data-internal>Productos</a><a href="../dudas/" class="navbar__link active"
-          data-internal>Dudas</a><a href="../contacto/" class="navbar__link" data-internal>Contacto</a><a href="../convenios/" class="navbar__link" data-internal>Convenios</a></div>
+      <div class="navbar__links"><a href="../" class="navbar__link" data-internal>Inicio</a><a href="../nosotros/"
+          class="navbar__link" data-internal>Nosotros</a><a href="../productos/" class="navbar__link"
+          data-internal>Productos</a><a href="../dudas/" class="navbar__link active" data-internal>Dudas</a><a
+          href="../contacto/" class="navbar__link" data-internal>Contacto</a><a href="../convenios/"
+          class="navbar__link" data-internal>Convenios</a></div>
       <div class="navbar__actions"><a href="https://cotizador.credian.mx/" class="navbar__cotizador"
-          target="_blank">Cotizador</a><a href="https://cib.logicsystems.com.mx/RECREA/LoginCredian.aspx?EMP=RECREA"
+          target="_blank">Cotizador</a><a
+          href="https://wa.me/15557277347?text=Hola%2C%20quiero%20solicitar%20un%20cr%C3%A9dito"
           class="navbar__cta btn-shimmer" target="_blank">Solicita tu crédito de nómina</a></div>
       <button class="navbar__hamburger" aria-label="Abrir menú"><span></span><span></span><span></span></button>
     </div>
@@ -305,9 +510,12 @@
   <div class="mobile-menu" aria-hidden="true"><a href="../" class="mobile-menu__link" data-internal>Inicio</a><a
       href="../nosotros/" class="mobile-menu__link" data-internal>Nosotros</a><a href="../productos/"
       class="mobile-menu__link" data-internal>Productos</a><a href="../dudas/" class="mobile-menu__link"
-      data-internal>Dudas</a><a href="../contacto/" class="mobile-menu__link" data-internal>Contacto</a><a href="../convenios/" class="mobile-menu__link" data-internal>Convenios</a>
+      data-internal>Dudas</a><a href="../contacto/" class="mobile-menu__link" data-internal>Contacto</a><a
+      href="../convenios/" class="mobile-menu__link" data-internal>Convenios</a>
     <div class="mobile-menu__divider"></div><a href="https://cotizador.credian.mx/" class="mobile-menu__link"
-      target="_blank" rel="noopener">Cotizador</a><a href="https://cib.logicsystems.com.mx/RECREA/LoginCredian.aspx?EMP=RECREA" class="mobile-menu__link" target="_blank" rel="noopener">Solicitar crédito</a>
+      target="_blank" rel="noopener">Cotizador</a><a
+      href="https://wa.me/15557277347?text=Hola%2C%20quiero%20solicitar%20un%20cr%C3%A9dito" class="mobile-menu__link"
+      target="_blank" rel="noopener">Solicitar crédito</a>
   </div>
 
   <!-- HERO -->
@@ -382,7 +590,8 @@
                 <polyline points="6 9 12 15 18 9" />
               </svg></span></button>
           <div class="accordion-content">
-            <p>El proceso de evaluación y respuesta se realiza en un plazo de 48 horas. Una vez aprobado tu crédito, la dispersión del dinero se realiza directamente a tu cuenta bancaria.</p>
+            <p>El proceso de evaluación y respuesta se realiza en un plazo de 48 horas. Una vez aprobado tu crédito, la
+              dispersión del dinero se realiza directamente a tu cuenta bancaria.</p>
           </div>
         </div>
 
@@ -458,7 +667,8 @@
                 <polyline points="6 9 12 15 18 9" />
               </svg></span></button>
           <div class="accordion-content">
-            <p>En caso de pérdida involuntaria de empleo, nos ponemos en contacto contigo para ofrecerte alternativas de reestructuración de tu crédito y adaptar la forma de pago mientras consigues un nuevo empleo.</p>
+            <p>En caso de pérdida involuntaria de empleo, nos ponemos en contacto contigo para ofrecerte alternativas de
+              reestructuración de tu crédito y adaptar la forma de pago mientras consigues un nuevo empleo.</p>
           </div>
         </div>
 
@@ -488,14 +698,23 @@
 
   <!-- CHATBOT WIDGET -->
   <button class="chatbot-toggle" id="chatbot-toggle" aria-label="Abrir asistente virtual">
-    <svg class="icon-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-    <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    <svg class="icon-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+    </svg>
+    <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round">
+      <line x1="18" y1="6" x2="6" y2="18" />
+      <line x1="6" y1="6" x2="18" y2="18" />
+    </svg>
     <span class="chatbot-badge">1</span>
   </button>
   <div class="chatbot-window" id="chatbot-window">
     <div class="chatbot-header">
       <div class="chatbot-avatar">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+        </svg>
       </div>
       <div class="chatbot-header-info">
         <h4>Asistente CREDIAN</h4>
@@ -504,9 +723,13 @@
     </div>
     <div class="chatbot-messages" id="chatbot-messages"></div>
     <div class="chatbot-input-area">
-      <input type="text" class="chatbot-input" id="chatbot-input" placeholder="Escribe tu pregunta..." aria-label="Escribe tu pregunta">
+      <input type="text" class="chatbot-input" id="chatbot-input" placeholder="Escribe tu pregunta..."
+        aria-label="Escribe tu pregunta">
       <button class="chatbot-send" id="chatbot-send" aria-label="Enviar">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="22" y1="2" x2="11" y2="13" />
+          <polygon points="22 2 15 22 11 13 2 9 22 2" />
+        </svg>
       </button>
     </div>
   </div>
@@ -540,12 +763,11 @@
           </div>
         </div>
         <div>
-          <h4 class="footer__column-title">Páginas</h4><a href="../" class="footer__link"
-            data-internal>Inicio</a><a href="../nosotros/" class="footer__link" data-internal>Nosotros</a><a
-            href="../productos/" class="footer__link" data-internal>Productos</a><a href="../dudas/"
-            class="footer__link" data-internal>Dudas</a><a href="../contacto/" class="footer__link"
-            data-internal>Contacto</a><a href="../convenios/" class="footer__link"
-            data-internal>Convenios</a>
+          <h4 class="footer__column-title">Páginas</h4><a href="../" class="footer__link" data-internal>Inicio</a><a
+            href="../nosotros/" class="footer__link" data-internal>Nosotros</a><a href="../productos/"
+            class="footer__link" data-internal>Productos</a><a href="../dudas/" class="footer__link"
+            data-internal>Dudas</a><a href="../contacto/" class="footer__link" data-internal>Contacto</a><a
+            href="../convenios/" class="footer__link" data-internal>Convenios</a>
         </div>
         <div>
           <h4 class="footer__column-title">Servicios</h4><a href="https://cotizador.credian.mx" class="footer__link"
@@ -564,9 +786,10 @@
       </div>
       <div class="footer__bottom">
         <p class="footer__copy">&copy; <span id="current-year">2026</span> CREDIAN. Todos los derechos reservados.</p>
-        <div class="footer__legal"><a href="../docs/aviso_de_privacidad.pdf" target="_blank" rel="noopener">Aviso de privacidad</a><a
-            href="../docs/terminos_y_condiciones.pdf" target="_blank" rel="noopener">Términos y condiciones</a><a
-            href="../docs/terminos_y_condiciones_SUBE.pdf" target="_blank" rel="noopener">Términos y condiciones SUBE</a></div>
+        <div class="footer__legal"><a href="../docs/aviso_de_privacidad.pdf" target="_blank" rel="noopener">Aviso de
+            privacidad</a><a href="../docs/terminos_y_condiciones.pdf" target="_blank" rel="noopener">Términos y
+            condiciones</a><a href="../docs/terminos_y_condiciones_SUBE.pdf" target="_blank" rel="noopener">Términos y
+            condiciones SUBE</a></div>
       </div>
       <div class="footer__disclaimer">
         <p>Financiera RECREA S.A. de C.V. SOFOM E.N.R., recibe las consultas, reclamaciones o aclaraciones, a través de
@@ -575,7 +798,10 @@
           correo electrónico: une@credian.mx o al Teléfono: 444 962 5037, así como en cualquiera de sus sucursales u
           oficinas. Horario de atención de lunes a viernes de 9:00 a 15:00 hrs y de 16:00 a 18:00 hrs. En el caso de
           no obtener una respuesta satisfactoria podrá acudir a CONDUSEF por medio de su página electrónica
-          <a href="https://www.condusef.gob.mx" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline;">www.condusef.gob.mx</a> o en sus teléfonos 55 5340 0999 y 800 999 8080.</p>
+          <a href="https://www.condusef.gob.mx" target="_blank" rel="noopener"
+            style="color: inherit; text-decoration: underline;">www.condusef.gob.mx</a> o en sus teléfonos 55 5340 0999
+          y 800 999 8080.
+        </p>
         <p>“Incumplir tus obligaciones puede generar Comisiones e Intereses Moratorios”. “Contratar créditos que excedan
           tu capacidad de pago afecta tu historial crediticio”. “El avalista, obligado solidario o coacreditado
           responderá como obligado principal por el total del pago frente a la Entidad Financiera”.</p>
