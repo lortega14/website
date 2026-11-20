@@ -6,6 +6,20 @@
 (function () {
   'use strict';
 
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ---- Títulos de portada: aparecen línea por línea ----
+  // Cada línea (separada por <br>) se envuelve en una máscara que la deja subir.
+  if (!reduceMotion) {
+    document.querySelectorAll('.hero__title').forEach((title) => {
+      const lines = title.innerHTML.split(/<br\s*\/?>/i).map((l) => l.trim()).filter(Boolean);
+      title.innerHTML = lines
+        .map((line, i) => `<span class="line"><span class="line__inner" style="animation-delay:${(0.2 + i * 0.12).toFixed(2)}s">${line}</span></span>`)
+        .join('');
+      title.classList.remove('hero-enter');
+    });
+  }
+
   // ---- Intersection Observer for Scroll Reveal ----
   const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .timeline-item');
 
@@ -13,14 +27,22 @@
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('revealed');
+          const el = entry.target;
+          el.classList.add('revealed');
+          // Al terminar la entrada se quita el retraso de cascada,
+          // para que los efectos al pasar el cursor respondan al instante.
+          el.addEventListener('transitionend', function clearStagger(ev) {
+            if (ev.target !== el || ev.propertyName !== 'opacity') return;
+            el.className = el.className.replace(/stagger-\d/g, '').trim();
+            el.removeEventListener('transitionend', clearStagger);
+          });
           // Don't unobserve — keeps the animation visible
           revealObserver.unobserve(entry.target);
         }
       });
     }, {
       threshold: 0.12,
-      rootMargin: '0px 0px -60px 0px'
+      rootMargin: '0px 0px -8% 0px'
     });
 
     revealElements.forEach(el => revealObserver.observe(el));
@@ -204,7 +226,7 @@
   const contactForm = document.getElementById('contact-form');
 
   if (contactForm) {
-    const inputs = contactForm.querySelectorAll('.form-input, .form-textarea, .form-select');
+    const inputs = contactForm.querySelectorAll('.form-input, .form-textarea, .form-select, .form-checkbox');
 
     inputs.forEach(input => {
       input.addEventListener('blur', () => validateField(input));
@@ -345,18 +367,23 @@
   function validateField(input) {
     const value = input.value.trim();
     const type = input.type;
-    const errorEl = input.parentElement.querySelector('.form-error');
+    const errorEl = (input.closest('.form-group') || input.parentElement).querySelector('.form-error');
     let valid = true;
 
-    if (input.hasAttribute('required') && !value) {
+    if (type === 'checkbox') {
+      if (input.hasAttribute('required') && !input.checked) {
+        valid = false;
+        if (errorEl) errorEl.textContent = 'Para continuar, acepta el Aviso de privacidad';
+      }
+    } else if (input.hasAttribute('required') && !value) {
       valid = false;
       if (errorEl) errorEl.textContent = 'Este campo es obligatorio';
     } else if (type === 'email' && value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
       valid = false;
       if (errorEl) errorEl.textContent = 'Ingresa un email válido';
-    } else if (type === 'tel' && value && !/^[\d\s\-\+\(\)]{8,15}$/.test(value)) {
+    } else if (type === 'tel' && value && (value.replace(/\D/g, '').length < 10 || !/^[\d\s\-\+\(\)]{10,20}$/.test(value))) {
       valid = false;
-      if (errorEl) errorEl.textContent = 'Ingresa un teléfono válido';
+      if (errorEl) errorEl.textContent = 'Ingresa un teléfono de 10 dígitos';
     }
 
     if (valid) {

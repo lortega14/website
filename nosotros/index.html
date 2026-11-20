@@ -8,202 +8,299 @@
   <link rel="icon" href="../img/credian.ico" type="image/x-icon">
   <meta name="description"
     content="Conoce la historia, misión y equipo de CREDIAN. Más de 10 años ayudando a miles de mexicanos con créditos de nómina confiables.">
+  <!-- Dirección oficial y vista previa al compartir -->
+  <link rel="canonical" href="https://www.credian.mx/nosotros/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="CREDIAN">
+  <meta property="og:locale" content="es_MX">
+  <meta property="og:url" content="https://www.credian.mx/nosotros/">
+  <meta property="og:title" content="Somos CREDIAN | Más de 10 años en crédito de nómina">
+  <meta property="og:description" content="Conoce la historia, misión y equipo de CREDIAN. Más de 10 años ayudando a miles de mexicanos con créditos de nómina confiables.">
+  <meta property="og:image" content="https://www.credian.mx/img/og/nosotros.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Somos CREDIAN | Más de 10 años en crédito de nómina">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Somos CREDIAN | Más de 10 años en crédito de nómina">
+  <meta name="twitter:description" content="Conoce la historia, misión y equipo de CREDIAN. Más de 10 años ayudando a miles de mexicanos con créditos de nómina confiables.">
+  <meta name="twitter:image" content="https://www.credian.mx/img/og/nosotros.jpg">
+  <link rel="preload" href="../font/nexa-bold.otf" as="font" type="font/otf" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+  <noscript>
+    <style>
+      .reveal, .reveal-left, .reveal-right, .reveal-scale, .hero-enter { opacity: 1 !important; transform: none !important; }
+    </style>
+  </noscript>
   <link rel="stylesheet" href="../css/reset.css">
   <link rel="stylesheet" href="../css/variables.css">
   <link rel="stylesheet" href="../css/animations.css">
-  <link rel="stylesheet" href="../css/global.css?v=1.1">
+  <link rel="stylesheet" href="../css/global.css?v=1.8">
+  <!-- Créditos (incluye la tipografía Nexa, requisito de su licencia) -->
+  <link rel="author" href="../humans.txt">
   <style>
     .about-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 0.85fr 1fr;
       gap: var(--space-3xl);
       align-items: center
     }
 
+    /* Misión: la manga con el logo bordado. El fondo blanco de la foto
+       toma el tono de la marca, igual que las fotos del equipo. */
     .about-grid__img {
-      border-radius: var(--radius-xl);
-      overflow: hidden;
       position: relative;
-      aspect-ratio: 4/3;
-      background: var(--gradient-brand)
+      aspect-ratio: 1;
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--color-gray-light)
     }
 
     .about-grid__img img {
       width: 100%;
       height: 100%;
-      object-fit: cover
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: 72% 42%;
+      mix-blend-mode: multiply
     }
 
-    .about-grid__img::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(43, 77, 168, .15), rgba(58, 170, 110, .1));
-      pointer-events: none
-    }
-
+    /* Valores: columnas abiertas, como en inicio */
     .values-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: var(--space-xl)
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: var(--space-2xl) var(--space-xl)
     }
 
     .value-card {
-      background: var(--color-white);
-      border-radius: var(--radius-lg);
-      padding: var(--space-2xl);
-      text-align: center;
-      border: 1px solid rgba(0, 0, 0, .04);
-      box-shadow: var(--shadow-sm);
-      transition: all var(--transition-base);
       position: relative;
-      overflow: hidden
+      padding: var(--space-lg) 0 0;
+      border-top: 2px solid var(--color-gray-mid);
+      text-align: left
     }
 
     .value-card::before {
       content: '';
       position: absolute;
-      top: 0;
+      top: -2px;
       left: 0;
       right: 0;
-      height: 3px;
-      background: var(--gradient-brand);
+      height: 2px;
+      background: var(--color-green);
       transform: scaleX(0);
-      transition: transform var(--transition-base);
-      transform-origin: left
+      transform-origin: left;
+      transition: transform 1.1s var(--ease-out) .25s
     }
 
-    .value-card:hover::before {
+    .value-card.revealed::before {
       transform: scaleX(1)
     }
 
-    .value-card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow-card-hover)
-    }
-
     .value-card__icon {
-      width: 64px;
-      height: 64px;
-      border-radius: var(--radius-full);
-      background: linear-gradient(135deg, rgba(43, 77, 168, .08), rgba(58, 170, 110, .08));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto var(--space-lg);
-      color: var(--color-blue);
-      transition: all var(--transition-base)
-    }
-
-    .value-card:hover .value-card__icon {
-      background: var(--gradient-brand);
-      color: #fff;
-      transform: scale(1.1)
+      margin-bottom: var(--space-md);
+      color: var(--color-green-dark)
     }
 
     .value-card__icon svg {
       width: 28px;
-      height: 28px
+      height: 28px;
+      transition: transform var(--transition-base)
     }
 
-    .value-card h4 {
+    .value-card:hover .value-card__icon svg {
+      transform: translateY(-3px)
+    }
+
+    .value-card h3 {
+      font-size: var(--text-xl);
       margin-bottom: var(--space-sm)
     }
 
+    /* ---- Equipo ---- */
+    .team-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: var(--space-xl);
+      margin-bottom: var(--space-2xl)
+    }
+
+    .team-head .section__header {
+      margin-bottom: 0
+    }
+
+    .team-controls {
+      display: flex;
+      gap: var(--space-sm);
+      flex-shrink: 0
+    }
+
+    /* Botones con las piezas del logo: azul para regresar, verde para avanzar */
+    .team-btn {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      border: 1.5px solid var(--color-gray-mid);
+      border-radius: 8px;
+      background: var(--color-white);
+      cursor: pointer;
+      transition: border-color var(--transition-base), background-color var(--transition-base), transform var(--transition-fast)
+    }
+
+    .team-btn svg {
+      width: 14px;
+      height: 19px;
+      transition: transform var(--transition-base)
+    }
+
+    .team-btn:hover {
+      border-color: var(--color-blue);
+      background: var(--color-gray-light)
+    }
+
+    .team-btn--prev:hover svg {
+      transform: translateX(-3px)
+    }
+
+    .team-btn--next:hover svg {
+      transform: translateX(3px)
+    }
+
+    .team-btn:active {
+      transform: scale(.95)
+    }
+
     .team-carousel-wrapper {
-      overflow: hidden;
       position: relative;
       width: 100vw;
       left: 50%;
       transform: translateX(-50%);
-      padding: var(--space-sm) 0;
-      /* mask-image to fade edges subtly */
-      -webkit-mask-image: linear-gradient(to right, transparent, black 2%, black 98%, transparent);
-      mask-image: linear-gradient(to right, transparent, black 2%, black 98%, transparent);
+      overflow: hidden;
+      padding: var(--space-xs) 0;
+      cursor: grab;
+      touch-action: pan-y;
+      user-select: none;
+      -webkit-user-select: none;
+      /* desvanecido de bordes (máscara, no color) */
+      -webkit-mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+      mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent)
+    }
+
+    .team-carousel-wrapper.is-dragging {
+      cursor: grabbing
+    }
+
+    .team-carousel-wrapper:focus-visible {
+      outline: 2px solid var(--color-blue);
+      outline-offset: -2px
     }
 
     .team-carousel-track {
       display: flex;
-      gap: var(--space-xl);
       width: max-content;
-      animation: scrollTrack 45s linear infinite;
-    }
-
-    .team-carousel-track:hover {
-      animation-play-state: paused;
+      will-change: transform
     }
 
     .team-carousel-group {
       display: flex;
-      gap: var(--space-xl);
-      padding: 0 calc(var(--space-xl) / 2);
-    }
-
-    @keyframes scrollTrack {
-      0% {
-        transform: translateX(0);
-      }
-
-      100% {
-        transform: translateX(-50%);
-      }
+      gap: var(--space-lg);
+      padding-right: var(--space-lg)
     }
 
     .team-card {
-      background: var(--color-white);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      box-shadow: var(--shadow-sm);
-      transition: all var(--transition-base);
-      border: 1px solid rgba(0, 0, 0, .04);
-      width: 260px;
-      flex-shrink: 0;
+      width: 240px;
+      flex-shrink: 0
     }
 
-    .team-card:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--shadow-card-hover)
-    }
-
+    /* La foto se funde con un fondo de marca: los fondos blancos de las fotos
+       toman el tono del marco, que cambia al pasar el cursor. */
     .team-card__photo {
-      aspect-ratio: 1;
-      background: var(--color-gray-light);
       position: relative;
-      overflow: hidden
+      aspect-ratio: 4/5;
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--color-gray-light);
+      transition: background-color .6s var(--ease-out)
     }
 
     .team-card__photo img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform var(--transition-slow)
+      object-position: center top;
+      mix-blend-mode: multiply;
+      pointer-events: none;
+      transition: transform .9s var(--ease-out)
+    }
+
+    .team-card__photo::after {
+      content: '';
+      position: absolute;
+      right: 14px;
+      bottom: 14px;
+      width: 15px;
+      height: 20px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 372 500'%3E%3Cpolygon fill='%2329AD6D' points='0,120 120,0 372,250 120,500 0,380 128,250'/%3E%3C/svg%3E") no-repeat center / contain;
+      opacity: 0;
+      transform: translateX(10px);
+      transition: opacity .4s ease, transform .6s var(--ease-out)
+    }
+
+    .team-card:hover .team-card__photo {
+      background: #DCE7F3
     }
 
     .team-card:hover .team-card__photo img {
-      transform: scale(1.05)
+      transform: scale(1.04)
+    }
+
+    .team-card:hover .team-card__photo::after {
+      opacity: 1;
+      transform: none
     }
 
     .team-card__info {
-      padding: var(--space-lg)
+      padding: var(--space-md) 0 0
     }
 
     .team-card__name {
       font-size: var(--text-lg);
-      margin-bottom: 4px
+      margin-bottom: 2px
     }
 
     .team-card__role {
-      color: var(--color-blue);
+      color: var(--color-green-dark);
       font-size: var(--text-sm);
       font-weight: var(--fw-medium)
     }
 
-    /* Timeline */
+    .team-hint {
+      margin-top: var(--space-lg);
+      font-size: var(--text-sm);
+      color: var(--color-gray-text)
+    }
+
+    @media (max-width: 640px) {
+      .team-head {
+        flex-direction: column;
+        align-items: flex-start
+      }
+
+      .team-card {
+        width: 200px
+      }
+    }
+
+    /* Timeline: los puntos quedan exactamente sobre la línea */
     .timeline {
       position: relative;
-      max-width: 800px;
+      max-width: 860px;
       margin: 0 auto;
-      padding: var(--space-2xl) 0
+      padding: var(--space-xl) 0
     }
 
     .timeline__line {
@@ -222,8 +319,8 @@
       top: 0;
       width: 100%;
       height: 0;
-      background: var(--gradient-brand);
-      transition: height 2s ease
+      background: var(--color-green);
+      transition: height 2.4s var(--ease-out)
     }
 
     .timeline__line-fill.animate {
@@ -232,59 +329,79 @@
 
     .timeline__item {
       position: relative;
-      width: 45%;
+      width: 50%;
       margin-bottom: var(--space-2xl)
     }
 
     .timeline__item:nth-child(odd) {
-      margin-left: 0;
       text-align: right;
       padding-right: var(--space-2xl)
     }
 
     .timeline__item:nth-child(even) {
-      margin-left: auto;
+      margin-left: 50%;
       text-align: left;
       padding-left: var(--space-2xl)
     }
 
     .timeline__dot {
       position: absolute;
-      top: 8px;
-      width: 16px;
-      height: 16px;
+      top: .55rem;
+      width: 18px;
+      height: 18px;
       border-radius: 50%;
       background: var(--color-white);
       border: 3px solid var(--color-blue);
       z-index: 2;
-      transition: all var(--transition-base)
+      transition: background-color .6s var(--ease-out), border-color .6s var(--ease-out), transform .6s var(--ease-out)
     }
 
     .timeline__item:nth-child(odd) .timeline__dot {
-      right: -8px
+      right: -9px
     }
 
     .timeline__item:nth-child(even) .timeline__dot {
-      left: -8px
+      left: -9px
     }
 
     .timeline__item.revealed .timeline__dot {
       background: var(--color-green);
       border-color: var(--color-green);
-      box-shadow: 0 0 12px rgba(58, 170, 110, .4)
+      transform: scale(1.1)
     }
 
     .timeline__year {
-      font-family: var(--font-display);
+      font-family: var(--font-headings);
       font-weight: var(--fw-extrabold);
-      font-size: var(--text-xl);
+      font-size: var(--text-3xl);
+      letter-spacing: -.02em;
+      line-height: 1.1;
       color: var(--color-blue);
-      margin-bottom: 4px
+      margin-bottom: 6px
     }
 
     .timeline__text {
-      font-size: var(--text-sm);
+      font-size: var(--text-base);
       color: var(--color-gray-text)
+    }
+
+    /* Entrada de cada hito desde su lado */
+    .timeline-item {
+      opacity: 0;
+      transition: opacity .9s var(--ease-out), transform .9s var(--ease-out)
+    }
+
+    .timeline__item:nth-child(odd).timeline-item {
+      transform: translateX(-24px)
+    }
+
+    .timeline__item:nth-child(even).timeline-item {
+      transform: translateX(24px)
+    }
+
+    .timeline-item.revealed {
+      opacity: 1;
+      transform: none !important
     }
 
     @media(max-width:768px) {
@@ -309,63 +426,60 @@
 
       .timeline__item:nth-child(odd) .timeline__dot,
       .timeline__item:nth-child(even) .timeline__dot {
-        left: 12px;
+        left: 11px;
         right: auto
+      }
+
+      .timeline__item:nth-child(odd).timeline-item,
+      .timeline__item:nth-child(even).timeline-item {
+        transform: translateY(16px)
       }
     }
   </style>
 </head>
 
 <body class="page-body">
-  <div class="custom-cursor" aria-hidden="true"></div>
   <div class="page-transition-overlay" aria-hidden="true"></div>
 
   <!-- NAVBAR -->
   <nav class="navbar" aria-label="Navegación principal">
     <div class="navbar__inner">
-      <a href="../" class="navbar__logo" data-internal aria-label="CREDIAN Inicio">
-        <img src="../img/logo_credian.png" alt="CREDIAN Logo" class="navbar__img">
+      <a href="../" class="navbar__logo" data-internal aria-label="CREDIAN — Inicio">
+        <svg class="navbar__img brand-mark" viewBox="0 0 747 500" aria-hidden="true" focusable="false"><polygon class="brand-mark__blue" fill="#0F4C8C" points="0,250 250,0 370,120 242,250 370,380 250,500" /><polygon class="brand-mark__green" fill="#29AD6D" points="375,120 495,0 747,250 495,500 375,380 503,250" /></svg>
         <span class="navbar__logo-text">CREDIAN</span>
       </a>
       <div class="navbar__links">
         <a href="../" class="navbar__link" data-internal>Inicio</a>
-        <a href="../nosotros/" class="navbar__link active" data-internal>Nosotros</a>
         <a href="../productos/" class="navbar__link" data-internal>Productos</a>
-        <a href="../dudas/" class="navbar__link" data-internal>Dudas</a>
+        <a href="../convenios/" class="navbar__link" data-internal>Para empresas</a>
+        <a href="../nosotros/" class="navbar__link active" aria-current="page" data-internal>Nosotros</a>
+        <a href="../dudas/" class="navbar__link" data-internal>Preguntas frecuentes</a>
         <a href="../contacto/" class="navbar__link" data-internal>Contacto</a>
-        <a href="../convenios/" class="navbar__link" data-internal>Convenios</a>
       </div>
       <div class="navbar__actions">
-        <a href="https://cotizador.credian.mx" class="navbar__cotizador" target="_blank" rel="noopener">Cotizador</a>
-        <a href="https://wa.me/15557277347?text=Hola%2C%20quiero%20solicitar%20un%20cr%C3%A9dito"
-          class="navbar__cta btn-shimmer" target="_blank" rel="noopener">Solicita tu crédito de
-          nómina</a>
+        <a href="https://wa.me/15557277347?text=Hola%2C%20quiero%20solicitar%20un%20cr%C3%A9dito" class="navbar__cta" target="_blank" rel="noopener">Solicitar crédito</a>
       </div>
-      <button class="navbar__hamburger" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+      <button class="navbar__hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
-  <div class="mobile-menu" aria-hidden="true">
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
     <a href="../" class="mobile-menu__link" data-internal>Inicio</a>
-    <a href="../nosotros/" class="mobile-menu__link" data-internal>Nosotros</a>
     <a href="../productos/" class="mobile-menu__link" data-internal>Productos</a>
-    <a href="../dudas/" class="mobile-menu__link" data-internal>Dudas</a>
+    <a href="../convenios/" class="mobile-menu__link" data-internal>Para empresas</a>
+    <a href="../nosotros/" class="mobile-menu__link" aria-current="page" data-internal>Nosotros</a>
+    <a href="../dudas/" class="mobile-menu__link" data-internal>Preguntas frecuentes</a>
     <a href="../contacto/" class="mobile-menu__link" data-internal>Contacto</a>
-    <a href="../convenios/" class="mobile-menu__link" data-internal>Convenios</a>
     <div class="mobile-menu__divider"></div>
-    <a href="https://cotizador.credian.mx" class="mobile-menu__link" target="_blank">Cotizador</a>
-    <a href="https://wa.me/15557277347?text=Hola%2C%20quiero%20solicitar%20un%20cr%C3%A9dito" class="mobile-menu__link"
-      target="_blank">Solicitar crédito</a>
+    <a href="https://wa.me/15557277347?text=Hola%2C%20quiero%20solicitar%20un%20cr%C3%A9dito" class="mobile-menu__link" target="_blank" rel="noopener">Solicitar crédito</a>
   </div>
 
   <!-- HERO -->
   <section class="hero hero--small">
     <div class="hero__bg"></div>
-    <div class="rhombus-deco rhombus-deco--2" aria-hidden="true"></div>
-    <div class="rhombus-deco rhombus-deco--3 rhombus-deco--green" aria-hidden="true"></div>
     <div class="hero__content">
-      <span class="hero__label hero-enter">Conócenos</span>
-      <h1 class="hero__title hero-enter">Somos <span class="text-gradient"
-          style="-webkit-text-fill-color:transparent;background:linear-gradient(90deg,#7eb8f7,#4CC882);-webkit-background-clip:text;background-clip:text">CREDIAN</span>
+      <h1 class="hero__title hero-enter">Somos CREDIAN
       </h1>
       <p class="hero__subtitle hero-enter">Más de 10 años transformando vidas a través de soluciones financieras
         accesibles y transparentes.</p>
@@ -377,11 +491,10 @@
     <div class="container">
       <div class="about-grid">
         <div class="about-grid__img reveal-left">
-          <img src="../img/team/manga_logo.jpg" alt="Equipo CREDIAN trabajando" loading="lazy">
+          <img src="../img/team/manga_logo.webp" alt="Logo de CREDIAN bordado en la chamarra del uniforme" width="1600" height="2400" loading="lazy" decoding="async">
         </div>
         <div class="reveal-right">
-          <span class="section__label">Nuestra historia</span>
-          <h2 class="section__title" style="text-align:left">Una misión de <span class="text-gradient">confianza</span>
+          <h2 class="section__title" style="text-align:left">Una misión de confianza
           </h2>
           <p style="margin-bottom:var(--space-lg)">CREDIAN nació en 2015 con una visión clara: democratizar el acceso al
             crédito para los trabajadores mexicanos. Fundada por un equipo de profesionales financieros con más de 15
@@ -402,8 +515,7 @@
   <section class="section section--gray">
     <div class="container">
       <div class="section__header reveal">
-        <span class="section__label">Principios</span>
-        <h2 class="section__title">Nuestros <span class="text-gradient">valores</span></h2>
+        <h2 class="section__title">Nuestros valores</h2>
         <p class="section__subtitle">Los pilares que guían cada decisión y cada interacción con nuestros clientes.</p>
       </div>
       <div class="values-grid">
@@ -412,7 +524,7 @@
               stroke-linecap="round">
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
             </svg></div>
-          <h4>Confianza</h4>
+          <h3>Confianza</h3>
           <p class="card__text">Construimos relaciones duraderas basadas en la honestidad y la transparencia total.</p>
         </div>
         <div class="value-card reveal stagger-2">
@@ -422,7 +534,7 @@
               <circle cx="9" cy="7" r="4" />
               <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
             </svg></div>
-          <h4>Compromiso</h4>
+          <h3>Compromiso</h3>
           <p class="card__text">Nos dedicamos al 100% a cada cliente, ofreciendo soluciones adaptadas a sus necesidades.
           </p>
         </div>
@@ -431,7 +543,7 @@
               stroke-linecap="round">
               <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
             </svg></div>
-          <h4>Innovación</h4>
+          <h3>Innovación</h3>
           <p class="card__text">Usamos tecnología de punta para hacer los procesos más rápidos y sencillos.</p>
         </div>
         <div class="value-card reveal stagger-4">
@@ -441,7 +553,7 @@
               <path
                 d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
             </svg></div>
-          <h4>Inclusión</h4>
+          <h3>Inclusión</h3>
           <p class="card__text">Creemos en el acceso justo al crédito para todos los trabajadores, sin discriminación.
           </p>
         </div>
@@ -452,125 +564,124 @@
   <!-- TEAM -->
   <section class="section">
     <div class="container">
+      <div class="team-head">
       <div class="section__header reveal">
-        <span class="section__label">Liderazgo</span>
-        <h2 class="section__title">Equipo <span class="text-gradient">directivo</span></h2>
+        <h2 class="section__title">Equipo directivo</h2>
         <p class="section__subtitle">Profesionales con décadas de experiencia en el sector financiero mexicano.</p>
       </div>
-      <div class="team-carousel-wrapper">
+        <div class="team-controls">
+          <button type="button" class="team-btn team-btn--prev" aria-label="Ver integrantes anteriores"><svg viewBox="0 0 370 500" aria-hidden="true"><polygon fill="#0F4C8C" points="0,250 250,0 370,120 242,250 370,380 250,500" /></svg></button>
+          <button type="button" class="team-btn team-btn--next" aria-label="Ver más integrantes"><svg viewBox="0 0 372 500" aria-hidden="true"><polygon fill="#29AD6D" points="0,120 120,0 372,250 120,500 0,380 128,250" /></svg></button>
+        </div>
+      </div>
+      <div class="team-carousel-wrapper" tabindex="0" role="region" aria-roledescription="carrusel"
+        aria-label="Equipo directivo. Usa las flechas del teclado para desplazarte.">
         <div class="team-carousel-track" id="teamTrack">
-          <!-- The content will be duplicated by JS for infinite effect, but we put the original 15 here -->
           <div class="team-carousel-group" id="teamGroupOriginal">
             <div class="team-card">
-              <div class="team-card__photo"><img src="../img/team/toño.JPG" alt="Antonio Musa" loading="lazy"></div>
+              <div class="team-card__photo"><img src="../img/team/tono.webp" alt="Antonio Musa" loading="lazy" decoding="async"></div>
               <div class="team-card__info">
-                <h4 class="team-card__name">Antonio Musa</h4>
+                <h3 class="team-card__name">Antonio Musa</h3>
                 <p class="team-card__role">CEO</p>
               </div>
             </div>
             <div class="team-card">
-              <div class="team-card__photo"><img src="../img/team/luis_antonio.jpg" alt="Luis Antonio Mahbub"
-                  loading="lazy"></div>
+              <div class="team-card__photo"><img src="../img/team/luis_antonio.webp" alt="Luis Antonio Mahbub"
+                  loading="lazy" decoding="async"></div>
               <div class="team-card__info">
-                <h4 class="team-card__name">Luis Antonio Mahbub</h4>
+                <h3 class="team-card__name">Luis Antonio Mahbub</h3>
                 <p class="team-card__role">CEO</p>
               </div>
             </div>
             <div class="team-card">
-              <div class="team-card__photo"><img src="../img/team/adri.jpg" alt="Adriana Araiza" loading="lazy"></div>
+              <div class="team-card__photo"><img src="../img/team/adri.webp" alt="Adriana Araiza" loading="lazy" decoding="async"></div>
               <div class="team-card__info">
-                <h4 class="team-card__name">Adriana Araiza</h4>
+                <h3 class="team-card__name">Adriana Araiza</h3>
                 <p class="team-card__role">Gerente de operaciones</p>
               </div>
             </div>
             <div class="team-card">
-              <div class="team-card__photo"><img src="../img/team/martha.jpg" alt="Martha Pruneda" loading="lazy"></div>
+              <div class="team-card__photo"><img src="../img/team/martha.webp" alt="Martha Pruneda" loading="lazy" decoding="async"></div>
               <div class="team-card__info">
-                <h4 class="team-card__name">Martha Pruneda</h4>
+                <h3 class="team-card__name">Martha Pruneda</h3>
                 <p class="team-card__role">Gerente de Finanzas</p>
               </div>
             </div>
             <div class="team-card">
-              <div class="team-card__photo"><img src="../img/team/andy.jpg" alt="Andrea Gómez" loading="lazy"></div>
+              <div class="team-card__photo"><img src="../img/team/andy.webp" alt="Andrea Gómez" loading="lazy" decoding="async"></div>
               <div class="team-card__info">
-                <h4 class="team-card__name">Andrea Gómez</h4>
+                <h3 class="team-card__name">Andrea Gómez</h3>
                 <p class="team-card__role">Jefa de Mesa de Control</p>
               </div>
             </div>
             <div class="team-card">
-              <div class="team-card__photo"><img src="../img/team/blas.jpg" alt="Jesús Blas" loading="lazy"></div>
+              <div class="team-card__photo"><img src="../img/team/blas.webp" alt="Jesús Blas" loading="lazy" decoding="async"></div>
               <div class="team-card__info">
-                <h4 class="team-card__name">Jesús Blas</h4>
+                <h3 class="team-card__name">Jesús Blas</h3>
                 <p class="team-card__role">Jefe de Crédito</p>
               </div>
             </div>
             <div class="team-card">
-              <div class="team-card__photo"><img src="../img/team/mariana.jpg" alt="Mariana Ortiz" loading="lazy"></div>
+              <div class="team-card__photo"><img src="../img/team/mariana.webp" alt="Mariana Ortiz" loading="lazy" decoding="async"></div>
               <div class="team-card__info">
-                <h4 class="team-card__name">Mariana Ortiz</h4>
+                <h3 class="team-card__name">Mariana Ortiz</h3>
                 <p class="team-card__role">Jefa Legal</p>
               </div>
             </div>
             <div class="team-card">
-              <div class="team-card__photo"><img src="../img/team/sarahi.jpg" alt="Sarahí Hernández" loading="lazy">
+              <div class="team-card__photo"><img src="../img/team/sarahi.webp" alt="Sarahí Hernández" loading="lazy" decoding="async">
               </div>
               <div class="team-card__info">
-                <h4 class="team-card__name">Sarahí Hernández</h4>
+                <h3 class="team-card__name">Sarahí Hernández</h3>
                 <p class="team-card__role">Jefa de Cobranza</p>
               </div>
             </div>
             <div class="team-card">
-              <div class="team-card__photo"><img src="../img/team/moni.jpg" alt="Mónica Medina" loading="lazy"></div>
+              <div class="team-card__photo"><img src="../img/team/moni.webp" alt="Mónica Medina" loading="lazy" decoding="async"></div>
               <div class="team-card__info">
-                <h4 class="team-card__name">Mónica Medina</h4>
+                <h3 class="team-card__name">Mónica Medina</h3>
                 <p class="team-card__role">Jefa de Cultura</p>
               </div>
             </div>
             <div class="team-card">
-              <div class="team-card__photo"><img src="../img/team/leo.jpg" alt="Leonardo Ortega" loading="lazy"></div>
+              <div class="team-card__photo"><img src="../img/team/leo.webp" alt="Leonardo Ortega" loading="lazy" decoding="async"></div>
               <div class="team-card__info">
-                <h4 class="team-card__name">Leonardo Ortega</h4>
+                <h3 class="team-card__name">Leonardo Ortega</h3>
                 <p class="team-card__role">Jefe de Sistemas</p>
               </div>
             </div>
             <div class="team-card">
-              <div class="team-card__photo"><img src="../img/team/jaziel.png" alt="Jaziel Lara" loading="lazy"></div>
+              <div class="team-card__photo"><img src="../img/team/jaziel.webp" alt="Jaziel Lara" loading="lazy" decoding="async"></div>
               <div class="team-card__info">
-                <h4 class="team-card__name">Jaziel Lara</h4>
+                <h3 class="team-card__name">Jaziel Lara</h3>
                 <p class="team-card__role">Sistemas</p>
               </div>
             </div>
             <div class="team-card">
-              <div class="team-card__photo"><img src="../img/team/eliud.jpg" alt="Eliud Duque" loading="lazy"></div>
+              <div class="team-card__photo"><img src="../img/team/eliud.webp" alt="Eliud Duque" loading="lazy" decoding="async"></div>
               <div class="team-card__info">
-                <h4 class="team-card__name">Eliud Duque</h4>
+                <h3 class="team-card__name">Eliud Duque</h3>
                 <p class="team-card__role">Ventas Comerciales</p>
               </div>
             </div>
             <div class="team-card">
-              <div class="team-card__photo"><img src="../img/team/ivan.jpg" alt="Iván Gómez" loading="lazy"></div>
+              <div class="team-card__photo"><img src="../img/team/ivan.webp" alt="Iván Gómez" loading="lazy" decoding="async"></div>
               <div class="team-card__info">
-                <h4 class="team-card__name">Iván Gómez</h4>
+                <h3 class="team-card__name">Iván Gómez</h3>
                 <p class="team-card__role">Ventas Comerciales</p>
               </div>
             </div>
             <div class="team-card">
-              <div class="team-card__photo"><img src="../img/team/mateo.png" alt="Mateo Ruelas" loading="lazy"></div>
+              <div class="team-card__photo"><img src="../img/team/daniel.webp" alt="Daniel Juárez" loading="lazy" decoding="async"></div>
               <div class="team-card__info">
-                <h4 class="team-card__name">Mateo Ruelas</h4>
-                <p class="team-card__role">Ventas Corporativas</p>
-              </div>
-            </div>
-            <div class="team-card">
-              <div class="team-card__photo"><img src="../img/team/daniel.jpg" alt="Daniel Juárez" loading="lazy"></div>
-              <div class="team-card__info">
-                <h4 class="team-card__name">Daniel Juárez</h4>
+                <h3 class="team-card__name">Daniel Juárez</h3>
                 <p class="team-card__role">Auxiliar</p>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <p class="team-hint">Arrastra o usa las flechas para ver a todo el equipo.</p>
     </div>
   </section>
 
@@ -578,8 +689,7 @@
   <section class="section section--gray">
     <div class="container">
       <div class="section__header reveal">
-        <span class="section__label">Trayectoria</span>
-        <h2 class="section__title">Nuestra <span class="text-gradient">historia</span></h2>
+        <h2 class="section__title">Nuestra historia</h2>
       </div>
       <div class="timeline">
         <div class="timeline__line">
@@ -628,47 +738,53 @@
       <div class="footer__grid">
         <div class="footer__brand">
           <div class="footer__logo">
-            <img src="../img/logo_credian.png" alt="CREDIAN Logo" class="footer__img">
+            <svg class="footer__img brand-mark" viewBox="0 0 747 500" aria-hidden="true" focusable="false"><polygon class="brand-mark__blue" fill="#0F4C8C" points="0,250 250,0 370,120 242,250 370,380 250,500" /><polygon class="brand-mark__green" fill="#29AD6D" points="375,120 495,0 747,250 495,500 375,380 503,250" /></svg>
             <span class="footer__logo-text">CREDIAN</span>
           </div>
           <p class="footer__brand-desc">Somos una empresa financiera mexicana especializada en créditos de nómina. Más
             de 10 años brindando soluciones financieras con transparencia y confianza.</p>
           <div class="footer__social">
-            <a href="https://www.facebook.com/credian.mx/" class="footer__social-link" aria-label="Facebook"><svg
-                viewBox="0 0 24 24" fill="currentColor">
+            <a href="https://www.facebook.com/credian.mx/" class="footer__social-link" target="_blank" rel="noopener"
+              aria-label="Facebook de CREDIAN"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
               </svg></a>
-            <a href="https://www.instagram.com/credianmx/" class="footer__social-link" aria-label="Instagram"><svg
-                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <a href="https://www.instagram.com/credianmx/" class="footer__social-link" target="_blank" rel="noopener"
+              aria-label="Instagram de CREDIAN"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" aria-hidden="true">
                 <rect x="2" y="2" width="20" height="20" rx="5" />
                 <circle cx="12" cy="12" r="5" />
               </svg></a>
-            <a href="https://www.linkedin.com/company/credian/posts/?feedView=all" class="footer__social-link"
-              aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor">
+            <a href="https://www.linkedin.com/company/credian/" class="footer__social-link" target="_blank"
+              rel="noopener" aria-label="LinkedIn de CREDIAN"><svg viewBox="0 0 24 24" fill="currentColor"
+                aria-hidden="true">
                 <path
                   d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z" />
               </svg></a>
           </div>
         </div>
         <div>
-          <h4 class="footer__column-title">Páginas</h4><a href="../" class="footer__link" data-internal>Inicio</a><a
-            href="../nosotros/" class="footer__link" data-internal>Nosotros</a><a href="../productos/"
-            class="footer__link" data-internal>Productos</a><a href="../dudas/" class="footer__link"
-            data-internal>Dudas</a><a href="../contacto/" class="footer__link" data-internal>Contacto</a><a
-            href="../convenios/" class="footer__link" data-internal>Convenios</a>
+          <h2 class="footer__column-title">Páginas</h2>
+          <a href="../" class="footer__link" data-internal>Inicio</a>
+          <a href="../productos/" class="footer__link" data-internal>Productos</a>
+          <a href="../convenios/" class="footer__link" data-internal>Para empresas</a>
+          <a href="../nosotros/" class="footer__link" data-internal>Nosotros</a>
+          <a href="../dudas/" class="footer__link" data-internal>Preguntas frecuentes</a>
+          <a href="../contacto/" class="footer__link" data-internal>Contacto</a>
         </div>
         <div>
-          <h4 class="footer__column-title">Servicios</h4><a href="https://cotizador.credian.mx" class="footer__link"
-            target="_blank">Cotizador</a><a href="https://cib.logicsystems.com.mx/RECREA/LoginCredian.aspx?EMP=RECREA"
-            class="footer__link" target="_blank">Solicitar
-            crédito</a><a href="../productos/" class="footer__link" data-internal>Crédito de nómina</a>
+          <h2 class="footer__column-title">Servicios</h2>
+          <a href="https://cib.logicsystems.com.mx/RECREA/LoginCredian.aspx?EMP=RECREA" class="footer__link" target="_blank" rel="noopener">Solicitar crédito</a>
+          <a href="../productos/" class="footer__link" data-internal>Crédito de nómina</a>
+          <a href="../productos/" class="footer__link" data-internal>Crédito PYME y arrendamiento</a>
+          <a href="../convenios/" class="footer__link" data-internal>Convenios empresariales</a>
         </div>
         <div>
-          <h4 class="footer__column-title">Contacto</h4>
+          <h2 class="footer__column-title">Contacto</h2>
           <a href="tel:+524449625037" class="footer__link">+52 444 962 5037</a>
           <a href="mailto:contacto@credian.mx" class="footer__link">contacto@credian.mx</a>
-          <a class="footer__link" href="https://maps.app.goo.gl/pszoTMPpHbt7NWdv6">
-            Cordillera Himalaya No. 830, Col. Lomas Cuarta Sección
+          <a href="https://wa.me/524442868687?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20un%20cr%C3%A9dito" class="footer__link" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="footer__link" href="https://maps.app.goo.gl/pszoTMPpHbt7NWdv6" target="_blank" rel="noopener">
+            Cordillera Himalaya No. 830, Col. Lomas Cuarta Sección, San Luis Potosí
           </a>
         </div>
       </div>
@@ -715,15 +831,123 @@
       new IntersectionObserver((e) => { e.forEach(en => { if (en.isIntersecting) en.target.classList.add('animate'); }); }, { threshold: 0.1 }).observe(tlFill);
     }
 
-    // Duplicate team carousel for infinite scroll
-    const teamTrack = document.getElementById('teamTrack');
-    const teamGroup = document.getElementById('teamGroupOriginal');
-    if (teamTrack && teamGroup) {
-      const clone = teamGroup.cloneNode(true);
+    // ---- Carrusel del equipo ----
+    // Avanza solo; se puede arrastrar (mouse o dedo, con inercia), deslizar con
+    // trackpad, usar las flechas del teclado o los botones para ir más rápido.
+    (function () {
+      const wrap = document.querySelector('.team-carousel-wrapper');
+      const track = document.getElementById('teamTrack');
+      const group = document.getElementById('teamGroupOriginal');
+      if (!wrap || !track || !group) return;
+
+      const clone = group.cloneNode(true);
       clone.id = 'teamGroupClone';
       clone.setAttribute('aria-hidden', 'true');
-      teamTrack.appendChild(clone);
-    }
+      track.appendChild(clone);
+      track.querySelectorAll('img').forEach((img) => { img.draggable = false; img.loading = 'eager'; });
+
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const AUTO_SPEED = reduce ? 0 : 38;       // px por segundo
+      const mod = (n, m) => ((n % m) + m) % m;
+      const now = () => performance.now();
+
+      let pos = 0, vel = 0, last = now();
+      let dragging = false, hovering = false, visible = true;
+      let pauseUntil = 0, tween = null;
+      let startX = 0, startPos = 0, moved = 0, samples = [];
+
+      const period = () => group.offsetWidth;
+      const step = () => {
+        const card = group.querySelector('.team-card');
+        const gap = parseFloat(getComputedStyle(group).columnGap) || 0;
+        return (card ? card.offsetWidth : 240) + gap;
+      };
+
+      function go(dir) {
+        const from = tween ? tween.to : pos;
+        // Ajusta al borde de la tarjeta más cercana y avanza una (dos en pantallas grandes)
+        const s = step();
+        const n = window.innerWidth > 900 ? 2 : 1;
+        const to = (Math.round(from / s) + dir * n) * s;
+        tween = { from: pos, to, start: now(), dur: reduce ? 1 : 650 };
+        vel = 0;
+        pauseUntil = now() + 3000;
+      }
+
+      function frame(t) {
+        const dt = Math.min(0.05, (t - last) / 1000);
+        last = t;
+        if (tween) {
+          const p = Math.min(1, (t - tween.start) / tween.dur);
+          const e = 1 - Math.pow(1 - p, 4);
+          pos = tween.from + (tween.to - tween.from) * e;
+          if (p >= 1) tween = null;
+        } else if (!dragging) {
+          if (Math.abs(vel) > 8) {
+            pos += vel * dt;
+            vel *= Math.pow(0.03, dt);   // inercia que se frena suave
+          } else {
+            vel = 0;
+            if (!hovering && visible && t > pauseUntil) pos += AUTO_SPEED * dt;
+          }
+        }
+        track.style.transform = `translate3d(${-mod(pos, period())}px,0,0)`;
+        requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+
+      // Arrastre con mouse o dedo
+      wrap.addEventListener('pointerdown', (e) => {
+        if (e.button !== 0) return;
+        dragging = true; tween = null; vel = 0; moved = 0;
+        startX = e.clientX; startPos = pos; samples = [{ x: e.clientX, t: now() }];
+        wrap.setPointerCapture(e.pointerId);
+        wrap.classList.add('is-dragging');
+      });
+      wrap.addEventListener('pointermove', (e) => {
+        if (!dragging) return;
+        moved = Math.max(moved, Math.abs(e.clientX - startX));
+        pos = startPos - (e.clientX - startX);
+        samples.push({ x: e.clientX, t: now() });
+        if (samples.length > 6) samples.shift();
+      });
+      const endDrag = () => {
+        if (!dragging) return;
+        dragging = false;
+        wrap.classList.remove('is-dragging');
+        const a = samples[0], b = samples[samples.length - 1];
+        if (a && b && b.t - a.t > 0) vel = -((b.x - a.x) / (b.t - a.t)) * 1000;
+        pauseUntil = now() + 2500;
+      };
+      wrap.addEventListener('pointerup', endDrag);
+      wrap.addEventListener('pointercancel', endDrag);
+
+      // Trackpad: desplazamiento horizontal
+      wrap.addEventListener('wheel', (e) => {
+        if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
+        e.preventDefault();
+        tween = null; vel = 0;
+        pos += e.deltaX;
+        pauseUntil = now() + 2000;
+      }, { passive: false });
+
+      // Pausa al pasar el mouse (no en pantallas táctiles)
+      wrap.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') hovering = true; });
+      wrap.addEventListener('pointerleave', () => { hovering = false; });
+
+      // Teclado y botones
+      wrap.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') { e.preventDefault(); go(1); }
+        if (e.key === 'ArrowLeft') { e.preventDefault(); go(-1); }
+      });
+      document.querySelector('.team-btn--next')?.addEventListener('click', () => go(1));
+      document.querySelector('.team-btn--prev')?.addEventListener('click', () => go(-1));
+
+      // No gastar batería cuando no está en pantalla
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver((en) => { visible = en[0].isIntersecting; }).observe(wrap);
+      }
+    })();
   </script>
 </body>
 

@@ -7,10 +7,23 @@
   <title>CREDIAN | 404 - Página no encontrada</title>
   <link rel="icon" href="/img/credian.ico" type="image/x-icon">
   <meta name="description" content="Página no encontrada en CREDIAN.">
+  <meta name="robots" content="noindex">
+  <link rel="preload" href="/font/nexa-bold.otf" as="font" type="font/otf" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+  <noscript>
+    <style>
+      .reveal, .reveal-left, .reveal-right, .reveal-scale, .hero-enter { opacity: 1 !important; transform: none !important; }
+    </style>
+  </noscript>
   <link rel="stylesheet" href="/css/reset.css">
   <link rel="stylesheet" href="/css/variables.css">
   <link rel="stylesheet" href="/css/animations.css">
-  <link rel="stylesheet" href="/css/global.css?v=1.1">
+  <link rel="stylesheet" href="/css/global.css?v=1.8">
+  <!-- Créditos (incluye la tipografía Nexa, requisito de su licencia) -->
+  <link rel="author" href="/humans.txt">
   <style>
     .hero--404 {
       min-height: 80vh;
@@ -20,22 +33,14 @@
       justify-content: center;
     }
 
-    .hero--404 .hero__bg {
-      background: linear-gradient(160deg, #111b36 0%, #1a2e5a 20%, #2B4DA8 50%, #2a8a5c 85%, #1a6b42 100%);
-      background-size: 300% 300%;
-      animation: meshGradient 18s ease infinite;
-    }
-
     .error-number {
       font-family: var(--font-display);
       font-size: 8rem;
       font-weight: var(--fw-extrabold);
       line-height: 1;
       margin-bottom: var(--space-md);
-      background: linear-gradient(90deg, #7eb8f7, #4CC882);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      color: var(--color-white);
+      letter-spacing: -0.04em;
     }
     
     @media (min-width: 768px) {
@@ -47,57 +52,47 @@
 </head>
 
 <body class="page-body">
-  <div class="custom-cursor" aria-hidden="true"></div>
   <div class="page-transition-overlay" aria-hidden="true"></div>
 
   <!-- NAVBAR -->
   <nav class="navbar" aria-label="Navegación principal">
     <div class="navbar__inner">
-      <a href="/" class="navbar__logo" data-internal aria-label="CREDIAN Inicio">
-        <img src="/img/logo_credian.png" alt="CREDIAN Logo" class="navbar__img">
+      <a href="/" class="navbar__logo" data-internal aria-label="CREDIAN — Inicio">
+        <svg class="navbar__img brand-mark" viewBox="0 0 747 500" aria-hidden="true" focusable="false"><polygon class="brand-mark__blue" fill="#0F4C8C" points="0,250 250,0 370,120 242,250 370,380 250,500" /><polygon class="brand-mark__green" fill="#29AD6D" points="375,120 495,0 747,250 495,500 375,380 503,250" /></svg>
         <span class="navbar__logo-text">CREDIAN</span>
       </a>
       <div class="navbar__links">
         <a href="/" class="navbar__link" data-internal>Inicio</a>
-        <a href="/nosotros/" class="navbar__link" data-internal>Nosotros</a>
         <a href="/productos/" class="navbar__link" data-internal>Productos</a>
-        <a href="/dudas/" class="navbar__link" data-internal>Dudas</a>
+        <a href="/convenios/" class="navbar__link" data-internal>Para empresas</a>
+        <a href="/nosotros/" class="navbar__link" data-internal>Nosotros</a>
+        <a href="/dudas/" class="navbar__link" data-internal>Preguntas frecuentes</a>
         <a href="/contacto/" class="navbar__link" data-internal>Contacto</a>
-        <a href="/convenios/" class="navbar__link" data-internal>Convenios</a>
       </div>
       <div class="navbar__actions">
-        <a href="https://cotizador.credian.mx" class="navbar__cotizador" target="_blank" rel="noopener">Cotizador</a>
-        <a href="https://cib.logicsystems.com.mx/RECREA/LoginCredian.aspx?EMP=RECREA" class="navbar__cta btn-shimmer"
-          target="_blank" rel="noopener">Solicita tu crédito de nómina</a>
+        <a href="https://wa.me/15557277347?text=Hola%2C%20quiero%20solicitar%20un%20cr%C3%A9dito" class="navbar__cta" target="_blank" rel="noopener">Solicitar crédito</a>
       </div>
-      <button class="navbar__hamburger" aria-label="Abrir menú" aria-expanded="false">
+      <button class="navbar__hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
         <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
 
   <!-- Mobile Menu -->
-  <div class="mobile-menu" aria-hidden="true">
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
     <a href="/" class="mobile-menu__link" data-internal>Inicio</a>
-    <a href="/nosotros/" class="mobile-menu__link" data-internal>Nosotros</a>
     <a href="/productos/" class="mobile-menu__link" data-internal>Productos</a>
-    <a href="/dudas/" class="mobile-menu__link" data-internal>Dudas</a>
+    <a href="/convenios/" class="mobile-menu__link" data-internal>Para empresas</a>
+    <a href="/nosotros/" class="mobile-menu__link" data-internal>Nosotros</a>
+    <a href="/dudas/" class="mobile-menu__link" data-internal>Preguntas frecuentes</a>
     <a href="/contacto/" class="mobile-menu__link" data-internal>Contacto</a>
-    <a href="/convenios/" class="mobile-menu__link" data-internal>Convenios</a>
     <div class="mobile-menu__divider"></div>
-    <a href="https://cotizador.credian.mx" class="mobile-menu__link" target="_blank" rel="noopener">Cotizador</a>
-    <a href="https://cib.logicsystems.com.mx/RECREA/LoginCredian.aspx?EMP=RECREA" class="mobile-menu__link"
-      target="_blank" rel="noopener">Solicitar crédito</a>
+    <a href="https://wa.me/15557277347?text=Hola%2C%20quiero%20solicitar%20un%20cr%C3%A9dito" class="mobile-menu__link" target="_blank" rel="noopener">Solicitar crédito</a>
   </div>
 
   <!-- HERO 404 -->
   <section class="hero hero--404" id="hero">
-    <div class="hero__bg" data-parallax></div>
-    <div class="rhombus-deco rhombus-deco--1" aria-hidden="true"></div>
-    <div class="rhombus-deco rhombus-deco--2 rhombus-deco--green" aria-hidden="true"></div>
-    <div class="rhombus-deco rhombus-deco--3 rhombus-deco--filled" aria-hidden="true"></div>
-    <div class="rhombus-deco rhombus-deco--4" aria-hidden="true"></div>
-    <div class="rhombus-deco rhombus-deco--5 rhombus-deco--green" aria-hidden="true"></div>
+    <div class="hero__bg"></div>
 
     <div class="hero__content" style="max-width: 800px; margin: 0 auto; text-align: center;">
       <h1 class="error-number hero-enter">404</h1>
@@ -106,7 +101,7 @@
         Lo sentimos, no pudimos encontrar el contenido que buscas. Puede que el enlace esté roto o la página haya sido eliminada.
       </p>
       <div class="hero__actions hero-enter" style="justify-content: center; margin-top: var(--space-2xl);">
-        <a href="/" class="btn btn--primary btn--large btn-shimmer" data-internal>
+        <a href="/" class="btn btn--primary btn--large" data-internal>
           Volver al inicio
         </a>
         <a href="/contacto/" class="btn btn--outline btn--large" data-internal>
@@ -122,48 +117,53 @@
       <div class="footer__grid">
         <div class="footer__brand">
           <div class="footer__logo">
-            <img src="/img/logo_credian.png" alt="CREDIAN Logo" class="footer__img">
+            <svg class="footer__img brand-mark" viewBox="0 0 747 500" aria-hidden="true" focusable="false"><polygon class="brand-mark__blue" fill="#0F4C8C" points="0,250 250,0 370,120 242,250 370,380 250,500" /><polygon class="brand-mark__green" fill="#29AD6D" points="375,120 495,0 747,250 495,500 375,380 503,250" /></svg>
             <span class="footer__logo-text">CREDIAN</span>
           </div>
           <p class="footer__brand-desc">Somos una empresa financiera mexicana especializada en créditos de nómina. Más
             de 10 años brindando soluciones financieras con transparencia y confianza.</p>
           <div class="footer__social">
-            <a href="https://www.facebook.com/credian.mx/" class="footer__social-link" aria-label="Facebook"><svg
-                viewBox="0 0 24 24" fill="currentColor">
+            <a href="https://www.facebook.com/credian.mx/" class="footer__social-link" target="_blank" rel="noopener"
+              aria-label="Facebook de CREDIAN"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
               </svg></a>
-            <a href="https://www.instagram.com/credianmx/" class="footer__social-link" aria-label="Instagram"><svg
-                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <a href="https://www.instagram.com/credianmx/" class="footer__social-link" target="_blank" rel="noopener"
+              aria-label="Instagram de CREDIAN"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" aria-hidden="true">
                 <rect x="2" y="2" width="20" height="20" rx="5" />
                 <circle cx="12" cy="12" r="5" />
               </svg></a>
-            <a href="https://www.linkedin.com/company/credian/posts/?feedView=all" class="footer__social-link"
-              aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor">
+            <a href="https://www.linkedin.com/company/credian/" class="footer__social-link" target="_blank"
+              rel="noopener" aria-label="LinkedIn de CREDIAN"><svg viewBox="0 0 24 24" fill="currentColor"
+                aria-hidden="true">
                 <path
                   d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z" />
               </svg></a>
           </div>
         </div>
         <div>
-          <h4 class="footer__column-title">Páginas</h4><a href="/" class="footer__link"
-            data-internal>Inicio</a><a href="/nosotros/" class="footer__link" data-internal>Nosotros</a><a
-            href="/productos/" class="footer__link" data-internal>Productos</a><a href="/dudas/"
-            class="footer__link" data-internal>Dudas</a><a href="/contacto/" class="footer__link"
-            data-internal>Contacto</a><a href="/convenios/" class="footer__link"
-            data-internal>Convenios</a>
+          <h2 class="footer__column-title">Páginas</h2>
+          <a href="/" class="footer__link" data-internal>Inicio</a>
+          <a href="/productos/" class="footer__link" data-internal>Productos</a>
+          <a href="/convenios/" class="footer__link" data-internal>Para empresas</a>
+          <a href="/nosotros/" class="footer__link" data-internal>Nosotros</a>
+          <a href="/dudas/" class="footer__link" data-internal>Preguntas frecuentes</a>
+          <a href="/contacto/" class="footer__link" data-internal>Contacto</a>
         </div>
         <div>
-          <h4 class="footer__column-title">Servicios</h4><a href="https://cotizador.credian.mx" class="footer__link"
-            target="_blank">Cotizador</a><a href="https://cib.logicsystems.com.mx/RECREA/LoginCredian.aspx?EMP=RECREA"
-            class="footer__link" target="_blank">Solicitar
-            crédito</a><a href="/productos/" class="footer__link" data-internal>Crédito de nómina</a>
+          <h2 class="footer__column-title">Servicios</h2>
+          <a href="https://cib.logicsystems.com.mx/RECREA/LoginCredian.aspx?EMP=RECREA" class="footer__link" target="_blank" rel="noopener">Solicitar crédito</a>
+          <a href="/productos/" class="footer__link" data-internal>Crédito de nómina</a>
+          <a href="/productos/" class="footer__link" data-internal>Crédito PYME y arrendamiento</a>
+          <a href="/convenios/" class="footer__link" data-internal>Convenios empresariales</a>
         </div>
         <div>
-          <h4 class="footer__column-title">Contacto</h4>
+          <h2 class="footer__column-title">Contacto</h2>
           <a href="tel:+524449625037" class="footer__link">+52 444 962 5037</a>
           <a href="mailto:contacto@credian.mx" class="footer__link">contacto@credian.mx</a>
-          <a class="footer__link" href="https://maps.app.goo.gl/pszoTMPpHbt7NWdv6">
-            Cordillera Himalaya No. 830, Col. Lomas Cuarta Sección
+          <a href="https://wa.me/524442868687?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20un%20cr%C3%A9dito" class="footer__link" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="footer__link" href="https://maps.app.goo.gl/pszoTMPpHbt7NWdv6" target="_blank" rel="noopener">
+            Cordillera Himalaya No. 830, Col. Lomas Cuarta Sección, San Luis Potosí
           </a>
         </div>
       </div>

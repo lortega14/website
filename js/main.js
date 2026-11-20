@@ -1,6 +1,6 @@
 /* ============================================
    CREDIAN — Main Controller
-   Navbar scroll, parallax, custom cursor
+   Navbar scroll, parallax
    ============================================ */
 
 (function() {
@@ -14,15 +14,23 @@
   function updateNavbar() {
     const scrollY = window.scrollY;
     
-    if (scrollY > 50) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
+    navbar.classList.toggle('scrolled', scrollY > 10);
+
+    // Se oculta al bajar y reaparece al subir (nunca con el menú móvil abierto)
+    const menuOpen = document.querySelector('.mobile-menu.open');
+    const delta = scrollY - lastScrollY;
+    if (!menuOpen && scrollY > 320 && delta > 6) {
+      navbar.classList.add('is-hidden');
+    } else if (delta < -6 || scrollY <= 320 || menuOpen) {
+      navbar.classList.remove('is-hidden');
     }
     
-    lastScrollY = scrollY;
+    if (Math.abs(delta) > 6) lastScrollY = scrollY;
     ticking = false;
   }
+
+  // Si se navega con teclado dentro del menú, siempre visible
+  navbar.addEventListener('focusin', () => navbar.classList.remove('is-hidden'));
 
   window.addEventListener('scroll', () => {
     if (!ticking) {
@@ -54,37 +62,6 @@
         });
       });
     }, { passive: true });
-  }
-
-  // ---- Custom Cursor ----
-  const cursor = document.querySelector('.custom-cursor');
-  
-  if (cursor && window.matchMedia('(pointer: fine)').matches) {
-    let cursorX = 0, cursorY = 0;
-    let currentX = 0, currentY = 0;
-
-    document.addEventListener('mousemove', (e) => {
-      cursorX = e.clientX;
-      cursorY = e.clientY;
-    });
-
-    function updateCursor() {
-      currentX += (cursorX - currentX) * 0.15;
-      currentY += (cursorY - currentY) * 0.15;
-      cursor.style.left = currentX + 'px';
-      cursor.style.top = currentY + 'px';
-      requestAnimationFrame(updateCursor);
-    }
-    
-    updateCursor();
-
-    // Enlarge on interactive elements
-    const interactives = document.querySelectorAll('a, button, .card, input, textarea, select, .accordion-trigger');
-    
-    interactives.forEach(el => {
-      el.addEventListener('mouseenter', () => cursor.classList.add('active'));
-      el.addEventListener('mouseleave', () => cursor.classList.remove('active'));
-    });
   }
 
   // ---- Smooth Scroll for Anchor Links ----

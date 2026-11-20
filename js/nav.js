@@ -12,71 +12,40 @@
   const mobileMenu = document.querySelector('.mobile-menu');
   const mobileLinks = document.querySelectorAll('.mobile-menu__link');
   const transitionOverlay = document.querySelector('.page-transition-overlay');
-  const internalLinks = document.querySelectorAll('a[data-internal]');
 
   // ---- Hamburger Toggle ----
   if (hamburger && mobileMenu) {
+    // Mantiene sincronizados los estados visuales y los atributos ARIA
+    const setMenu = (open) => {
+      hamburger.classList.toggle('active', open);
+      mobileMenu.classList.toggle('open', open);
+      hamburger.setAttribute('aria-expanded', String(open));
+      hamburger.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+      mobileMenu.setAttribute('aria-hidden', String(!open));
+      document.body.style.overflow = open ? 'hidden' : '';
+    };
+
     hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active');
-      mobileMenu.classList.toggle('open');
-      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+      setMenu(!mobileMenu.classList.contains('open'));
     });
 
     // Close on link click
     mobileLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        mobileMenu.classList.remove('open');
-        document.body.style.overflow = '';
-      });
+      link.addEventListener('click', () => setMenu(false));
     });
 
     // Close on Escape key
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
-        hamburger.classList.remove('active');
-        mobileMenu.classList.remove('open');
-        document.body.style.overflow = '';
+        setMenu(false);
+        hamburger.focus();
       }
     });
   }
 
   // ---- Page Transitions ----
-  function navigateTo(url) {
-    if (!transitionOverlay) {
-      window.location.href = url;
-      return;
-    }
-
-    transitionOverlay.classList.remove('active-leave');
-    transitionOverlay.classList.add('active-enter');
-
-    setTimeout(() => {
-      window.location.href = url;
-    }, 350);
-  }
-
-  // Attach to internal links
-  internalLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-      const href = link.getAttribute('href');
-      // Don't transition for same page or anchors
-      if (href === '#' || href.startsWith('#') || href === window.location.pathname) return;
-      
-      e.preventDefault();
-      navigateTo(href);
-    });
-  });
-
-  // On page load: reverse the transition
-  window.addEventListener('load', () => {
-    if (transitionOverlay) {
-      transitionOverlay.classList.add('active-leave');
-      setTimeout(() => {
-        transitionOverlay.classList.remove('active-enter', 'active-leave');
-      }, 400);
-    }
-  });
+  // Eliminadas: la navegación entre páginas es inmediata.
+  if (transitionOverlay) transitionOverlay.remove();
 
   // ---- Mark Active Navigation Link ----
   function setActiveNav() {
@@ -102,7 +71,7 @@
       const hrefSection = href.replace(/^\.\.\//, '').replace(/^\.\//, '').replace(/\/+$/, '').replace(/index\.html$/, '') || '';
       if (hrefSection === currentSection || 
           (currentSection === '' && (href === './' || href === '../' || href === '/' || href === 'index.html'))) {
-        link.style.color = '#3AAA6E';
+        link.setAttribute('aria-current', 'page');
       }
     });
   }

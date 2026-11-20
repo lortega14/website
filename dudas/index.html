@@ -8,10 +8,38 @@
   <link rel="icon" href="../img/credian.ico" type="image/x-icon">
   <meta name="description"
     content="Resuelve tus dudas sobre créditos de nómina CREDIAN. Preguntas frecuentes sobre requisitos, tasas, plazos y más.">
+  <!-- Dirección oficial y vista previa al compartir -->
+  <link rel="canonical" href="https://www.credian.mx/dudas/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="CREDIAN">
+  <meta property="og:locale" content="es_MX">
+  <meta property="og:url" content="https://www.credian.mx/dudas/">
+  <meta property="og:title" content="Preguntas frecuentes sobre tu crédito | CREDIAN">
+  <meta property="og:description" content="Resuelve tus dudas sobre créditos de nómina CREDIAN. Preguntas frecuentes sobre requisitos, tasas, plazos y más.">
+  <meta property="og:image" content="https://www.credian.mx/img/og/dudas.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Preguntas frecuentes sobre tu crédito | CREDIAN">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Preguntas frecuentes sobre tu crédito | CREDIAN">
+  <meta name="twitter:description" content="Resuelve tus dudas sobre créditos de nómina CREDIAN. Preguntas frecuentes sobre requisitos, tasas, plazos y más.">
+  <meta name="twitter:image" content="https://www.credian.mx/img/og/dudas.jpg">
+  <link rel="preload" href="../font/nexa-bold.otf" as="font" type="font/otf" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+  <noscript>
+    <style>
+      .reveal, .reveal-left, .reveal-right, .reveal-scale, .hero-enter { opacity: 1 !important; transform: none !important; }
+    </style>
+  </noscript>
   <link rel="stylesheet" href="../css/reset.css">
   <link rel="stylesheet" href="../css/variables.css">
   <link rel="stylesheet" href="../css/animations.css">
-  <link rel="stylesheet" href="../css/global.css?v=1.1">
+  <link rel="stylesheet" href="../css/global.css?v=1.8">
+  <!-- Créditos (incluye la tipografía Nexa, requisito de su licencia) -->
+  <link rel="author" href="../humans.txt">
   <style>
     .faq-search-wrapper {
       max-width: 600px;
@@ -38,7 +66,6 @@
       font-family: var(--font-body);
       background: var(--color-white);
       transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
-      box-shadow: var(--shadow-sm)
     }
 
     .faq-search:focus {
@@ -83,14 +110,12 @@
       background: var(--color-white);
       border-radius: var(--radius-md);
       margin-bottom: var(--space-md);
-      box-shadow: var(--shadow-sm);
-      border: 1px solid rgba(0, 0, 0, .04);
+      border: 1px solid var(--color-gray-mid);
       overflow: hidden;
       transition: box-shadow var(--transition-base)
     }
 
     .faq-item:hover {
-      box-shadow: var(--shadow-md)
     }
 
     .faq-item .accordion-trigger {
@@ -159,6 +184,169 @@
       max-width: 500px;
       margin-left: auto;
       margin-right: auto
+    }
+
+    /* ======== Lenguaje visual CREDIAN ======== */
+    /* Dos columnas: buscador y categorías fijos a la izquierda, preguntas a la derecha */
+    .faq-layout {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: var(--space-3xl);
+      align-items: start
+    }
+
+    .faq-aside {
+      position: sticky;
+      top: calc(var(--navbar-height) + var(--space-lg))
+    }
+
+    .faq-search-wrapper {
+      max-width: none;
+      margin: 0 0 var(--space-xl)
+    }
+
+    .faq-search {
+      border-radius: 8px
+    }
+
+    .faq-categories {
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: flex-start;
+      gap: 2px;
+      margin: 0
+    }
+
+    .faq-cat-btn {
+      position: relative;
+      text-align: left;
+      border: 0;
+      border-radius: 6px;
+      background: none;
+      padding: .7rem 1rem;
+      color: var(--color-dark);
+      transition: background-color var(--transition-fast), color var(--transition-fast)
+    }
+
+    .faq-cat-btn::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 25%;
+      bottom: 25%;
+      width: 3px;
+      border-radius: 2px;
+      background: var(--color-green);
+      transform: scaleY(0);
+      transition: transform var(--transition-base)
+    }
+
+    .faq-cat-btn:hover {
+      background: var(--color-gray-light);
+      color: var(--color-blue)
+    }
+
+    .faq-cat-btn.active {
+      background: var(--color-gray-light);
+      color: var(--color-blue);
+      font-weight: var(--fw-semibold)
+    }
+
+    .faq-cat-btn.active::before {
+      transform: scaleY(1)
+    }
+
+    .faq-list {
+      max-width: none;
+      margin: 0
+    }
+
+    .faq-item {
+      background: none;
+      border: 0;
+      border-bottom: 1px solid var(--color-gray-mid);
+      border-radius: 0;
+      margin-bottom: 0
+    }
+
+    .faq-item:first-child {
+      border-top: 1px solid var(--color-gray-mid)
+    }
+
+    .faq-item .accordion-trigger {
+      padding: var(--space-lg) 0;
+      font-size: var(--text-lg)
+    }
+
+    .faq-item .accordion-trigger:hover {
+      background: none;
+      color: var(--color-blue)
+    }
+
+    .faq-item .accordion-content {
+      padding: 0;
+      font-size: var(--text-base);
+      max-width: 65ch
+    }
+
+    .faq-item.active .accordion-trigger {
+      color: var(--color-blue)
+    }
+
+    /* Cierre: mismo bloque que en inicio */
+    .contact-cta {
+      text-align: left;
+      background: var(--color-navy);
+      border-radius: 8px;
+      padding: var(--space-3xl) 14rem var(--space-3xl) var(--space-3xl);
+      margin-top: var(--space-4xl)
+    }
+
+    .contact-cta h3 {
+      font-size: var(--text-3xl);
+      letter-spacing: -.02em
+    }
+
+    .contact-cta p {
+      margin-left: 0;
+      max-width: 50ch
+    }
+
+    @media (max-width: 900px) {
+      .faq-layout {
+        grid-template-columns: 1fr;
+        gap: var(--space-xl)
+      }
+
+      .faq-aside {
+        position: static
+      }
+
+      /* Categorías en fila deslizable */
+      .faq-categories {
+        flex-direction: row;
+        overflow-x: auto;
+        gap: var(--space-xs);
+        padding-bottom: 4px;
+        scrollbar-width: none
+      }
+
+      .faq-cat-btn {
+        flex-shrink: 0;
+        border: 1px solid var(--color-gray-mid)
+      }
+
+      .faq-cat-btn::before {
+        display: none
+      }
+
+      .faq-cat-btn.active {
+        border-color: var(--color-blue)
+      }
+
+      .contact-cta {
+        padding: var(--space-2xl) var(--space-xl) calc(var(--space-2xl) + 4rem)
+      }
     }
 
     /* ---- CHATBOT WIDGET ---- */
@@ -486,47 +674,46 @@
 </head>
 
 <body class="page-body">
-  <div class="custom-cursor" aria-hidden="true"></div>
   <div class="page-transition-overlay" aria-hidden="true"></div>
 
   <nav class="navbar" aria-label="Navegación principal">
     <div class="navbar__inner">
-      <a href="../" class="navbar__logo" data-internal aria-label="CREDIAN Inicio">
-        <img src="../img/logo_credian.png" alt="CREDIAN Logo" class="navbar__img">
+      <a href="../" class="navbar__logo" data-internal aria-label="CREDIAN — Inicio">
+        <svg class="navbar__img brand-mark" viewBox="0 0 747 500" aria-hidden="true" focusable="false"><polygon class="brand-mark__blue" fill="#0F4C8C" points="0,250 250,0 370,120 242,250 370,380 250,500" /><polygon class="brand-mark__green" fill="#29AD6D" points="375,120 495,0 747,250 495,500 375,380 503,250" /></svg>
         <span class="navbar__logo-text">CREDIAN</span>
       </a>
-      <div class="navbar__links"><a href="../" class="navbar__link" data-internal>Inicio</a><a href="../nosotros/"
-          class="navbar__link" data-internal>Nosotros</a><a href="../productos/" class="navbar__link"
-          data-internal>Productos</a><a href="../dudas/" class="navbar__link active" data-internal>Dudas</a><a
-          href="../contacto/" class="navbar__link" data-internal>Contacto</a><a href="../convenios/"
-          class="navbar__link" data-internal>Convenios</a></div>
-      <div class="navbar__actions"><a href="https://cotizador.credian.mx/" class="navbar__cotizador"
-          target="_blank">Cotizador</a><a
-          href="https://wa.me/15557277347?text=Hola%2C%20quiero%20solicitar%20un%20cr%C3%A9dito"
-          class="navbar__cta btn-shimmer" target="_blank">Solicita tu crédito de nómina</a></div>
-      <button class="navbar__hamburger" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+      <div class="navbar__links">
+        <a href="../" class="navbar__link" data-internal>Inicio</a>
+        <a href="../productos/" class="navbar__link" data-internal>Productos</a>
+        <a href="../convenios/" class="navbar__link" data-internal>Para empresas</a>
+        <a href="../nosotros/" class="navbar__link" data-internal>Nosotros</a>
+        <a href="../dudas/" class="navbar__link active" aria-current="page" data-internal>Preguntas frecuentes</a>
+        <a href="../contacto/" class="navbar__link" data-internal>Contacto</a>
+      </div>
+      <div class="navbar__actions">
+        <a href="https://wa.me/15557277347?text=Hola%2C%20quiero%20solicitar%20un%20cr%C3%A9dito" class="navbar__cta" target="_blank" rel="noopener">Solicitar crédito</a>
+      </div>
+      <button class="navbar__hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
-  <div class="mobile-menu" aria-hidden="true"><a href="../" class="mobile-menu__link" data-internal>Inicio</a><a
-      href="../nosotros/" class="mobile-menu__link" data-internal>Nosotros</a><a href="../productos/"
-      class="mobile-menu__link" data-internal>Productos</a><a href="../dudas/" class="mobile-menu__link"
-      data-internal>Dudas</a><a href="../contacto/" class="mobile-menu__link" data-internal>Contacto</a><a
-      href="../convenios/" class="mobile-menu__link" data-internal>Convenios</a>
-    <div class="mobile-menu__divider"></div><a href="https://cotizador.credian.mx/" class="mobile-menu__link"
-      target="_blank" rel="noopener">Cotizador</a><a
-      href="https://wa.me/15557277347?text=Hola%2C%20quiero%20solicitar%20un%20cr%C3%A9dito" class="mobile-menu__link"
-      target="_blank" rel="noopener">Solicitar crédito</a>
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <a href="../" class="mobile-menu__link" data-internal>Inicio</a>
+    <a href="../productos/" class="mobile-menu__link" data-internal>Productos</a>
+    <a href="../convenios/" class="mobile-menu__link" data-internal>Para empresas</a>
+    <a href="../nosotros/" class="mobile-menu__link" data-internal>Nosotros</a>
+    <a href="../dudas/" class="mobile-menu__link" aria-current="page" data-internal>Preguntas frecuentes</a>
+    <a href="../contacto/" class="mobile-menu__link" data-internal>Contacto</a>
+    <div class="mobile-menu__divider"></div>
+    <a href="https://wa.me/15557277347?text=Hola%2C%20quiero%20solicitar%20un%20cr%C3%A9dito" class="mobile-menu__link" target="_blank" rel="noopener">Solicitar crédito</a>
   </div>
 
   <!-- HERO -->
   <section class="hero hero--small">
     <div class="hero__bg"></div>
-    <div class="rhombus-deco rhombus-deco--2 rhombus-deco--green" aria-hidden="true"></div>
-    <div class="rhombus-deco rhombus-deco--5" aria-hidden="true"></div>
     <div class="hero__content">
-      <span class="hero__label hero-enter">Centro de ayuda</span>
-      <h1 class="hero__title hero-enter">Preguntas <span class="text-gradient"
-          style="-webkit-text-fill-color:transparent;background:linear-gradient(90deg,#7eb8f7,#4CC882);-webkit-background-clip:text;background-clip:text">frecuentes</span>
+      <h1 class="hero__title hero-enter">Preguntas frecuentes
       </h1>
       <p class="hero__subtitle hero-enter">Encuentra respuestas rápidas a tus dudas sobre nuestros créditos de nómina.
       </p>
@@ -536,6 +723,8 @@
   <!-- FAQ -->
   <section class="section">
     <div class="container">
+      <div class="faq-layout">
+        <aside class="faq-aside">
       <!-- Search -->
       <div class="faq-search-wrapper reveal">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
@@ -555,6 +744,8 @@
         <button class="faq-cat-btn" data-faq-category="proceso">Proceso</button>
       </div>
 
+        </aside>
+        <div class="faq-main">
       <!-- FAQ List -->
       <div class="faq-list">
         <div class="faq-item accordion-item reveal" data-category="general">
@@ -565,7 +756,7 @@
               </svg></span></button>
           <div class="accordion-content">
             <p>Un crédito de nómina es un préstamo personal que se descuenta directamente de tu salario quincenal o
-              mensual. Al estar respaldado por tu nómina, ofrece tasas de interés más bajas que otros tipos de crédito
+              mensual. Es exclusivo para colaboradores de empresas con convenio con CREDIAN. Al estar respaldado por tu nómina, ofrece tasas de interés más bajas que otros tipos de crédito
               personal, ya que el riesgo para la institución financiera es menor.</p>
           </div>
         </div>
@@ -602,9 +793,9 @@
                 <polyline points="6 9 12 15 18 9" />
               </svg></span></button>
           <div class="accordion-content">
-            <p>Nuestras tasas van desde el 14.9% hasta el 24.9% anual, dependiendo del plan elegido, monto solicitado,
-              plazo y tu perfil crediticio. Utiliza nuestro cotizador en línea para obtener una estimación personalizada
-              de tu tasa.</p>
+            <p>Tu crédito tiene tasa fija anual durante todo el plazo. La tasa depende del monto, el plazo y tu
+              perfil crediticio. Antes de que firmes, un asesor te entrega por escrito tu tasa, CAT y comisiones
+              para que sepas exactamente cuánto vas a pagar.</p>
           </div>
         </div>
 
@@ -686,11 +877,14 @@
         </div>
       </div>
 
+        </div>
+      </div>
+
       <!-- Contact CTA -->
-      <div class="contact-cta reveal-scale">
+      <div class="contact-cta cta-banner reveal-scale">
         <h3>¿No encontraste tu respuesta?</h3>
         <p>Nuestro equipo está listo para ayudarte. Contáctanos y resolveremos todas tus dudas.</p>
-        <a href="../contacto/" class="btn btn--secondary btn--large btn-shimmer" data-internal>Contactar a un
+        <a href="../contacto/" class="btn btn--secondary btn--large" data-internal>Contactar a un
           asesor</a>
       </div>
     </div>
@@ -707,7 +901,6 @@
       <line x1="18" y1="6" x2="6" y2="18" />
       <line x1="6" y1="6" x2="18" y2="18" />
     </svg>
-    <span class="chatbot-badge">1</span>
   </button>
   <div class="chatbot-window" id="chatbot-window">
     <div class="chatbot-header">
@@ -740,47 +933,53 @@
       <div class="footer__grid">
         <div class="footer__brand">
           <div class="footer__logo">
-            <img src="../img/logo_credian.png" alt="CREDIAN Logo" class="footer__img">
+            <svg class="footer__img brand-mark" viewBox="0 0 747 500" aria-hidden="true" focusable="false"><polygon class="brand-mark__blue" fill="#0F4C8C" points="0,250 250,0 370,120 242,250 370,380 250,500" /><polygon class="brand-mark__green" fill="#29AD6D" points="375,120 495,0 747,250 495,500 375,380 503,250" /></svg>
             <span class="footer__logo-text">CREDIAN</span>
           </div>
           <p class="footer__brand-desc">Somos una empresa financiera mexicana especializada en créditos de nómina. Más
             de 10 años brindando soluciones financieras con transparencia y confianza.</p>
           <div class="footer__social">
-            <a href="https://www.facebook.com/credian.mx/" class="footer__social-link" aria-label="Facebook"><svg
-                viewBox="0 0 24 24" fill="currentColor">
+            <a href="https://www.facebook.com/credian.mx/" class="footer__social-link" target="_blank" rel="noopener"
+              aria-label="Facebook de CREDIAN"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
               </svg></a>
-            <a href="https://www.instagram.com/credianmx/" class="footer__social-link" aria-label="Instagram"><svg
-                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <a href="https://www.instagram.com/credianmx/" class="footer__social-link" target="_blank" rel="noopener"
+              aria-label="Instagram de CREDIAN"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" aria-hidden="true">
                 <rect x="2" y="2" width="20" height="20" rx="5" />
                 <circle cx="12" cy="12" r="5" />
               </svg></a>
-            <a href="https://www.linkedin.com/company/credian/posts/?feedView=all" class="footer__social-link"
-              aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor">
+            <a href="https://www.linkedin.com/company/credian/" class="footer__social-link" target="_blank"
+              rel="noopener" aria-label="LinkedIn de CREDIAN"><svg viewBox="0 0 24 24" fill="currentColor"
+                aria-hidden="true">
                 <path
                   d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z" />
               </svg></a>
           </div>
         </div>
         <div>
-          <h4 class="footer__column-title">Páginas</h4><a href="../" class="footer__link" data-internal>Inicio</a><a
-            href="../nosotros/" class="footer__link" data-internal>Nosotros</a><a href="../productos/"
-            class="footer__link" data-internal>Productos</a><a href="../dudas/" class="footer__link"
-            data-internal>Dudas</a><a href="../contacto/" class="footer__link" data-internal>Contacto</a><a
-            href="../convenios/" class="footer__link" data-internal>Convenios</a>
+          <h2 class="footer__column-title">Páginas</h2>
+          <a href="../" class="footer__link" data-internal>Inicio</a>
+          <a href="../productos/" class="footer__link" data-internal>Productos</a>
+          <a href="../convenios/" class="footer__link" data-internal>Para empresas</a>
+          <a href="../nosotros/" class="footer__link" data-internal>Nosotros</a>
+          <a href="../dudas/" class="footer__link" data-internal>Preguntas frecuentes</a>
+          <a href="../contacto/" class="footer__link" data-internal>Contacto</a>
         </div>
         <div>
-          <h4 class="footer__column-title">Servicios</h4><a href="https://cotizador.credian.mx" class="footer__link"
-            target="_blank">Cotizador</a><a href="https://cib.logicsystems.com.mx/RECREA/LoginCredian.aspx?EMP=RECREA"
-            class="footer__link" target="_blank">Solicitar
-            crédito</a><a href="../productos/" class="footer__link" data-internal>Crédito de nómina</a>
+          <h2 class="footer__column-title">Servicios</h2>
+          <a href="https://cib.logicsystems.com.mx/RECREA/LoginCredian.aspx?EMP=RECREA" class="footer__link" target="_blank" rel="noopener">Solicitar crédito</a>
+          <a href="../productos/" class="footer__link" data-internal>Crédito de nómina</a>
+          <a href="../productos/" class="footer__link" data-internal>Crédito PYME y arrendamiento</a>
+          <a href="../convenios/" class="footer__link" data-internal>Convenios empresariales</a>
         </div>
         <div>
-          <h4 class="footer__column-title">Contacto</h4>
+          <h2 class="footer__column-title">Contacto</h2>
           <a href="tel:+524449625037" class="footer__link">+52 444 962 5037</a>
           <a href="mailto:contacto@credian.mx" class="footer__link">contacto@credian.mx</a>
-          <a class="footer__link" href="https://maps.app.goo.gl/pszoTMPpHbt7NWdv6">
-            Cordillera Himalaya No. 830, Col. Lomas Cuarta Sección
+          <a href="https://wa.me/524442868687?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20un%20cr%C3%A9dito" class="footer__link" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="footer__link" href="https://maps.app.goo.gl/pszoTMPpHbt7NWdv6" target="_blank" rel="noopener">
+            Cordillera Himalaya No. 830, Col. Lomas Cuarta Sección, San Luis Potosí
           </a>
         </div>
       </div>

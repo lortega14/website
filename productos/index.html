@@ -8,17 +8,44 @@
   <link rel="icon" href="../img/credian.ico" type="image/x-icon">
   <meta name="description"
     content="Conoce nuestros productos de crédito de nómina y soluciones financieras. Tasas competitivas y plazos flexibles.">
+  <!-- Dirección oficial y vista previa al compartir -->
+  <link rel="canonical" href="https://www.credian.mx/productos/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="CREDIAN">
+  <meta property="og:locale" content="es_MX">
+  <meta property="og:url" content="https://www.credian.mx/productos/">
+  <meta property="og:title" content="Crédito de nómina, PYME y arrendamiento | CREDIAN">
+  <meta property="og:description" content="Conoce nuestros productos de crédito de nómina y soluciones financieras. Tasas competitivas y plazos flexibles.">
+  <meta property="og:image" content="https://www.credian.mx/img/og/productos.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Crédito de nómina, PYME y arrendamiento | CREDIAN">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Crédito de nómina, PYME y arrendamiento | CREDIAN">
+  <meta name="twitter:description" content="Conoce nuestros productos de crédito de nómina y soluciones financieras. Tasas competitivas y plazos flexibles.">
+  <meta name="twitter:image" content="https://www.credian.mx/img/og/productos.jpg">
+  <link rel="preload" href="../font/nexa-bold.otf" as="font" type="font/otf" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+  <noscript>
+    <style>
+      .reveal, .reveal-left, .reveal-right, .reveal-scale, .hero-enter { opacity: 1 !important; transform: none !important; }
+    </style>
+  </noscript>
   <link rel="stylesheet" href="../css/reset.css">
   <link rel="stylesheet" href="../css/variables.css">
   <link rel="stylesheet" href="../css/animations.css">
-  <link rel="stylesheet" href="../css/global.css?v=1.1">
+  <link rel="stylesheet" href="../css/global.css?v=1.8">
+  <!-- Créditos (incluye la tipografía Nexa, requisito de su licencia) -->
+  <link rel="author" href="../humans.txt">
   <style>
     .product-card {
       background: var(--color-white);
       border-radius: var(--radius-xl);
       padding: var(--space-2xl);
-      box-shadow: var(--shadow-sm);
-      border: 2px solid transparent;
+      border: 1px solid var(--color-gray-mid);
       transition: all var(--transition-base);
       position: relative;
       overflow: hidden;
@@ -27,8 +54,7 @@
     }
 
     .product-card:hover {
-      box-shadow: var(--shadow-card-hover);
-      transform: translateY(-8px)
+      border-color: var(--color-blue-light)
     }
 
     .products-category {
@@ -45,7 +71,6 @@
     .products-category__image {
       border-radius: var(--radius-xl);
       overflow: hidden;
-      box-shadow: var(--shadow-md);
       position: relative;
       min-height: 300px;
     }
@@ -97,6 +122,24 @@
       margin-bottom: var(--space-xl);
     }
 
+    .product-card__lead {
+      font-size: var(--text-sm);
+      font-weight: var(--fw-semibold);
+      color: var(--color-dark);
+      margin-bottom: var(--space-xs);
+    }
+
+    .product-card__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      margin-top: auto;
+    }
+
+    .product-card__actions .btn {
+      flex: 1 1 auto;
+    }
+
     .product-card__features {
       list-style: none;
       margin-bottom: var(--space-xl);
@@ -126,7 +169,6 @@
       border-collapse: collapse;
       border-radius: var(--radius-lg);
       overflow: hidden;
-      box-shadow: var(--shadow-md)
     }
 
     .compare-table thead {
@@ -178,12 +220,10 @@
       padding: var(--space-lg);
       background: var(--color-white);
       border-radius: var(--radius-md);
-      box-shadow: var(--shadow-sm);
       transition: all var(--transition-base)
     }
 
     .req-item:hover {
-      box-shadow: var(--shadow-md);
       transform: translateX(4px)
     }
 
@@ -191,7 +231,7 @@
       width: 28px;
       height: 28px;
       border-radius: var(--radius-full);
-      background: linear-gradient(135deg, rgba(43, 77, 168, .1), rgba(58, 170, 110, .1));
+      background: var(--color-gray-light);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -208,8 +248,7 @@
       background: var(--color-white);
       border-radius: var(--radius-md);
       margin-bottom: var(--space-md);
-      box-shadow: var(--shadow-sm);
-      border: 1px solid rgba(0, 0, 0, .04);
+      border: 1px solid var(--color-gray-mid);
       overflow: hidden
     }
 
@@ -263,51 +302,127 @@
         min-width: 600px
       }
     }
+
+    /* ======== Lenguaje visual CREDIAN ======== */
+    .product-card {
+      border-radius: 8px
+    }
+
+    /* Requisitos: lista abierta con divisores */
+    .req-item {
+      background: none;
+      border: 0;
+      border-top: 1px solid var(--color-gray-mid);
+      border-radius: 0;
+      padding: var(--space-lg) 0
+    }
+
+    .req-item:hover {
+      transform: none
+    }
+
+    .req-item__check {
+      background: none;
+      color: var(--color-green-dark)
+    }
+
+    .req-callout {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm) var(--space-xl);
+      padding: var(--space-lg) var(--space-xl);
+      margin-bottom: var(--space-2xl);
+      background: var(--color-gray-light);
+      border-left: 4px solid var(--color-green);
+      border-radius: 8px
+    }
+
+    .req-callout p {
+      color: var(--color-dark)
+    }
+
+    .req-callout__link {
+      font-family: var(--font-display);
+      font-weight: var(--fw-semibold);
+      color: var(--color-blue);
+      text-decoration: underline;
+      text-underline-offset: 4px
+    }
+
+    /* Preguntas: lista con divisores, alineada a la izquierda */
+    .faq-section .container--narrow {
+      max-width: var(--max-width)
+    }
+
+    .faq-section .accordion-item {
+      max-width: 820px;
+      background: none;
+      border: 0;
+      border-bottom: 1px solid var(--color-gray-mid);
+      border-radius: 0;
+      margin-bottom: 0
+    }
+
+    .faq-section .accordion-trigger {
+      padding-left: 0;
+      padding-right: 0
+    }
+
+    .faq-section .accordion-trigger:hover {
+      background: none;
+      color: var(--color-blue)
+    }
+
+    .faq-section .accordion-content {
+      padding-left: 0;
+      padding-right: 0
+    }
   </style>
 </head>
 
 <body class="page-body">
-  <div class="custom-cursor" aria-hidden="true"></div>
   <div class="page-transition-overlay" aria-hidden="true"></div>
 
   <nav class="navbar" aria-label="Navegación principal">
     <div class="navbar__inner">
-      <a href="../" class="navbar__logo" data-internal aria-label="CREDIAN Inicio">
-        <img src="../img/logo_credian.png" alt="CREDIAN Logo" class="navbar__img">
+      <a href="../" class="navbar__logo" data-internal aria-label="CREDIAN — Inicio">
+        <svg class="navbar__img brand-mark" viewBox="0 0 747 500" aria-hidden="true" focusable="false"><polygon class="brand-mark__blue" fill="#0F4C8C" points="0,250 250,0 370,120 242,250 370,380 250,500" /><polygon class="brand-mark__green" fill="#29AD6D" points="375,120 495,0 747,250 495,500 375,380 503,250" /></svg>
         <span class="navbar__logo-text">CREDIAN</span>
       </a>
-      <div class="navbar__links"><a href="../" class="navbar__link" data-internal>Inicio</a><a href="../nosotros/"
-          class="navbar__link" data-internal>Nosotros</a><a href="../productos/" class="navbar__link active"
-          data-internal>Productos</a><a href="../dudas/" class="navbar__link" data-internal>Dudas</a><a
-          href="../contacto/" class="navbar__link" data-internal>Contacto</a><a href="../convenios/"
-          class="navbar__link" data-internal>Convenios</a></div>
-      <div class="navbar__actions"><a href="https://cotizador.credian.mx/" class="navbar__cotizador"
-          target="_blank">Cotizador</a><a
-          href="https://wa.me/15557277347?text=Hola%2C%20quiero%20solicitar%20un%20cr%C3%A9dito"
-          class="navbar__cta btn-shimmer" target="_blank">Solicita tu crédito de nómina</a></div>
-      <button class="navbar__hamburger" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+      <div class="navbar__links">
+        <a href="../" class="navbar__link" data-internal>Inicio</a>
+        <a href="../productos/" class="navbar__link active" aria-current="page" data-internal>Productos</a>
+        <a href="../convenios/" class="navbar__link" data-internal>Para empresas</a>
+        <a href="../nosotros/" class="navbar__link" data-internal>Nosotros</a>
+        <a href="../dudas/" class="navbar__link" data-internal>Preguntas frecuentes</a>
+        <a href="../contacto/" class="navbar__link" data-internal>Contacto</a>
+      </div>
+      <div class="navbar__actions">
+        <a href="https://wa.me/15557277347?text=Hola%2C%20quiero%20solicitar%20un%20cr%C3%A9dito" class="navbar__cta" target="_blank" rel="noopener">Solicitar crédito</a>
+      </div>
+      <button class="navbar__hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
-  <div class="mobile-menu" aria-hidden="true"><a href="../" class="mobile-menu__link" data-internal>Inicio</a><a
-      href="../nosotros/" class="mobile-menu__link" data-internal>Nosotros</a><a href="../productos/"
-      class="mobile-menu__link" data-internal>Productos</a><a href="../dudas/" class="mobile-menu__link"
-      data-internal>Dudas</a><a href="../contacto/" class="mobile-menu__link" data-internal>Contacto</a><a
-      href="../convenios/" class="mobile-menu__link" data-internal>Convenios</a>
-    <div class="mobile-menu__divider"></div><a href="https://cotizador.credian.mx/" class="mobile-menu__link"
-      target="_blank" rel="noopener">Cotizador</a><a
-      href="https://wa.me/15557277347?text=Hola%2C%20quiero%20solicitar%20un%20cr%C3%A9dito" class="mobile-menu__link"
-      target="_blank" rel="noopener">Solicitar crédito</a>
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <a href="../" class="mobile-menu__link" data-internal>Inicio</a>
+    <a href="../productos/" class="mobile-menu__link" aria-current="page" data-internal>Productos</a>
+    <a href="../convenios/" class="mobile-menu__link" data-internal>Para empresas</a>
+    <a href="../nosotros/" class="mobile-menu__link" data-internal>Nosotros</a>
+    <a href="../dudas/" class="mobile-menu__link" data-internal>Preguntas frecuentes</a>
+    <a href="../contacto/" class="mobile-menu__link" data-internal>Contacto</a>
+    <div class="mobile-menu__divider"></div>
+    <a href="https://wa.me/15557277347?text=Hola%2C%20quiero%20solicitar%20un%20cr%C3%A9dito" class="mobile-menu__link" target="_blank" rel="noopener">Solicitar crédito</a>
   </div>
 
   <!-- HERO -->
   <section class="hero hero--small">
     <div class="hero__bg"></div>
-    <div class="rhombus-deco rhombus-deco--1 rhombus-deco--green" aria-hidden="true"></div>
-    <div class="rhombus-deco rhombus-deco--4" aria-hidden="true"></div>
     <div class="hero__content">
-      <span class="hero__label hero-enter">Nuestros planes</span>
-      <h1 class="hero__title hero-enter">Productos de <span class="text-gradient"
-          style="-webkit-text-fill-color:transparent;background:linear-gradient(90deg,#7eb8f7,#4CC882);-webkit-background-clip:text;background-clip:text">crédito</span>
+      <h1 class="hero__title hero-enter">Productos de crédito
       </h1>
       <p class="hero__subtitle hero-enter">Planes diseñados para adaptarse a tus necesidades. Elige el que mejor te
         convenga.</p>
@@ -318,56 +433,43 @@
   <section class="section">
     <div class="container">
       <div class="section__header reveal">
-        <span class="section__label">Nuestros Productos</span>
-        <h2 class="section__title">Conoce lo que <span class="text-gradient">ofrecemos</span></h2>
+        <h2 class="section__title">Conoce lo que ofrecemos</h2>
+        <p class="section__subtitle">Créditos para personas y empresas, y arrendamiento para que tu negocio crezca.
+          Un asesor te explica tasa, CAT y comisiones antes de que firmes.</p>
       </div>
       <!-- Categoría: Créditos -->
       <div class="products-category reveal">
         <div class="products-category__image">
-          <img src="../img/premium_photo-1679496828825-5d479da38e07.avif" alt="Profesionales de Crédito">
+          <img src="../img/premium_photo-1679496828825-5d479da38e07.avif" alt="" width="500" height="625"
+            loading="lazy" decoding="async">
         </div>
         <div class="products-category__cards">
           <div class="product-card stagger-1">
             <h3 class="product-card__name">Crédito de Nómina</h3>
-            <p class="product-card__desc">El esquema tradicional; sin revolvencia, con plazos y periodos de pago
-              personalizados para darte la flexibilidad que necesitas para cubrir tus imprevistos a una tasa fija.</p>
+            <p class="product-card__desc">Para colaboradores de empresas con convenio. Crédito sin revolvencia que pagas con descuento directo de tu nómina. Tasa fija y plazos a tu medida para cubrir imprevistos o concretar tus planes.</p>
             <ul class="product-card__features">
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>Atractivos plazos</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>Trámites sencillos</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>Disponibilidad</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>Tasa fija anual</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>Comisiones competitivas</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg>Tasa fija anual durante todo el crédito</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg>Pagos descontados directamente de tu nómina</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg>Plazo y periodicidad de pago a tu medida</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg>Sin penalización por pago anticipado</li>
             </ul>
+            <div class="product-card__actions">
+              <a href="https://wa.me/15557277347?text=Hola%2C%20quiero%20solicitar%20un%20cr%C3%A9dito" class="btn btn--primary" target="_blank" rel="noopener">Solicitar crédito</a>
+              <a href="#requisitos" class="btn btn--secondary">Ver requisitos</a>
+            </div>
           </div>
           <div class="product-card stagger-2">
             <h3 class="product-card__name">Crédito PYME</h3>
-            <p class="product-card__desc">Un producto enfocado para las pequeñas y medianas empresas que son el pilar
-              más importante en la economía de nuestro país. Con tasa fija y plazo y periodos de pago que mejor te
-              acomoden; es el impulso que necesitas para llevar tu negocio al siguiente nivel.</p>
+            <p class="product-card__desc">Financiamiento para pequeñas y medianas empresas, con tasa fija y un plazo y periodicidad de pago que se ajustan al flujo de tu negocio.</p>
             <ul class="product-card__features">
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>Crecimiento</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>Atención Personalizada</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>Competitividad</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>Tasa fija anual</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg>Tasa fija anual</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg>Plazo y periodicidad a la medida de tu negocio</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg>Asesor dedicado durante todo el proceso</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg>Impulsa el crecimiento de tu empresa</li>
             </ul>
+            <div class="product-card__actions">
+              <a href="../contacto/?asunto=pyme" class="btn btn--primary" data-internal>Solicitar información</a>
+            </div>
           </div>
         </div>
       </div>
@@ -377,54 +479,49 @@
         <div class="products-category__cards">
           <div class="product-card stagger-3">
             <h3 class="product-card__name">Arrendamiento Puro (Leasing)</h3>
-            <p class="product-card__desc">Es un producto con grandes beneficios fiscales en el cual se renta un bien a
-              determinado plazo y con pagos mensuales fijos. Únicamente pagas por el tiempo que utilizas el bien y al
-              finalizar el plazo cuentas con tres opciones:</p>
+            <p class="product-card__desc">Rentas un bien por un plazo determinado con pagos mensuales fijos y beneficios fiscales. Solo pagas por el tiempo que lo usas.</p>
+            <p class="product-card__lead">Al terminar el plazo puedes elegir:</p>
             <ul class="product-card__features">
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>Comprarlo a valor residual</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>Financiar la compra del valor residual</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>Regresar el bien</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg>Comprarlo a valor residual</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg>Financiar la compra del valor residual</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg>Devolver el bien</li>
             </ul>
+            <div class="product-card__actions">
+              <a href="../contacto/?asunto=arrendamiento" class="btn btn--primary" data-internal>Solicitar información</a>
+            </div>
           </div>
           <div class="product-card stagger-4">
             <h3 class="product-card__name">Arrendamiento Financiero</h3>
-            <p class="product-card__desc">A diferencia del leasing; este esquema no cuenta con valor residual ya que
-              tiene como finalidad la adquisición del bien.</p>
+            <p class="product-card__desc">A diferencia del arrendamiento puro, este esquema no tiene valor residual: su objetivo es que al final del plazo el bien sea tuyo.</p>
             <ul class="product-card__features">
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>Inversiones</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>Apalancamiento</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>Tasa fija anual</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg>El bien es tuyo al terminar el plazo</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg>Pagos fijos con tasa fija anual</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg>Invierte en activos sin descapitalizar tu negocio</li>
             </ul>
+            <div class="product-card__actions">
+              <a href="../contacto/?asunto=arrendamiento" class="btn btn--primary" data-internal>Solicitar información</a>
+            </div>
           </div>
         </div>
         <div class="products-category__image">
-          <img src="../img/servicio3.png" alt="Bienes de Arrendamiento">
+          <img src="../img/servicio3.webp" alt="" width="800" height="954" loading="lazy" decoding="async">
         </div>
       </div>
     </div>
   </section>
 
-
-
   <!-- REQUIREMENTS -->
-  <section class="section">
+  <section class="section" id="requisitos">
     <div class="container">
       <div class="section__header reveal">
-        <span class="section__label">Requisitos</span>
-        <h2 class="section__title">¿Qué <span class="text-gradient">necesitas</span>?</h2>
+        <h2 class="section__title">¿Qué necesitas?</h2>
         <p class="section__subtitle">Solo necesitas cumplir con estos requisitos básicos para solicitar tu crédito.</p>
+      </div>
+      <div class="req-callout reveal">
+        <p><strong>Requisito principal:</strong> el crédito de nómina es para colaboradores de empresas con
+          convenio con CREDIAN.</p>
+        <a href="../convenios/" class="req-callout__link" data-internal>¿Tu empresa aún no tiene convenio?
+          Invítala</a>
       </div>
       <div class="requirements">
         <div class="req-item reveal stagger-1">
@@ -433,7 +530,7 @@
               <polyline points="20 6 9 17 4 12" />
             </svg></div>
           <div>
-            <h4 style="font-size:var(--text-base);margin-bottom:4px">Identificación oficial</h4>
+            <h3 style="font-size:var(--text-base);margin-bottom:4px">Identificación oficial</h3>
             <p style="font-size:var(--text-sm);color:var(--color-gray-text)">INE o pasaporte vigente</p>
           </div>
         </div>
@@ -443,7 +540,7 @@
               <polyline points="20 6 9 17 4 12" />
             </svg></div>
           <div>
-            <h4 style="font-size:var(--text-base);margin-bottom:4px">Comprobante de domicilio</h4>
+            <h3 style="font-size:var(--text-base);margin-bottom:4px">Comprobante de domicilio</h3>
             <p style="font-size:var(--text-sm);color:var(--color-gray-text)">No mayor a 3 meses</p>
           </div>
         </div>
@@ -453,7 +550,7 @@
               <polyline points="20 6 9 17 4 12" />
             </svg></div>
           <div>
-            <h4 style="font-size:var(--text-base);margin-bottom:4px">Últimos 3 recibos de nómina</h4>
+            <h3 style="font-size:var(--text-base);margin-bottom:4px">Últimos 3 recibos de nómina</h3>
             <p style="font-size:var(--text-sm);color:var(--color-gray-text)">En formato PDF o impreso</p>
           </div>
         </div>
@@ -463,7 +560,7 @@
               <polyline points="20 6 9 17 4 12" />
             </svg></div>
           <div>
-            <h4 style="font-size:var(--text-base);margin-bottom:4px">Estado de cuenta bancario</h4>
+            <h3 style="font-size:var(--text-base);margin-bottom:4px">Estado de cuenta bancario</h3>
             <p style="font-size:var(--text-sm);color:var(--color-gray-text)">Últimos 3 meses</p>
           </div>
         </div>
@@ -473,7 +570,7 @@
               <polyline points="20 6 9 17 4 12" />
             </svg></div>
           <div>
-            <h4 style="font-size:var(--text-base);margin-bottom:4px">Antigüedad laboral mínima</h4>
+            <h3 style="font-size:var(--text-base);margin-bottom:4px">Antigüedad laboral mínima</h3>
             <p style="font-size:var(--text-sm);color:var(--color-gray-text)">Al menos 1 año en tu empleo actual</p>
           </div>
         </div>
@@ -483,7 +580,7 @@
               <polyline points="20 6 9 17 4 12" />
             </svg></div>
           <div>
-            <h4 style="font-size:var(--text-base);margin-bottom:4px">Ser mayor de 18 años</h4>
+            <h3 style="font-size:var(--text-base);margin-bottom:4px">Ser mayor de 18 años</h3>
             <p style="font-size:var(--text-sm);color:var(--color-gray-text)">Edad máxima 65 años al término del crédito
             </p>
           </div>
@@ -496,8 +593,7 @@
   <section class="section section--gray faq-section">
     <div class="container container--narrow">
       <div class="section__header reveal">
-        <span class="section__label">FAQ</span>
-        <h2 class="section__title">Preguntas sobre <span class="text-gradient">productos</span></h2>
+        <h2 class="section__title">Preguntas sobre productos</h2>
       </div>
       <div class="accordion-item reveal"><button class="accordion-trigger" aria-expanded="false"><span>¿Puedo solicitar
             más de un crédito a la vez?</span><span class="accordion-icon"><svg viewBox="0 0 24 24" fill="none"
@@ -548,47 +644,53 @@
       <div class="footer__grid">
         <div class="footer__brand">
           <div class="footer__logo">
-            <img src="../img/logo_credian.png" alt="CREDIAN Logo" class="footer__img">
+            <svg class="footer__img brand-mark" viewBox="0 0 747 500" aria-hidden="true" focusable="false"><polygon class="brand-mark__blue" fill="#0F4C8C" points="0,250 250,0 370,120 242,250 370,380 250,500" /><polygon class="brand-mark__green" fill="#29AD6D" points="375,120 495,0 747,250 495,500 375,380 503,250" /></svg>
             <span class="footer__logo-text">CREDIAN</span>
           </div>
           <p class="footer__brand-desc">Somos una empresa financiera mexicana especializada en créditos de nómina. Más
             de 10 años brindando soluciones financieras con transparencia y confianza.</p>
           <div class="footer__social">
-            <a href="https://www.facebook.com/credian.mx/" class="footer__social-link" aria-label="Facebook"><svg
-                viewBox="0 0 24 24" fill="currentColor">
+            <a href="https://www.facebook.com/credian.mx/" class="footer__social-link" target="_blank" rel="noopener"
+              aria-label="Facebook de CREDIAN"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
               </svg></a>
-            <a href="https://www.instagram.com/credianmx/" class="footer__social-link" aria-label="Instagram"><svg
-                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <a href="https://www.instagram.com/credianmx/" class="footer__social-link" target="_blank" rel="noopener"
+              aria-label="Instagram de CREDIAN"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" aria-hidden="true">
                 <rect x="2" y="2" width="20" height="20" rx="5" />
                 <circle cx="12" cy="12" r="5" />
               </svg></a>
-            <a href="https://www.linkedin.com/company/credian/posts/?feedView=all" class="footer__social-link"
-              aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor">
+            <a href="https://www.linkedin.com/company/credian/" class="footer__social-link" target="_blank"
+              rel="noopener" aria-label="LinkedIn de CREDIAN"><svg viewBox="0 0 24 24" fill="currentColor"
+                aria-hidden="true">
                 <path
                   d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z" />
               </svg></a>
           </div>
         </div>
         <div>
-          <h4 class="footer__column-title">Páginas</h4><a href="../" class="footer__link" data-internal>Inicio</a><a
-            href="../nosotros/" class="footer__link" data-internal>Nosotros</a><a href="../productos/"
-            class="footer__link" data-internal>Productos</a><a href="../dudas/" class="footer__link"
-            data-internal>Dudas</a><a href="../contacto/" class="footer__link" data-internal>Contacto</a><a
-            href="../convenios/" class="footer__link" data-internal>Convenios</a>
+          <h2 class="footer__column-title">Páginas</h2>
+          <a href="../" class="footer__link" data-internal>Inicio</a>
+          <a href="../productos/" class="footer__link" data-internal>Productos</a>
+          <a href="../convenios/" class="footer__link" data-internal>Para empresas</a>
+          <a href="../nosotros/" class="footer__link" data-internal>Nosotros</a>
+          <a href="../dudas/" class="footer__link" data-internal>Preguntas frecuentes</a>
+          <a href="../contacto/" class="footer__link" data-internal>Contacto</a>
         </div>
         <div>
-          <h4 class="footer__column-title">Servicios</h4><a href="https://cotizador.credian.mx" class="footer__link"
-            target="_blank">Cotizador</a><a href="https://cib.logicsystems.com.mx/RECREA/LoginCredian.aspx?EMP=RECREA"
-            class="footer__link" target="_blank">Solicitar
-            crédito</a><a href="../productos/" class="footer__link" data-internal>Crédito de nómina</a>
+          <h2 class="footer__column-title">Servicios</h2>
+          <a href="https://cib.logicsystems.com.mx/RECREA/LoginCredian.aspx?EMP=RECREA" class="footer__link" target="_blank" rel="noopener">Solicitar crédito</a>
+          <a href="../productos/" class="footer__link" data-internal>Crédito de nómina</a>
+          <a href="../productos/" class="footer__link" data-internal>Crédito PYME y arrendamiento</a>
+          <a href="../convenios/" class="footer__link" data-internal>Convenios empresariales</a>
         </div>
         <div>
-          <h4 class="footer__column-title">Contacto</h4>
+          <h2 class="footer__column-title">Contacto</h2>
           <a href="tel:+524449625037" class="footer__link">+52 444 962 5037</a>
           <a href="mailto:contacto@credian.mx" class="footer__link">contacto@credian.mx</a>
-          <a class="footer__link" href="https://maps.app.goo.gl/pszoTMPpHbt7NWdv6">
-            Cordillera Himalaya No. 830, Col. Lomas Cuarta Sección
+          <a href="https://wa.me/524442868687?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20un%20cr%C3%A9dito" class="footer__link" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="footer__link" href="https://maps.app.goo.gl/pszoTMPpHbt7NWdv6" target="_blank" rel="noopener">
+            Cordillera Himalaya No. 830, Col. Lomas Cuarta Sección, San Luis Potosí
           </a>
         </div>
       </div>

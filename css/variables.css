@@ -4,34 +4,41 @@
    ============================================ */
 
 :root {
-  /* ---- Brand Colors ---- */
-  --color-blue: #2B4DA8;
-  --color-blue-dark: #1E3A7A;
-  --color-blue-light: #3A6BD6;
-  --color-green: #3AAA6E;
-  --color-green-dark: #2D8A58;
-  --color-green-light: #4CC882;
+  /* ---- Brand Colors (tomados del logo) ----
+     Azul y verde se usan siempre sólidos y por separado, como en el logo:
+     nunca se mezclan en degradados. */
+  --color-blue: #0F4C8C;        /* azul del logo: estructura, títulos, acciones */
+  --color-blue-dark: #0A3A6E;   /* hover de botones azules */
+  --color-navy: #0A2747;        /* fondo de portadas y cierres: deja ver el logo completo */
+  --color-blue-light: #3D72B0;  /* bordes activos */
+  --color-green: #29AD6D;       /* verde del logo: formas e íconos grandes */
+  --color-green-dark: #1C7A4B;  /* verde legible para texto sobre blanco */
+  --color-green-light: #5CC793; /* verde sobre fondos azules */
 
   /* ---- Neutral Colors ---- */
-  --color-dark: #3D3D3D;
-  --color-navbar: #1A1D24;
+  --color-dark: #13294B;        /* tinta: azul muy oscuro derivado del logo */
+  --color-navbar: #0A3A6E;
   --color-white: #FFFFFF;
-  --color-gray-light: #F5F6FA;
-  --color-gray-mid: #E0E2EA;
-  --color-gray-text: #6B7280;
-  --color-overlay: rgba(26, 29, 36, 0.95);
+  --color-gray-light: #EEF3F8;  /* niebla: superficie secundaria */
+  --color-gray-mid: #D8E0EA;    /* líneas */
+  --color-gray-text: #556073;
+  --color-overlay: rgba(15, 76, 140, 0.98);
 
-  /* ---- Gradients ---- */
-  --gradient-brand: linear-gradient(135deg, var(--color-blue) 0%, var(--color-green) 100%);
-  --gradient-brand-reverse: linear-gradient(135deg, var(--color-green) 0%, var(--color-blue) 100%);
-  --gradient-hero: linear-gradient(160deg, #1a2e5a 0%, #2B4DA8 35%, #3AAA6E 100%);
-  --gradient-dark: linear-gradient(135deg, #111317 0%, #1A1D24 100%);
-  --gradient-card: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(245,246,250,0.5) 100%);
-  --gradient-shimmer: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%);
+  /* ---- Fondos sólidos ----
+     Se conservan los nombres antiguos para no romper estilos existentes,
+     pero ya no son degradados. */
+  --gradient-brand: var(--color-blue);
+  --gradient-brand-reverse: var(--color-green-dark);
+  --gradient-hero: var(--color-blue);
+  --gradient-dark: var(--color-navbar);
+  --gradient-card: transparent;
+  --gradient-shimmer: transparent;
 
   /* ---- Typography ---- */
   --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --font-body: 'DM Sans', 'Segoe UI', sans-serif;
+  /* Títulos grandes (h1, h2) en Nexa Bold, la tipografía de la marca */
+  --font-headings: 'Nexa', var(--font-display);
 
   /* Fluid type scale using clamp() */
   --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
@@ -66,15 +73,16 @@
   --max-width: 1200px;
   --max-width-narrow: 900px;
   --container-padding: clamp(1.25rem, 1rem + 2vw, 2rem);
-  --navbar-height: 80px;
+  --navbar-height: 72px;
 
-  /* ---- Border Radius ---- */
+  /* ---- Border Radius ----
+     8px en tarjetas, botones y campos; el botón del menú usa --radius-sm. */
   --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 16px;
-  --radius-xl: 24px;
-  --radius-2xl: 32px;
-  --radius-pill: 100px;
+  --radius-md: 8px;
+  --radius-lg: 8px;
+  --radius-xl: 8px;
+  --radius-2xl: 8px;
+  --radius-pill: 8px;
   --radius-full: 50%;
 
   /* ---- Shadows ---- */
@@ -83,15 +91,24 @@
   --shadow-lg: 0 10px 30px rgba(0,0,0,0.1), 0 4px 8px rgba(0,0,0,0.05);
   --shadow-xl: 0 20px 50px rgba(0,0,0,0.12), 0 8px 16px rgba(0,0,0,0.06);
   --shadow-navbar: 0 8px 32px rgba(0,0,0,0.18);
-  --shadow-card-hover: 0 16px 40px rgba(43,77,168,0.15), 0 6px 12px rgba(0,0,0,0.06);
-  --shadow-glow-blue: 0 0 40px rgba(43,77,168,0.3);
-  --shadow-glow-green: 0 0 40px rgba(58,170,110,0.3);
+  --shadow-card-hover: 0 8px 24px rgba(15,76,140,0.10);
+  --shadow-glow-blue: none;
+  --shadow-glow-green: none;
 
-  /* ---- Transitions ---- */
-  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-spring: 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  /* ---- Motion ----
+     Una sola curva para todo el sitio: arranca rápido y frena suave. */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 200ms;
+  --dur-base: 450ms;
+  --dur-slow: 900ms;
+
+  --transition-fast: var(--dur-fast) var(--ease-out);
+  --transition-base: var(--dur-base) var(--ease-out);
+  --transition-slow: var(--dur-slow) var(--ease-out);
+  --transition-spring: var(--dur-base) var(--ease-out);
+
+  --shadow-hover: 0 14px 34px rgba(19, 41, 75, 0.10);
 
   /* ---- Z-indexes ---- */
   --z-base: 1;

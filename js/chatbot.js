@@ -6,42 +6,14 @@
   'use strict';
 
   // ============================================
-  // CONFIGURACIÓN DE GEMINI AI (OPCIONAL)
-  // Coloca tu API Key de Google Gemini gratuita aquí.
-  // Obtén tu API Key gratis en: https://aistudio.google.com/
+  // ASISTENTE CON IA
+  // Las respuestas con IA las genera el backend (credian_backend → /api/chat).
+  // La API key de Gemini y las instrucciones del asistente viven allá,
+  // nunca en el navegador. Para cambiar datos que da el asistente, editar
+  // credian_backend/app/api/chat/context.js
   // ============================================
-  const GEMINI_API_KEY = typeof atob === 'function' ? atob("QVEuQWI4Uk42SjN3NF9MZ2RWdHctazB0ZmhRQ3psdERXQ2Y0dFVkenhnMnJxRk5aclZpRFE=") : "";
-  const GEMINI_MODEL = "gemini-3.5-flash-lite";
-
-  // ---- Base de Conocimiento de CREDIAN ----
-  const CREDIAN_SYSTEM_CONTEXT = `
-Eres el Asistente Virtual inteligente y oficial de CREDIAN (Financiera RECREA S.A. de C.V. SOFOM E.N.R.).
-Tu ÚNICA función es resolver dudas y brindar información EXCLUSIVAMENTE sobre CREDIAN, sus créditos de nómina, crédito PYME, arrendamiento puro y financiero, convenios empresariales, requisitos, tasas, plazos y formas de contacto.
-
-REGLAS ESTRICTAS DE RESPUESTA Y SEGURIDAD:
-1. Responde de forma amable, cercana, concisa, clara, profesional y en español de México.
-2. Mantén la MEMORIA Y CONTEXTO de la conversación actual. Si el usuario te hace preguntas de seguimiento, responde refiriéndote a lo hablado anteriormente.
-3. NUNCA respondas preguntas sobre temas ajenos a CREDIAN (deportes, política, recetas, programación, etc.). Si te preguntan algo ajeno, responde amablemente:
-   "Lo siento, como asistente virtual de CREDIAN solo puedo responder preguntas relacionadas con nuestros créditos de nómina, convenios y servicios financieros. ¿Tienes alguna duda sobre tu crédito con CREDIAN?"
-4. COTIZADOR Y SOLICITUDES:
-   - El Cotizador (cotizador.credian.mx) es de uso exclusivo para empresas asociadas y ejecutivos. NUNCA lo recomiendes a clientes particulares.
-   - Para solicitar un crédito de nómina, remite al portal oficial (https://cib.logicsystems.com.mx/RECREA/LoginCredian.aspx?EMP=RECREA) o a platicar con un asesor (+52 444 962 5037).
-
-DATOS OFICIALES DE CREDIAN:
-- Empresa: Financiera RECREA S.A. de C.V. SOFOM E.N.R. (CREDIAN)
-- Especialidad: Créditos de nómina para trabajadores, Crédito PYME, Arrendamiento Puro (Leasing), Arrendamiento Financiero y Convenios Empresariales sin costo.
-- Trayectoria: Más de 10 años en el mercado financiero (fundada en 2015).
-- Ventajas principales: Sin aval, evaluación y respuesta en 48 horas, proceso 100% digital, sin trámites interminables.
-- Tasas de interés: Desde 14.9% hasta 24.9% anual (dependiendo del perfil y plazo).
-- Pagos anticipados: Se pueden realizar sin ninguna penalización ni recargo.
-- Descuento de nómina: Se descuenta automáticamente vía nómina. La cuota no excede el 30% del salario neto.
-- Requisitos principales (Crédito de Nómina): Identificación oficial (INE/pasaporte), comprobante de domicilio (<3 meses), últimos 3 recibos de nómina y estados de cuenta bancarios (últimos 3 meses), antigüedad laboral mínima 1 año, edad 18-65 años.
-- Convenios Empresariales: Sin costo para la empresa, activación en 48 hrs, mejora la retención de talento y brinda tasas preferenciales a colaboradores. Más de 80 empresas en convenio y 50,000+ colaboradores beneficiados.
-- Pérdida de empleo: Alternativas de reestructuración para adaptar la forma de pago.
-- Contacto oficial: Teléfono (+52 444 962 5037), WhatsApp (+52 444 962 5037), Correo contacto@credian.mx / une@credian.mx.
-- Unidad Especializada (UNE): Mariel Sandoval González, Horario lunes a viernes 9:00-15:00 y 16:00-18:00 hrs.
-- Dirección física: Cordillera Himalaya No. 830, Col. Lomas 4ta Sección, San Luis Potosí, S.L.P., C.P. 78216.
-  `;
+  const CHAT_API_URL = 'https://credian-backend.vercel.app/api/chat';
+  const AI_ENABLED = true;
 
   // ---- FAQ Local Knowledge Base ----
   const faqs = [
@@ -99,7 +71,7 @@ DATOS OFICIALES DE CREDIAN:
       question: '¿Cuál es la tasa de interés?',
       shortLabel: 'Tasa de interés',
       keywords: ['tasa de interes', 'tasas de interes', 'porcentaje de interes', 'cat', 'costo anual'],
-      answer: 'Nuestras tasas van desde el 14.9% hasta el 24.9% anual, dependiendo del plan elegido, monto solicitado, plazo y tu perfil crediticio. Un asesor puede darte una propuesta personalizada sin compromiso.'
+      answer: 'Tu crédito tiene tasa fija anual durante todo el plazo. La tasa depende del monto, el plazo y tu perfil crediticio. Antes de que firmes, un asesor te entrega por escrito tu tasa, CAT y comisiones, sin compromiso.'
     },
     {
       id: 9, category: 'pagos',
@@ -153,7 +125,6 @@ DATOS OFICIALES DE CREDIAN:
       <button class="chatbot-toggle" id="chatbot-toggle" aria-label="Abrir asistente virtual">
         <svg class="icon-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
         <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-        <span class="chatbot-badge">1</span>
       </button>
       <div class="chatbot-window" id="chatbot-window">
         <div class="chatbot-header">
@@ -443,60 +414,28 @@ DATOS OFICIALES DE CREDIAN:
 
     // ---- Consulta a Gemini AI con memoria de conversación ----
     async function queryGeminiAI() {
-      if (!GEMINI_API_KEY || GEMINI_API_KEY.trim() === "") {
-        return null;
-      }
+      if (!AI_ENABLED) return null;
 
-      // Preparar el historial de conversación asegurando que empiece con un mensaje de 'user'
+      // El historial debe empezar con un mensaje del usuario
       let historyPayload = conversationHistory.slice(-10);
       while (historyPayload.length > 0 && historyPayload[0].role !== 'user') {
         historyPayload.shift();
       }
-
       if (historyPayload.length === 0) return null;
 
-      const modelsToTry = Array.from(new Set([
-        GEMINI_MODEL,
-        "gemini-3.5-flash-lite",
-        "gemini-3.5-flash",
-        "gemini-2.5-flash-lite",
-        "gemini-2.0-flash-lite",
-        "gemini-flash-lite-latest"
-      ].filter(Boolean)));
-
-      const payload = {
-        systemInstruction: {
-          parts: [{ text: CREDIAN_SYSTEM_CONTEXT }]
-        },
-        contents: historyPayload,
-        generationConfig: {
-          temperature: 0.3,
-          maxOutputTokens: 350
-        }
-      };
-
-      for (const model of modelsToTry) {
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${GEMINI_API_KEY.trim()}`;
-        try {
-          const response = await fetch(url, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload)
-          });
-
-          if (response.ok) {
-            const data = await response.json();
-            const textResponse = data?.candidates?.[0]?.content?.parts?.[0]?.text;
-            if (textResponse) return textResponse.trim();
-          } else {
-            console.warn(`Gemini API Error con modelo ${model}:`, response.status);
-          }
-        } catch (err) {
-          console.warn(`Error de conexión con modelo ${model}:`, err);
-        }
+      try {
+        const response = await fetch(CHAT_API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ messages: historyPayload })
+        });
+        if (!response.ok) return null;
+        const data = await response.json();
+        return data && data.reply ? String(data.reply).trim() : null;
+      } catch (err) {
+        console.warn('Asistente no disponible:', err);
+        return null;
       }
-
-      return null;
     }
 
     // ---- Entrada del Usuario ----
@@ -525,7 +464,7 @@ DATOS OFICIALES DE CREDIAN:
       }
 
       // 2. Consultar a Gemini AI pasando todo el historial contextual
-      if (GEMINI_API_KEY && GEMINI_API_KEY.trim() !== "") {
+      if (AI_ENABLED) {
         const aiResponse = await queryGeminiAI();
         removeTyping();
         if (aiResponse) {
